@@ -2,4 +2,6 @@
 .bg{background-color: #0F1F26 !important;
 color:white !important;
 }
-.labels{color:#03B8F7}
+.bgWhite{background-color: #F6F6F6  !important}
+.labels{color:#03B8F7 !important; font-weight: 600!important;}
+.button{font-weight: 600!important; color:black !important; background-color:#03B8F7 !important; }
