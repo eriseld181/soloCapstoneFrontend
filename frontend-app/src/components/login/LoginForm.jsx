@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react"
+import React, { useState } from "react"
 import { withRouter } from 'react-router-dom'
 
 import { Card, Form, Button, Alert } from "react-bootstrap"
@@ -62,7 +62,7 @@ function LoginForm(props) {
                         :
                         <>
                             <Alert variant="danger">Please Check Your Login Details</Alert>
-                            <Button variant="primary" className="mt-2" type="submit" onClick={() => postimi()}>Submit</Button>  </>
+                            <Button variant="primary" className="mt-2" onClick={() => postimi()}>Submit</Button>  </>
                     }
                 </Form>
             </Card>
