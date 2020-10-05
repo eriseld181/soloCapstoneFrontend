@@ -1,8 +1,31 @@
-import React from "react"
+import React, { useState, useEffect, Component } from "react"
+import { withRouter } from 'react-router-dom'
+
 import { Card, Form, Button } from "react-bootstrap"
+import Info from '../InfoText/Info'
 import styles from "./Login.module.css"
-export default function LoginForm() {
+
+function LoginForm() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+
+    const postimi = async (e) => {
+
+        const result = await fetch("http://localhost:5000/api/users/login", {
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+            credentials: "include",
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            })
+        });
+        if (result.ok) {
+            console.log("u shtuan te dhenat")
+        }
+    }
     return (
+
         <div>
             <Card className={`${styles.bg}`} >
                 <Card.Img className={`mx-auto mt-5 ${styles.bg}`} variant="top" style={{ width: "400px" }} src="../../e-tech-logo-main.png" />
@@ -10,21 +33,29 @@ export default function LoginForm() {
                     <Card.Title className={`mb-5 ${styles.bg}`}>Please Login to Continue!
                                 </Card.Title>
                 </Card.Body >
-                <Form className={`mx-auto mb-5 `}>
+                <Form style={{ width: "40%" }} className={`mx-auto mb-5 `}>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Label className={`${styles.labels}`}>Email address
+                        <Info
+                                name="Email"
+                                description="Please enter your email, for example: john@gmail.com" /></Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" value={email} onChange={e => { setEmail(e.target.value) }} />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Label className={`${styles.labels}`}>Password
+                        <Info
+                                name="Password"
+                                description="Please enter your password, it should have one letter uppercase(A) at least one number(1)." /></Form.Label>
+
+                        <Form.Control type="password" placeholder="Password" value={password} onChange={e => { setPassword(e.target.value) }} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">Submit</Button>
+                    <Button variant="primary" className="mt-2" onClick={() => postimi()}>Submit</Button>
                 </Form>
             </Card>
         </div>
     )
 }
+export default withRouter(LoginForm);
