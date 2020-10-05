@@ -1,13 +1,14 @@
 import React, { useState, useEffect, Component } from "react"
 import { withRouter } from 'react-router-dom'
 
-import { Card, Form, Button } from "react-bootstrap"
+import { Card, Form, Button, Alert } from "react-bootstrap"
 import Info from '../InfoText/Info'
 import styles from "./Login.module.css"
 
-function LoginForm() {
+function LoginForm(props) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [link, setLink] = useState(true)
 
 
     const postimi = async (e) => {
@@ -21,7 +22,11 @@ function LoginForm() {
             })
         });
         if (result.ok) {
-            console.log("u shtuan te dhenat")
+            setLink(link)
+            props.history.push("/")
+
+        } else {
+            setLink(!link)
         }
     }
     return (
@@ -52,7 +57,13 @@ function LoginForm() {
 
                         <Form.Control type="password" placeholder="Password" value={password} onChange={e => { setPassword(e.target.value) }} />
                     </Form.Group>
-                    <Button variant="primary" className="mt-2" onClick={() => postimi()}>Submit</Button>
+                    {link ?
+                        <Button variant="primary" className="mt-2" onClick={() => postimi()}>Submit</Button>
+                        :
+                        <>
+                            <Alert variant="danger">Please Check Your Login Details</Alert>
+                            <Button variant="primary" className="mt-2" type="submit" onClick={() => postimi()}>Submit</Button>  </>
+                    }
                 </Form>
             </Card>
         </div>

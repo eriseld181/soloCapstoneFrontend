@@ -3,8 +3,8 @@ import { Card, Form, Button, Col, Container, } from "react-bootstrap"
 import styles from "./Register.module.css"
 import States from "./countries.json"
 import Info from '../InfoText/Info'
-export default function RegisterForm() {
 
+function RegisterForm() {
     return (
         <>
             <Card className={`${styles.bg}`} >
@@ -90,3 +90,4 @@ export default function RegisterForm() {
         </>
     )
 }
+export default RegisterForm
