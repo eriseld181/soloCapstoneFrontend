@@ -17,13 +17,7 @@
     width:300px;
     height: 300px;
 }
- .iphonexsx {color: red!important}
-@media only screen
-and (min-device-width : 374px)
-and (max-device-width : 812px) {
-    .title {color: red!important;
-     display:flex;}
-}
+ 
 a{color: white !important; 
     font-weight: 600!important; 
     margin-right:5px!important;
