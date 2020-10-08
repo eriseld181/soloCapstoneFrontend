@@ -14,6 +14,7 @@ function LoginForm(props) {
     const postimi = async (e) => {
 
         const result = await fetch("http://localhost:5000/api/users/login", {
+            // const result = await fetch('http://localhost:4006/profile/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             credentials: "include",
