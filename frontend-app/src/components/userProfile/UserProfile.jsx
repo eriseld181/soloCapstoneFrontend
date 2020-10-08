@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Row, Col, Image, Container } from 'react-bootstrap'
+import { Row, Col, Image } from 'react-bootstrap'
 import mainStyle from '../Component.module.css'
 import { ImGithub } from 'react-icons/im';
 import { SiLinkedin } from 'react-icons/si';
@@ -34,7 +34,7 @@ export default class UserProfile extends Component {
                         <Row>
                             <Col xs={4} className={`  text-right   ${mainStyle.label}`}>LinkedIn:</Col> <Col className={`mb-2 ${mainStyle.textLabel}`}>
                                 <a style={{ fontStyle: "oblique" }} className={`  ${mainStyle.webLinks}`} rel="stylesheet" href="https://www.google.com/">
-                                    <SiLinkedin className="mb-1 mr-2" />eriseld181 </a><Info name="GitHub User Link" description={`Click on the logo or username to go to user personal LinkedIn`} />
+                                    <SiLinkedin className="mb-1 mr-2" />eriseld181 </a><Info name="LinkedIn User Link" description={`Click on the logo or username to go to user personal LinkedIn`} />
                             </Col>
                         </Row>
                         <Row>

@@ -22,11 +22,13 @@ and (max-device-width : 812px) {
     .title {color: red!important;
      display:flex;}
 }
-a{color: #03B8F7 !important; 
+a{color: white !important; 
     font-weight: 600!important; 
+    margin-right:5px!important;
 } 
 a:active{color: #111111 !important; 
-        font-weight: 600!important;    
+        font-weight: 600!important;  
+          
 }
 a:hover{color: white !important; 
     font-weight: 600!important;
@@ -41,7 +43,4 @@ a.webLinks:hover {
         text-decoration: none!important;
     }
 
-    .myClass ul > li > a:hover {
-        background-color: gray!important;
-        color: white!important;
-    }
+    

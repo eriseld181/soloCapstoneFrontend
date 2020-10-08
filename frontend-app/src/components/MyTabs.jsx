@@ -1,14 +1,28 @@
 import React from "react"
-import { Tab, Tabs, Container } from "react-bootstrap"
+import { Tab, Tabs, Container, Button, Card } from "react-bootstrap"
 import mainStyle from './Component.module.css'
 export default function myTabs() {
     return (
 
-        <Tabs className={`justify-content-center myClass `} defaultActiveKey="myPublications" id="uncontrolled-tab-example">
-            <Tab eventKey="myPublications" title="Publications">
-                <Container>this is the place for all publications</Container>
+        <Tabs variant="pills" transition={false} className={`justify-content-center`} defaultActiveKey="myPublications" id="uncontrolled-tab-example">
+            <Tab className={`justify-content-center ${mainStyle.Tabs}`} eventKey="myPublications" title="Publications">
+                <Container style={{ outline: "solid red 1px" }}>
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <Card.Body>
+                            <Card.Title>Card Title</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content.
+    </Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+
+
+                </Container>
             </Tab>
-            <Tab eventKey="homeworks" title="Homeworks">
+            <Tab className={`justify-content-center ${mainStyle.Tabs}`} eventKey="homeworks" title="Homeworks">
                 <Container>This is the place for Homeworks</Container>
             </Tab>
             <Tab eventKey="notes" title="Notes">
