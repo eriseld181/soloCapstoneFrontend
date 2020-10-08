@@ -1,8 +1,10 @@
 import React from "react"
 import { Tab, Tabs, Container } from "react-bootstrap"
+import mainStyle from './Component.module.css'
 export default function myTabs() {
     return (
-        <Tabs className="justify-content-center" defaultActiveKey="myPublications" id="uncontrolled-tab-example">
+
+        <Tabs className={`justify-content-center myClass `} defaultActiveKey="myPublications" id="uncontrolled-tab-example">
             <Tab eventKey="myPublications" title="Publications">
                 <Container>this is the place for all publications</Container>
             </Tab>

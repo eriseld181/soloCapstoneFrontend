@@ -5,7 +5,7 @@ import States from "./countries.json"
 import Info from '../InfoText/Info'
 
 
-function RegisterForm() {
+function RegisterForm(props) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [firstname, setFirstname] = useState("")
@@ -33,6 +33,7 @@ function RegisterForm() {
 
         if (register.ok) {
             alert("You have to go to login now")
+            props.setKey('login')
         }
     }
 

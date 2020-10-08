@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* general colors for website created by Eriseld*/
+    background-color: #0F1F26!important;
+    color:#F6F6F6 !important ;
+  
 }
 
 code {

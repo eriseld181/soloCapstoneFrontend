@@ -1,0 +1,47 @@
+
+.title{color: #03B8F7; 
+    font-size: 30px;
+}
+.label{color: #03B8F7;
+    font-size: 20px;
+    }
+.textLabel{
+        font-size: 20px;
+    }
+
+.aboutText{ font-size: 15px;}
+
+.profilePhoto{
+    width:300px;
+    height: 300px;
+}
+ .iphonexsx {color: red!important}
+@media only screen
+and (min-device-width : 374px)
+and (max-device-width : 812px) {
+    .title {color: red!important;
+     display:flex;}
+}
+a{color: #03B8F7 !important; 
+    font-weight: 600!important; 
+} 
+a:active{color: #111111 !important; 
+        font-weight: 600!important;    
+}
+a:hover{color: white !important; 
+    font-weight: 600!important;
+    text-decoration: none!important;}
+
+a.webLinks:hover {
+    color: #03B8F7!important; 
+    text-decoration: none!important;
+    font-size: 95%!important;}
+    a.webLinks {
+        color: white!important; 
+        text-decoration: none!important;
+    }
+
+    .myClass ul > li > a:hover {
+        background-color: gray!important;
+        color: white!important;
+    }
