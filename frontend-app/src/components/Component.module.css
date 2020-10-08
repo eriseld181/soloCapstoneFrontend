@@ -1,6 +1,8 @@
 
-.title{color: #03B8F7; 
-    font-size: 30px;
+.bg{background-color:#0F1F26!important ;
+}
+.title{color: #03B8F7 !important; 
+    font-size: 30px!important;
 }
 .label{color: #03B8F7;
     font-size: 20px;
@@ -38,9 +40,17 @@ a.webLinks:hover {
     color: #03B8F7!important; 
     text-decoration: none!important;
     font-size: 95%!important;}
-    a.webLinks {
+a.webLinks {
         color: white!important; 
         text-decoration: none!important;
     }
+
+.imageContent{ width: 200px!important;
+    height: auto !important;
+}
+.cardDesignClean{background-color:#0F1F26!important ;
+    border: none!important;
+    
+}
 
     
