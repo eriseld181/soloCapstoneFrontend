@@ -11,7 +11,7 @@ export default function NavBar() {
 
         <>
 
-            <Navbar className={` ${styles.bg} ${styles.text} justify-content-center `} variant="dark">
+            <Navbar className={` ${styles.bg} ${styles.text} justify-content-center  `} variant="dark">
                 <Navbar.Brand href="#home"  ><Image src="../../e-tech-logo-main.png" className="App-logo"
                 /></Navbar.Brand>
                 <Nav >
