@@ -2,14 +2,13 @@ import React from "react";
 import Home from "./pages/Home"
 import Profile from "./pages/Profile"
 import Login from "./pages/Login"
-import style from "./App.css";
+// import style from "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 function App() {
   return (
-    <div className={`${style.bg}`} >
+    < >
       <Router>
-
         <Switch>
           <Route path="/login">
             <Login />
@@ -22,8 +21,7 @@ function App() {
           </Route>
         </Switch>
       </Router >
-
-    </div >
+    </ >
   );
 }
 
