@@ -19,16 +19,30 @@ const Footer = () => (
                         <Row>
                             <Col xs={12} className="footer-links">
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/home" alt="footer link"> Home</a>
+                                    <Link to="/" className={`  ${mainStyle.webLinks}`}>Main Page</Link>
                                 </p>
                                 <p>
-                                    <Link To="/home" className={`  ${mainStyle.webLinks}`}>Media Center</Link>
+                                    <Link to="/feed" className={`  ${mainStyle.webLinks}`}>Home</Link>
                                 </p>
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Privacy </a>
+                                    <Link to="/profile" className={`  ${mainStyle.webLinks}`}>Profile</Link>
+                                </p>
+
+
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col>
+                        <Row>
+                            <Col xs={12} className="footer-links">
+                                <p>
+                                    <Link to="/profile/hw" className={`  ${mainStyle.webLinks}`}>menu 1</Link>
                                 </p>
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link"> Contact us</a>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">menu 2</a>
+                                </p>
+                                <p>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">menu 3</a>
                                 </p>
                             </Col>
                         </Row>
@@ -37,28 +51,13 @@ const Footer = () => (
                         <Row>
                             <Col xs={12} className="footer-links">
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Audio Description </a>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">menu 4</a>
                                 </p>
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Investor Relations</a>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">menu 5</a>
                                 </p>
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Legal Notices</a>
-                                </p>
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col>
-                        <Row>
-                            <Col xs={12} className="footer-links">
-                                <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link"> Help Center </a>
-                                </p>
-                                <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Jobs </a>
-                                </p>
-                                <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Cookie Preference </a>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">menu 6</a>
                                 </p>
                             </Col>
                         </Row>
@@ -67,13 +66,13 @@ const Footer = () => (
                         <Row>
                             <Col xs={12} className="footer-links">
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Gift Cards</a>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">menu 7</a>
                                 </p>
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link"> Terms of Use</a>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link"> menu 8</a>
                                 </p>
                                 <p>
-                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">Corporate</a>
+                                    <a className={`  ${mainStyle.webLinks}`} href="/" alt="footer link">menu 9</a>
                                 </p>
                             </Col>
                         </Row>
