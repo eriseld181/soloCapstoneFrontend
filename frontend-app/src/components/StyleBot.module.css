@@ -1,0 +1,11 @@
+.nav-link {
+  background: rgb(3, 184, 247) !important;
+  background: linear-gradient(
+    60deg,
+    rgba(3, 184, 247, 1) 0%,
+    rgb(0 55 255) 100%
+  ) !important;
+  border-radius: 5px !important;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
+}
+@import "../node_modules/bootstrap/scss/bootstrap";

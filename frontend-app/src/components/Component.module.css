@@ -1,51 +1,109 @@
+.bg {
+  background-color: #0f1f26 !important ;
+}
+.bgBlack {
+  background-color: #111111 !important ;
+}
+.title {
+  color: #03b8f7 !important;
+  font-size: 30px !important;
+}
+.jumbotron {
+  background: url("https://s27389.pcdn.co/wp-content/uploads/2019/10/retail-innovation-changing-tech-consumer-employee-demands-1024x440.jpeg")
+    center center / cover no-repeat;
+  position: fixed;
+  width: 100%;
+  z-index: -1;
+}
+/* for text design */
+.label {
+  color: #03b8f7;
+  font-size: 20px;
+}
+.textLabel {
+  font-size: 20px;
+}
 
-.bg{background-color:#0F1F26!important ;
+.aboutText {
+  font-size: 15px;
 }
-.bgBlack{ background-color:#111111 !important ;}
-.title{color: #03B8F7 !important; 
-    font-size: 30px!important;
+/* for image design */
+.socialIcons {
+  font-size: 20px;
+  margin: 0px 15px 3px 0px;
+  color: white !important;
 }
-.label{color: #03B8F7;
-    font-size: 20px;
-    }
-.textLabel{
-        font-size: 20px;
-    }
-
-.aboutText{ font-size: 15px;}
-
-.profilePhoto{
-    width:300px;
-    height: 300px;
+.socialIcons:hover {
+  color: #03b8f7 !important;
+  text-decoration: none !important;
+  font-size: 125% !important;
 }
- 
-a{color: white !important; 
-    font-weight: 600!important; 
-    margin-right:5px!important;
-} 
-a:active{color: #111111 !important; 
-        font-weight: 600!important;  
-          
+.profilePhoto {
+  max-width: 100%;
+  max-height: 100%;
+  width: 150px;
+  height: 150px;
+  padding: 2px;
+  background: rgb(3, 184, 247) !important;
+  background: linear-gradient(
+    60deg,
+    rgba(3, 184, 247, 1) 0%,
+    rgb(0 55 255) 100%
+  ) !important;
 }
-a:hover{color: white !important; 
-    font-weight: 600!important;
-    text-decoration: none!important;}
+/* for  link design */
+a {
+  color: white !important;
+  font-weight: 600 !important;
+  margin-right: 5px !important;
+}
+a:active {
+  color: #111111 !important;
+  font-weight: 600 !important;
+}
+a:hover {
+  color: white !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
 
 a.webLinks:hover {
-    color: #03B8F7!important; 
-    text-decoration: none!important;
-    font-size: 95%!important;}
+  color: #03b8f7 !important;
+  text-decoration: none !important;
+  font-size: 95% !important;
+}
 a.webLinks {
-        color: white!important; 
-        text-decoration: none!important;
-    }
-
-.imageContent{ width: 200px!important;
-    height: auto !important;
-}
-.cardDesignClean{background-color:#0F1F26!important ;
-    border: none!important;
-    
+  color: white !important;
+  text-decoration: none !important;
 }
 
-    
+.imageContent {
+  width: 200px !important;
+  height: auto !important;
+}
+.cardDesignClean {
+  background-color: #0f1f26 !important ;
+  border: none !important;
+}
+/* for buttons design */
+/* .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  $background: rgb(3, 184, 247) !important;
+  background: linear-gradient(
+    60deg,
+    rgba(3, 184, 247, 1) 0%,
+    rgb(0 55 255) 100%
+  ) !important;
+  border-radius: 5px !important;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
+} */
+.btnGradient {
+  background: rgb(3, 184, 247) !important;
+  background: linear-gradient(
+    60deg,
+    rgba(3, 184, 247, 1) 0%,
+    rgb(0 55 255) 100%
+  ) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
+}

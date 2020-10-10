@@ -1,5 +1,13 @@
-.bgWhite{color: #F6F6F6 !important; 
-    background-color: #0F1F26;
-    }
-.labels{color:#03B8F7; font-weight: 600;}
-.titleInfo{color:#03B8F7; font-weight: 600; background-color: #111111  !important;}
+.bgWhite {
+  color: #f6f6f6 !important;
+  background-color: #0f1f26;
+}
+.labels {
+  color: #03b8f7;
+  font-weight: 600;
+}
+.titleInfo {
+  color: #03b8f7;
+  font-weight: 600;
+  background-color: #111111 !important;
+}
