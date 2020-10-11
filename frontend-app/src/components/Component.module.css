@@ -9,11 +9,37 @@
   font-size: 30px !important;
 }
 .jumbotron {
-  background: url("https://s27389.pcdn.co/wp-content/uploads/2019/10/retail-innovation-changing-tech-consumer-employee-demands-1024x440.jpeg")
-    center center / cover no-repeat;
-  position: fixed;
+  background-image: url("../images/coverphoto.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat !important;
+  height: 40em;
   width: 100%;
-  z-index: -1;
+}
+.jumboTitle {
+  color: #03b8f7;
+  font-size: 100px !important;
+  margin-left: 22%;
+  margin-top: 7%;
+}
+.jumboText {
+  color: white;
+  font-size: 40px !important;
+  margin-left: 23%;
+}
+.jumboButton {
+  color: white;
+  font-size: 25px !important;
+
+  padding: 7px 40px !important;
+  background: rgb(3, 184, 247) !important;
+  background: linear-gradient(
+    60deg,
+    rgba(3, 184, 247, 1) 0%,
+    rgb(0 55 255) 100%
+  ) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
 }
 /* for text design */
 .label {
@@ -28,6 +54,10 @@
   font-size: 15px;
 }
 /* for image design */
+.lpImage {
+  width: 10% !important;
+  height: 10px !important;
+}
 .socialIcons {
   font-size: 20px;
   margin: 0px 15px 3px 0px;
@@ -51,7 +81,7 @@
     rgb(0 55 255) 100%
   ) !important;
 }
-/* for  link design */
+/* for link design */
 a {
   color: white !important;
   font-weight: 600 !important;
@@ -88,7 +118,7 @@ a.webLinks {
 /* for buttons design */
 /* .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  $background: rgb(3, 184, 247) !important;
+  .background: rgb(3, 184, 247) !important;
   background: linear-gradient(
     60deg,
     rgba(3, 184, 247, 1) 0%,

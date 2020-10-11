@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Card, Form, Button, Col, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styles from "../Component.module.css";
 import States from "./countries.json";
 import Info from "../InfoText/Info";
-
+import mainStyle from "../Component.module.css";
 function RegisterForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +38,7 @@ function RegisterForm(props) {
   };
 
   return (
-    <>
+    <div className={` mt-5 `}>
       <Card className={`${styles.bg}`}>
         <Card.Img
           className={`mx-auto mt-5 ${styles.bg}`}
@@ -189,6 +190,12 @@ function RegisterForm(props) {
                 />
               </Form.Group>
             </Form.Row>
+            <p>
+              Do you have an account?{" "}
+              <Link to="/login" className={`${mainStyle.webLinks}`}>
+                Login here!
+              </Link>
+            </p>
             <Button
               className={` mt-2  ${styles.btnGradient}`}
               variant="primary"
@@ -199,7 +206,7 @@ function RegisterForm(props) {
           </Form>
         </Container>
       </Card>
-    </>
+    </div>
   );
 }
 export default RegisterForm;

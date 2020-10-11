@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import { Card, Form, Button, Alert } from "react-bootstrap";
 import Info from "../InfoText/Info";
@@ -44,13 +44,13 @@ function LoginForm(props) {
     <div>
       <Card className={`${styles.bg}`}>
         <Card.Img
-          className={`mx-auto mt-5 ${styles.bg}`}
+          className={`mx-auto mt-4 ${styles.bg}`}
           variant="top"
           style={{ width: "400px" }}
           src="../../e-tech-logo-main.png"
         />
         <Card.Body className={`mx-auto ${styles.bg}`}>
-          <Card.Title className={`mb-5 ${styles.bg}`}>
+          <Card.Title className={`mb-3 ${styles.bg}`}>
             Please Login to Continue!
           </Card.Title>
         </Card.Body>
@@ -93,6 +93,13 @@ function LoginForm(props) {
               }}
             />
           </Form.Group>
+          <p>
+            Don't you have an account?{" "}
+            <Link to="/register" className={`${mainStyle.webLinks}`}>
+              Register here!
+            </Link>
+          </p>
+
           {link ? (
             <Button
               className={`mt-2 ${mainStyle.btnGradient}`}
@@ -105,7 +112,7 @@ function LoginForm(props) {
               <Alert variant="danger">Please Check Your Login Details</Alert>
               <Button className="mt-2" onClick={() => postimi()}>
                 Submit
-              </Button>{" "}
+              </Button>
             </>
           )}
         </Form>

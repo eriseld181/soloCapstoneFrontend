@@ -62,7 +62,7 @@ function MainNavBar(props) {
             </Nav.Link>
           )}
           <Nav.Link>
-            <Link to="/">Contact</Link>
+            <Link to="/contact">Contact</Link>
           </Nav.Link>
           <Nav.Link>
             <Link to="/">How It Works</Link>
@@ -81,7 +81,7 @@ function MainNavBar(props) {
                 <BiExit
                   className={` ${styles.icons}`}
                   onClick={() => logOut()}
-                />{" "}
+                />
                 Log out
               </Link>
             </Nav.Link>

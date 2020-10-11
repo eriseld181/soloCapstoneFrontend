@@ -3,7 +3,6 @@ import NavBar from "../components/NavBar/MainNavBar";
 import UserProfile from "../components/userProfile/UserProfile";
 import MyTab from "../components/MyTabs";
 import Footer from "../components/Footer";
-import { Component } from "react";
 import Cookies from "js-cookie";
 
 class Profile extends React.Component {
