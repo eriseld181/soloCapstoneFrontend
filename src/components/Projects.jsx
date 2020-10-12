@@ -14,14 +14,12 @@ export default class Projects extends Component {
   };
 
   render() {
-    return (
-      <>
-        <NavBar1 />
-        {this.state.projects &&
+    <>
+      <NavBar1 />
+      {/* {this.state.projects &&
           this.state.projects.map((project, i) => {
             return <div>{project.projectName}</div>;
-          })}
-      </>
-    );
+          })} */}
+    </>;
   }
 }
