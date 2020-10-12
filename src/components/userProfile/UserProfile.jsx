@@ -14,13 +14,6 @@ class UserProfile extends Component {
         style={{ width: "100%", height: "auto" }}
       >
         <Row className={` ml-3 mr-3 `}>
-          <Col md={12} lg={12} xl={4} className={`text-center`}>
-            <Image
-              className={` m-5  ${mainStyle.profilePhoto}`}
-              src={this.props.image}
-              roundedCircle
-            />
-          </Col>
           <Col md={6} lg={6} xl={4} className="pt-5 ">
             <Row>
               <Col xs={4} className={`text-right  ${mainStyle.label}`}>
@@ -64,7 +57,18 @@ class UserProfile extends Component {
             </Row>
           </Col>
           <Col md={6} lg={6} xl={4} className="text-left pt-5 ">
-            <Row>
+            <Row
+              style={{ outline: "solid blue 1px", width: "90%" }}
+              className="justify-content-center"
+            >
+              {" "}
+              <Image
+                className={` mb-4 mr-5  text-center ${mainStyle.profilePhoto}`}
+                src={this.props.image}
+                roundedCircle
+              />
+            </Row>
+            <Row style={{ outline: "solid blue 1px" }}>
               <Col xs={4} className={`  text-right   ${mainStyle.label}`}>
                 GitHub:
               </Col>
