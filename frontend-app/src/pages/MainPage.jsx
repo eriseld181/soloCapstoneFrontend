@@ -18,14 +18,14 @@ export default function MainPage() {
       />
       <Container className={`mt-5 mb-5`}>
         <Row>
-          <Col sm={12} md={6} className="text-left pr-5 pb-4 ">
+          <Col sm={12} md={6} id="about" className="text-left pr-5 pb-4 ">
             <h1 className={`${mainStyles.title} mb-5`}>What is E-Tech?</h1>
             <p className={`${mainStyles.textLabel} mb-3 mt-3`}>
               E-Tech was founded in August 15 2020. Company purpose is to
-              provide high quality services for every IT course online. We want
-              to help students and tutors to work together in one enviroment
-              will all the neccessary tools to make their process confortable
-              and effective...
+              provide high quality services for every IT course online.We want
+              to help students and tutors to work together in one environment
+              will all the necessary tools to make their process comfortable and
+              effective. ...
             </p>
             <div className="text-center pt-3 mb-4">
               <Link
@@ -134,9 +134,9 @@ export default function MainPage() {
           </Row> */}
         </Row>
 
-        <Row>
+        <Row id="contact">
           <h1 className={`${mainStyles.title} mx-auto mb-5`}>
-            We Would Love To Hear From You!
+            We Would Love To Hear From You
           </h1>
           <p className={`${mainStyles.textLabel} mb-3 mt-3 `}>
             Whether you have a question about features, pricing, how to apply

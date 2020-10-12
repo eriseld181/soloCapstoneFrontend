@@ -64,9 +64,7 @@ function MainNavBar(props) {
           <Nav.Link>
             <Link to="/contact">Contact</Link>
           </Nav.Link>
-          <Nav.Link>
-            <Link to="/">How It Works</Link>
-          </Nav.Link>
+
           {!props.isLoogedIn && (
             <Nav.Link>
               <Link to="/login">

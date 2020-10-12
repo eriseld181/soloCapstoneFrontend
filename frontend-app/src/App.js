@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 // import style from "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MainNavBar from "./components/NavBar/MainNavBar";
 function App() {
   return (
     <>
@@ -19,6 +20,8 @@ function App() {
           <Route path="/profile" exact component={Profile} />
           <Route path="/home" exact component={Home} />
           <Route path="/contact" exact component={Contact} />
+          <Route path="#about" exact component={MainPage} />
+          <Route path="/contact" exact component={MainNavBar} />
         </Switch>
       </Router>
     </>
