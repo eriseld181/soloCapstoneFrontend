@@ -10,20 +10,10 @@ class UserProfile extends Component {
   render() {
     return (
       <div className=" mt-2 mb-2 " style={{ width: "100%", height: "auto" }}>
-        <Row className={` ml-3 mr-3  }`} style={{ outline: "solid red 2px" }}>
-          <Col
-            md={6}
-            lg={6}
-            xl={6}
-            className="pt-5 text-right"
-            style={{ outline: "solid red 2px" }}
-          >
+        <Row className={` ml-3 mr-3  }`}>
+          <Col md={6} lg={6} xl={6} className="pt-5 text-right">
             <Row className="justify-content-right">
-              <Col
-                xs={8}
-                className={`  ${mainStyle.label}`}
-                style={{ outline: "solid white 2px" }}
-              >
+              <Col xs={8} className={`  ${mainStyle.label}`}>
                 First name:
               </Col>
               <Col className={`mb-2 text-left ${mainStyle.textLabel}`}>
@@ -64,10 +54,7 @@ class UserProfile extends Component {
             </Row>
           </Col>
           <Col md={6} lg={6} xl={4} className="text-left pt-5 ">
-            <Row
-              style={{ outline: "solid blue 1px", width: "90%" }}
-              className="justify-content-center"
-            >
+            <Row className="justify-content-center">
               {" "}
               <Image
                 className={` mb-4 mr-5  text-center ${mainStyle.profilePhoto}`}
@@ -75,7 +62,7 @@ class UserProfile extends Component {
                 roundedCircle
               />
             </Row>
-            <Row style={{ outline: "solid blue 1px" }}>
+            <Row>
               <Col xs={4} className={`  text-right   ${mainStyle.label}`}>
                 GitHub:
               </Col>
