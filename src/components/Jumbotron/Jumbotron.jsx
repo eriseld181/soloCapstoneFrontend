@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Button, Container, Row, Col } from "react-bootstrap";
+import { Jumbotron, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import mainStyles from "../Component.module.css";
 export default function JumbotronComponent(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Card, Button, Col, Row } from "react-bootstrap";
-import DefaultComponent from '../../components/DefaultComponent'
+import { Card, Button, Col, Row, Container  } from "react-bootstrap";
+import DefaultComponent from './DefaultComponent'
  class Projects extends Component {
   state = {
     projects: [],
@@ -21,14 +21,14 @@ import DefaultComponent from '../../components/DefaultComponent'
     return (
       <>
       
-        <div className=" text-center" style={{ outline: "solid blue 2px" }}>
+        <div className=" text-center" style={{ outline: "solid red 2px" }}>
           { this.state.projects&& this.state.projects.length>0 ? 
             this.state.projects.map((project, i) => {
               return (
-                <Row key={i}>
-                  <Col></Col>
-                  <Col xs={12} md={6}>
-                    {" "}
+                <Container style={{outline:"solid green 2px", width:"100%" , columns: "1"}}>
+                
+          <Col key={i}>
+                
                     <Card
                       className=" mb-4"
                       style={{
@@ -39,7 +39,7 @@ import DefaultComponent from '../../components/DefaultComponent'
                       <Card.Img
                         className=" mx-auto"
                         variant="top"
-                        style={{ width: "300px" }}
+                        style={{ width: "200px" }}
                         src={project.projectPhoto}
                       />
                       <Card.Body>
@@ -51,12 +51,10 @@ import DefaultComponent from '../../components/DefaultComponent'
                         </Button>
                       </Card.Body>
                     </Card>
+                 
                   </Col>
-                  <Col></Col>
-                </Row>
-                // <li key={i} className="d-flex justify-content-center">
-                //   {project.projectName}
-                // </li>
+                
+                </Container>
               );
             }) :  <DefaultComponent
             img="./publication.png"

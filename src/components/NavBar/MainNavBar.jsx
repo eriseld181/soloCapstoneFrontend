@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
+import React from "react";
 import { Nav, Navbar, Image } from "react-bootstrap";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
@@ -7,7 +8,7 @@ import { BiExit } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { connect } from "react-redux";
-import Cookies from 'js-cookie'
+//import Cookies from 'js-cookie'
 const mapStateToProps = (state) => state;
 const mapDispatchToProps =(dispatch)=>({
   toggleLogin: ()=>dispatch({type:" TOGGLE_LOGIN", playload: false })
@@ -30,7 +31,7 @@ const logOut = async (props) => {
 
 
 function MainNavBar(props) {
-const [show, setShow ]=useState(false)
+//const [show, setShow ]=useState(false)
   console.log("status of logged in", props.isLoogedIn);
   return (
     <>

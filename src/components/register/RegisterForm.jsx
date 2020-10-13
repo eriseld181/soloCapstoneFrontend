@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Form, Button, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import styles from "../Component.module.css";
 import States from "./countries.json";
 import Info from "../InfoText/Info";
@@ -32,8 +32,8 @@ function RegisterForm(props) {
     });
 
     if (register.ok) {
-      alert("You have to go to login now");
-      props.setKey("login");
+     
+      props.history.push("/login");
     }
   };
 
@@ -209,4 +209,4 @@ function RegisterForm(props) {
     </div>
   );
 }
-export default RegisterForm;
+export default withRouter(RegisterForm);

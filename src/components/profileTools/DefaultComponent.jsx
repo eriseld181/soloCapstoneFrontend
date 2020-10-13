@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Button, Card } from "react-bootstrap"
-import mainStyle from './Component.module.css'
+import mainStyle from '../Component.module.css'
 export default function DefaultComponent(props) {
     return (
         <Container>

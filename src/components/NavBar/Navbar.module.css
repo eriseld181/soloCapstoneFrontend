@@ -1,5 +1,6 @@
-.bg{background-color: #111111  ;}
-.text{font-size: 20px;}
+.bg{background-color: #111111 !important ;}
+#basic-nav-dropdown{background-color: red !important ;}
+.text{font-size: 20px !important;}
 .icons{
     font-size: 20px;
     margin: 0 5px 6px 0px 

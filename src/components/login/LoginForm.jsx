@@ -17,7 +17,7 @@ function LoginForm(props) {
   const [password, setPassword] = useState("");
   const [link, setLink] = useState(true);
 
-  const postimi = async (e) => {
+  const userLogin = async (e) => {
     const result = await fetch("http://localhost:5000/api/users/login", {
       // const result = await fetch('http://localhost:4006/profile/login', {
       method: "POST",
@@ -99,14 +99,14 @@ function LoginForm(props) {
           {link ? (
             <Button
               className={`mt-2 ${mainStyle.btnGradient}`}
-              onClick={() => postimi()}
+              onClick={() => userLogin()}
             >
               Submit
             </Button>
           ) : (
             <>
               <Alert variant="danger">Please Check Your Login Details</Alert>
-              <Button className="mt-2" onClick={() => postimi()}>
+              <Button className="mt-2" onClick={() => userLogin()}>
                 Submit
               </Button>
             </>

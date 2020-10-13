@@ -10,7 +10,7 @@ import { SiLinkedin } from "react-icons/si";
 
 const Footer = () => (
   <>
-    <Row className={`text-center mt-5 pt-3  ${mainStyle.bgBlack}`}>
+    <Row className={`text-center mt-5 pt-3  mb-0 ${mainStyle.bgBlack} $`}>
       <Col xs={{ span: 6, offset: 3 }}>
         <Row>
           <Col xs={12} className="text-left mb-2">

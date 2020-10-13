@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../components/NavBar/MainNavBar";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import {
   Container,
   Row,
@@ -10,6 +10,8 @@ import {
   Dropdown,
   FormControl,
   DropdownButton,
+  Card,
+  Button,
 } from "react-bootstrap";
 import Cookies from "js-cookie";
 import mainStyle from "../components/Component.module.css";
@@ -17,17 +19,51 @@ import { ImGithub } from "react-icons/im";
 
 let postCategory = ["posts", "projects", "homeworks"];
 
+let categoryFetch = {
+  projects: "http://localhost:5000/api/projects",
+  posts: "http://localhost:5000/api/projects",
+  homeworks: "http://localhost:5000/api/projects",
+};
+
 class Home extends React.Component {
   state = {
     users: [],
     singleUser: [],
+    feedCategory: categoryFetch.projects,
+    categorySelected: "projects",
+  };
+  //to get change the category
+  handleDropDownChange = (category) => {
+    this.setState({ categorySelected: category });
+  };
+  //search events
+  handleSearchQuery = (searchQuery) => {
+    if (searchQuery) {
+      let FilteredFeeds = categoryFetch[
+        this.state.categorySelected
+      ].filter((feed) =>
+        feed.projectName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      this.setState({ feedCategory: FilteredFeeds });
+    } else {
+      this.setState({
+        feedCategory: categoryFetch[this.state.categorySelected].slice(0, 3),
+      });
+    }
   };
 
   checkLoggin = () => {
     if (Cookies.get("accessToken")) this.setState({ isLogged: true });
   };
   componentDidMount = async () => {
-    console.log("this is cookie.get", Cookies.get("accessToken"));
+    ///////
+    const FetchDataFeed = await fetch(this.categorySelected, {
+      credentials: "include",
+    });
+    const fetchedSingleFeed = await FetchDataFeed.json();
+    this.setState({ singleUser: fetchedSingleFeed });
+
+    /////////////////////////////////////
     const userResponse = await fetch("http://localhost:5000/api/users/me", {
       credentials: "include",
     });
@@ -43,19 +79,9 @@ class Home extends React.Component {
   };
 
   render() {
-    console.log("hello", this.state.users);
     return (
       <>
         <NavBar />
-
-        {/* <>
-          <div>{this.state.users.username}</div>
-          <div>{this.state.users.firstName}</div>
-          <div>{this.state.users.lastname}</div>
-
-          <div>{this.state.users.role}</div>
-        </> */}
-
         <Row>
           <Col xs={3} style={{ outline: "solid red 1px" }}>
             <Row>
@@ -63,35 +89,7 @@ class Home extends React.Component {
                 style={{ outline: "solid green 1px" }}
                 className="ml-5 text-center"
               >
-                <div>
-                  {}{" "}
-                  <Image
-                    className={` m-5  ${mainStyle.profilePhoto}`}
-                    src={this.state.singleUser.profilePhoto}
-                    roundedCircle
-                  />
-                </div>
-
-                <div className={`  ${mainStyle.title}`}>
-                  {this.state.singleUser.firstname}{" "}
-                  {this.state.singleUser.lastname}{" "}
-                </div>
-                <div className={`  ${mainStyle.label}`}>
-                  {" "}
-                  Role: {this.state.singleUser.role}
-                </div>
-                <div className={`mb-2 ${mainStyle.textLabel}`}>
-                  {" "}
-                  <a
-                    style={{ fontStyle: "oblique" }}
-                    className={`  ${mainStyle.webLinks}`}
-                    rel="stylesheet"
-                    href={this.state.singleUser.github}
-                  >
-                    <ImGithub className="mb-1 mr-2" />
-                    {this.state.singleUser.username}
-                  </a>
-                </div>
+                hello
               </Col>
             </Row>
           </Col>
@@ -110,11 +108,12 @@ class Home extends React.Component {
                       id="dropdown-basic-button"
                       title={this.state.categorySelected}
                       className="mb-3"
+                      style={{ color: "black" }}
                     >
                       {postCategory.map((category, index) => {
                         return (
                           <Dropdown.Item
-                            style={{ backgroundColor: "black" }}
+                            style={{ backgroundColor: "#0F1F26" }}
                             href="#/action-1"
                             key={index}
                             onClick={() => this.handleDropDownChange(category)}
@@ -125,12 +124,30 @@ class Home extends React.Component {
                       })}
                     </DropdownButton>
                     <FormControl
-                      placeholder="Search posts using the right category"
+                      placeholder="Search posts using category"
                       aria-label="Search"
                       aria-describedby="basic-addon1"
                       onChange={(e) => this.handleSearchQuery(e.target.value)}
                     />
                   </InputGroup>
+                  {/* 
+                  <Row>
+                        {this.state.feedCategory.map(feed => {
+                            return (<Col xs={4} key={`card-${feed._id}`}>
+                                <Card className=" mb-4">
+                                    <Card.Img variant="top" className="rounded mx-auto d-block" style={{ height: "350px", width: "250px", position: "center" }} src={feed.projectPhoto} />
+                                    <Card.Body>
+                                        <Card.Title style={{ height: "60px" }}>{feed.title}</Card.Title>
+                                        <Card.Text >
+                                            <h4  > ${feed.projectDescription}</h4>
+                                        </Card.Text>
+                                        <Button href={feed.projectLink} variant="primary">Order now</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Col>)
+                        })}
+
+                    </Row>  */}
                 </Container>
               </Col>
             </Row>

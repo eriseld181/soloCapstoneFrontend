@@ -1,13 +1,12 @@
 import React from "react";
 import NavBar from "../components/NavBar/MainNavBar";
 import UserProfile from "../components/userProfile/UserProfile";
-import { Tab, Tabs } from "react-bootstrap";
-import MyTab from "../components/MyTabs";
+import { Tab, Tabs, Row, Col, Carousel } from "react-bootstrap";
+import mainStyle from "../components/Component.module.css";
 import Footer from "../components/Footer";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
-import Projects from '../components/project/Projects'
-import DefaultComponent from '../components/DefaultComponent'
+import SingleUserProjects from "../components/profileTools/SingleUserProjects";
 
 class Profile extends React.Component {
   state = {
@@ -28,6 +27,7 @@ class Profile extends React.Component {
     return (
       <>
         <NavBar />
+
         <UserProfile
           image={this.state.user.profilePhoto}
           name={this.state.user.firstname}
@@ -39,50 +39,33 @@ class Profile extends React.Component {
           linkedin={this.state.user.linkedin}
           portfolio={this.state.user.portfolio}
         />
-          <Tabs
-      variant="pills"
-      transition={false}
-      className={`justify-content-center `}
-      defaultActiveKey="myPublications"
-      id="uncontrolled-tab-example"
-    >
-      <Tab
-        className={`justify-content-center`}
-        eventKey="myPublications"
-        title="Publications"
-        to="/hw"
-        component={Link}
-      >
-        <DefaultComponent
-          img="./publication.png"
-          title="There is nothing to see now!"
-          text="All your Publications will be shown here. Add a new post..."
-        />
-      </Tab>
-      <Tab
-        className={`justify-content-center `}
-        eventKey="homeworks"
-        title="Homeworks"
-      >
-        <DefaultComponent
-          img="./homeworks.png"
-          title="There is nothing to see now!"
-          text="All your Homeworks will be shown here. Add a new post..."
-        />
-      </Tab>
-      <Tab eventKey="notes" title="Notes">
-        <DefaultComponent
-          img="./notes.png"
-          title="There is nothing to see now!"
-          text="All your Notes will be shown here. Add a new post..."
-        />
-      </Tab>
-      <Tab eventKey="projects" title="Projects">
-     
-        <Projects / >
-      </Tab>
-    </Tabs>
-      
+
+        <Tabs
+          variant="pills"
+          transition={false}
+          className={`justify-content-center `}
+          defaultActiveKey="projects"
+          id="uncontrolled-tab-example"
+        >
+          <Tab
+            className={`justify-content-center`}
+            eventKey="myPosts"
+            title="My Posts"
+            to="/hw"
+            component={Link}
+          ></Tab>
+          <Tab
+            className={`justify-content-center `}
+            eventKey="homeworks"
+            title="Homeworks"
+          ></Tab>
+          <Tab eventKey="notes" title="Notes"></Tab>
+          <Tab eventKey="projects" title="Projects">
+            <SingleUserProjects />
+          </Tab>
+          <Tab eventKey="students" title="Students"></Tab>
+        </Tabs>
+
         <Footer />
       </>
     );
