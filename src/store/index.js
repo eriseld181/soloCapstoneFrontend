@@ -1,15 +1,17 @@
 //ruhen te dhenat e state
-import { createStore } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import baseReducer from "../reducers/index";
-
-const composeEnhancers =
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__();
+import thunk from "redux-thunk";
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const initialState = {
-  //register all users
-  isLoogedIn: false,
+  isLoggedIn: false,
 };
 
 export default function configureStore() {
-  return createStore(baseReducer, initialState, composeEnhancers);
+  return createStore(
+    baseReducer,
+
+    initialState,
+    composeEnhancers(applyMiddleware(thunk))
+  );
 }
