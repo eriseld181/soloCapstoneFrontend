@@ -5,7 +5,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MainPage from "./pages/MainPage";
 import Contact from "./pages/Contact";
-import Projects from "./components/Projects";
+import MainProjects from "./pages/Mainprojects";
+
 // import style from "./App.css";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -23,7 +24,8 @@ function App() {
           <Route path="/contact" exact component={Contact} />
           <Route path="#about" exact component={MainPage} />
           <Route path="/contact" exact component={MainNavBar} />
-          <Route path="/projects" exact component={Projects} />
+          <Route path="/projects" exact component={MainProjects} />
+          
         </Switch>
       </Router>
     </>

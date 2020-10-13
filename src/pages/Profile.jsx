@@ -1,9 +1,13 @@
 import React from "react";
 import NavBar from "../components/NavBar/MainNavBar";
 import UserProfile from "../components/userProfile/UserProfile";
+import { Tab, Tabs } from "react-bootstrap";
 import MyTab from "../components/MyTabs";
 import Footer from "../components/Footer";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
+import Projects from '../components/project/Projects'
+import DefaultComponent from '../components/DefaultComponent'
 
 class Profile extends React.Component {
   state = {
@@ -35,7 +39,50 @@ class Profile extends React.Component {
           linkedin={this.state.user.linkedin}
           portfolio={this.state.user.portfolio}
         />
-        <MyTab />
+          <Tabs
+      variant="pills"
+      transition={false}
+      className={`justify-content-center `}
+      defaultActiveKey="myPublications"
+      id="uncontrolled-tab-example"
+    >
+      <Tab
+        className={`justify-content-center`}
+        eventKey="myPublications"
+        title="Publications"
+        to="/hw"
+        component={Link}
+      >
+        <DefaultComponent
+          img="./publication.png"
+          title="There is nothing to see now!"
+          text="All your Publications will be shown here. Add a new post..."
+        />
+      </Tab>
+      <Tab
+        className={`justify-content-center `}
+        eventKey="homeworks"
+        title="Homeworks"
+      >
+        <DefaultComponent
+          img="./homeworks.png"
+          title="There is nothing to see now!"
+          text="All your Homeworks will be shown here. Add a new post..."
+        />
+      </Tab>
+      <Tab eventKey="notes" title="Notes">
+        <DefaultComponent
+          img="./notes.png"
+          title="There is nothing to see now!"
+          text="All your Notes will be shown here. Add a new post..."
+        />
+      </Tab>
+      <Tab eventKey="projects" title="Projects">
+     
+        <Projects / >
+      </Tab>
+    </Tabs>
+      
         <Footer />
       </>
     );

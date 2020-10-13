@@ -5,7 +5,7 @@ import { ImGithub } from "react-icons/im";
 import { SiLinkedin } from "react-icons/si";
 import { FaLaptopCode } from "react-icons/fa";
 import Info from "../InfoText/Info";
-
+import Projects from "../project/Projects";
 class UserProfile extends Component {
   render() {
     return (

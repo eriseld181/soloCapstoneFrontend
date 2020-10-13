@@ -7,24 +7,30 @@ import { BiExit } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import { connect } from "react-redux";
+import Cookies from 'js-cookie'
 const mapStateToProps = (state) => state;
-
+const mapDispatchToProps =(dispatch)=>({
+  toggleLogin: ()=>dispatch({type:" TOGGLE_LOGIN", playload: false })
+})
 const logOut = async (props) => {
-  //const [link, setLink] = useState(false);
+  
   const result = await fetch("http://localhost:5000/api/users/logout", {
     // const result = await fetch('http://localhost:4006/profile/login', {
     method: "POST",
   });
 
   if (result.ok) {
-    // setLink(link);
+  
+   props.toggleLogin()
     props.history.push("/");
   } else {
     // setLink(!link);
   }
 };
 
+
 function MainNavBar(props) {
+const [show, setShow ]=useState(false)
   console.log("status of logged in", props.isLoogedIn);
   return (
     <>
@@ -89,4 +95,4 @@ function MainNavBar(props) {
     </>
   );
 }
-export default connect(mapStateToProps)(MainNavBar);
+export default connect (mapStateToProps, mapDispatchToProps)(MainNavBar);

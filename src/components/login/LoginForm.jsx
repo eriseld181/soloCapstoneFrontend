@@ -8,13 +8,9 @@ import mainStyle from "../Component.module.css";
 
 import { connect } from "react-redux";
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = (dispatch) => ({
-  log: (data) =>
-    dispatch({
-      type: "ADD_DATA",
-      payload: data,
-    }),
-});
+const mapDispatchToProps =(dispatch)=>({
+  toggleLogin: (boolean)=>dispatch({type:" TOGGLE_LOGIN", playload:boolean})
+})
 
 function LoginForm(props) {
   const [email, setEmail] = useState("");
@@ -33,7 +29,7 @@ function LoginForm(props) {
     });
     if (result.ok) {
       setLink(link);
-      props.log(true);
+      props.toggleLogin(true)
       props.history.push("/home");
     } else {
       setLink(!link);

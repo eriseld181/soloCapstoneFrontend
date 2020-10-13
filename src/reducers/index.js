@@ -1,12 +1,12 @@
 export default function (state = {}, action) {
   switch (action.type) {
-    case "ADD_DATA":
-      console.log(action.payload, "datat changed");
-      return {
+   case "TOGGLE_LOGIN":
+        return{
         ...state,
-        isLoogedIn: action.payload,
-      };
+        isLoggedIn : action.payload 
+      }
     default:
       return state;
   }
+
 }
