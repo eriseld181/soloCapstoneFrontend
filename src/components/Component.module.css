@@ -4,10 +4,7 @@
 .bgBlack {
   background-color: #111111 !important ;
 }
-.title {
-  color: #03b8f7 !important;
-  font-size: 30px !important;
-}
+
 .jumbotron {
   background-image: url("../images/coverphoto.png");
   background-position: center;
@@ -45,6 +42,22 @@
 .label {
   color: #03b8f7;
   font-size: 20px;
+}
+.title {
+  color: #03b8f7;
+  font-size: 30px;
+}
+.text {
+  color: white;
+  font-size: 17px;
+}
+.titleBig {
+  color: #03b8f7;
+  font-size: 60px;
+}
+.profileTitle {
+  color: #03b8f7;
+  font-size: 30px;
 }
 .textLabel {
   font-size: 20px;
@@ -129,6 +142,9 @@ a.webLinks {
   ) !important;
   border-radius: 2px !important;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
+}
+.bg {
+  background-color: black;
 }
 .myfooter {
   position: absolute;

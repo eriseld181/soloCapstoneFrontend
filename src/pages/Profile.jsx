@@ -1,12 +1,16 @@
 import React from "react";
 import NavBar from "../components/NavBar/MainNavBar";
+//import NavBar from "../components/NavBar/NavBarText";
 import UserProfile from "../components/userProfile/UserProfile";
 import { Tab, Tabs, Row, Col, Carousel } from "react-bootstrap";
-import mainStyle from "../components/Component.module.css";
+//import mainStyle from "../components/Component.module.css";
 import Footer from "../components/Footer";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import SingleUserProjects from "../components/profileTools/SingleUserProjects";
+import Homework from "../components/profileTools/Homework";
+import Notes from "../components/profileTools/Notes";
+import MyPosts from "../components/profileTools/myPosts";
 
 class Profile extends React.Component {
   state = {
@@ -27,10 +31,11 @@ class Profile extends React.Component {
     return (
       <>
         <NavBar />
-
         <UserProfile
           image={this.state.user.profilePhoto}
+          email={this.state.user.email}
           name={this.state.user.firstname}
+          headline={this.state.user.headline}
           lastname={this.state.user.lastname}
           username={this.state.user.username}
           role={this.state.user.role}
@@ -38,6 +43,8 @@ class Profile extends React.Component {
           github={this.state.user.github}
           linkedin={this.state.user.linkedin}
           portfolio={this.state.user.portfolio}
+          city={this.state.user.city}
+          country={this.state.user.country}
         />
 
         <Tabs
@@ -48,18 +55,26 @@ class Profile extends React.Component {
           id="uncontrolled-tab-example"
         >
           <Tab
-            className={`justify-content-center`}
+            className={`mx-auto`}
             eventKey="myPosts"
             title="My Posts"
-            to="/hw"
+            to="/posts"
             component={Link}
-          ></Tab>
+          >
+            <MyPosts />
+          </Tab>
           <Tab
             className={`justify-content-center `}
             eventKey="homeworks"
             title="Homeworks"
-          ></Tab>
-          <Tab eventKey="notes" title="Notes"></Tab>
+          >
+            {" "}
+            <Homework />
+          </Tab>
+          <Tab eventKey="notes" title="Notes">
+            {" "}
+            <Notes />
+          </Tab>
           <Tab eventKey="projects" title="Projects">
             <SingleUserProjects />
           </Tab>

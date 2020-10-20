@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Card, Button, Col, Row, Container  } from "react-bootstrap";
-import DefaultComponent from './DefaultComponent'
- class Projects extends Component {
+import { Card, Button, Col, Row, Container } from "react-bootstrap";
+import DefaultComponent from "./DefaultComponent";
+class Projects extends Component {
   state = {
     projects: [],
   };
@@ -16,21 +16,27 @@ import DefaultComponent from './DefaultComponent'
   };
 
   render() {
-    console.log("aleks project first", this.state.projects.length>0&& this.state.projects[0].userId.username);
+    console.log(
+      "diego all projects ",
+      this.state.projects.length > 0 && this.state.projects
+    );
 
     return (
       <>
-      
-        <div className=" text-center" style={{ outline: "solid red 2px" }}>
-          { this.state.projects&& this.state.projects.length>0 ? 
+        <div className=" text-center">
+          {this.state.projects && this.state.projects.length > 0 ? (
             this.state.projects.map((project, i) => {
               return (
-                <Container style={{outline:"solid green 2px", width:"100%" , columns: "1"}}>
-                
-          <Col key={i}>
-                
+                <Container
+                  className="mt-5"
+                  style={{
+                    width: "100%",
+                    columns: "1",
+                  }}
+                >
+                  <Col key={i}>
                     <Card
-                      className=" mb-4"
+                      className=" mb-4 "
                       style={{
                         backgroundColor: "#0F1F26",
                         border: "none",
@@ -40,30 +46,33 @@ import DefaultComponent from './DefaultComponent'
                         className=" mx-auto"
                         variant="top"
                         style={{ width: "200px" }}
-                        src={project.projectPhoto}
+                        src={project.image}
                       />
                       <Card.Body>
-                        <Card.Title>{project.projectName}</Card.Title>
-                    <Card.Title>Created By: {project.userId.username}</Card.Title>
-                        <Card.Text>{project.projectDescription}</Card.Text>
+                        <Card.Title>{project.myTitle}</Card.Title>
+                        <Card.Title>
+                          Created By: {project.userId.username}
+                        </Card.Title>
+                        <Card.Text>{project.description}</Card.Text>
                         <Button href={project.projectLink} variant="primary">
                           View Source Code
                         </Button>
                       </Card.Body>
                     </Card>
-                 
                   </Col>
-                
                 </Container>
               );
-            }) :  <DefaultComponent
-            img="./publication.png"
-            title="There is nothing to see now!"
-            text="All your Publications will be shown here. Add a new post..."
-          />} 
+            })
+          ) : (
+            <DefaultComponent
+              img="./publication.png"
+              title="There is nothing to see now!"
+              text="All your Publications will be shown here. Add a new post..."
+            />
+          )}
         </div>
       </>
     );
   }
 }
-export default Projects
+export default Projects;

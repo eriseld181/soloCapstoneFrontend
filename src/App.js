@@ -6,6 +6,9 @@ import Register from "./pages/Register";
 import MainPage from "./pages/MainPage";
 import Contact from "./pages/Contact";
 import MainProjects from "./pages/Mainprojects";
+import Homeworks from "./components/profileTools/Homework";
+import Posts from "./components/profileTools/Posts";
+import Notes from "./components/profileTools/Notes";
 
 // import style from "./App.css";
 
@@ -25,7 +28,9 @@ function App() {
           <Route path="#about" exact component={MainPage} />
           <Route path="/contact" exact component={MainNavBar} />
           <Route path="/projects" exact component={MainProjects} />
-           
+          <Route path="/homeworks" exact component={Homeworks} />
+          <Route path="/posts" exact component={Posts} />
+          <Route path="/notes" exact component={Notes} />
         </Switch>
       </Router>
     </>

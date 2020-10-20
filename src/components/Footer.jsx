@@ -10,7 +10,10 @@ import { SiLinkedin } from "react-icons/si";
 
 const Footer = () => (
   <>
-    <Row className={`text-center mt-5 pt-3  mb-0 ${mainStyle.bgBlack} $`}>
+    <Row
+      style={{ margin: "0px", padding: "0px" }}
+      className={`text-center mt-5 pt-3  mb-0 ${mainStyle.bgBlack} $`}
+    >
       <Col xs={{ span: 6, offset: 3 }}>
         <Row>
           <Col xs={12} className="text-left mb-2">
@@ -45,7 +48,7 @@ const Footer = () => (
             </Row>
           </Col>
           <Col>
-            <Row>
+            <Row style={{ margin: "0px", padding: "0px" }}>
               <Col xs={12} className="footer-links">
                 <p>
                   <Link to="/profile/hw" className={`  ${mainStyle.webLinks}`}>
@@ -145,7 +148,7 @@ const Footer = () => (
         </Row>
       </Col>
     </Row>
-    <Row style={{ backgroundColor: "black" }}>
+    <Row style={{ backgroundColor: "black", margin: "0px", padding: "0px" }}>
       <Col xs={4} className="text-center mb-2 mt-2 "></Col>
       <Col xs={4} className="text-center mb-2 mt-2 ">
         &copy; {new Date().getFullYear()} Copyright:{" "}

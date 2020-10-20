@@ -19,45 +19,51 @@ class Projects extends Component {
   };
 
   render() {
-    console.log("aleksiii", this.state.projects[0]);
+    console.log(
+      "diego all projects ",
+      this.state.projects.length > 0 && this.state.projects
+    );
+
     return (
       <>
-        <Row className="text-center ml-2 mr-2">
+        <div className=" text-center">
           {this.state.projects && this.state.projects.length > 0 ? (
-            this.state.projects.map((project) => {
+            this.state.projects.map((project, i) => {
               return (
-                <>
-                  {project.projects.map((x) => {
-                    return (
-                      <Col xs={12} md={6}>
-                        <Card
-                          className=" mb-4"
-                          style={{
-                            backgroundColor: "#0F1F26",
-                            border: "none",
-                          }}
-                        >
-                          <Card.Img
-                            className=" mx-auto"
-                            variant="top"
-                            style={{ width: "200px" }}
-                            src={x.projectPhoto}
-                          />
-                          <Card.Body>
-                            <Card.Title>{x.projectName}</Card.Title>
-                            <Card.Text className="pl-3 pr-3 text-left">
-                              {x.projectDescription}
-                            </Card.Text>
-
-                            <Button href={x.projectLink} variant="primary">
-                              Go somewhere
-                            </Button>
-                          </Card.Body>
-                        </Card>
-                      </Col>
-                    );
-                  })}
-                </>
+                <Container
+                  className="mt-5"
+                  style={{
+                    width: "100%",
+                    columns: "1",
+                  }}
+                >
+                  <Col key={i}>
+                    <Card
+                      className=" mb-4 "
+                      style={{
+                        backgroundColor: "#0F1F26",
+                        border: "none",
+                      }}
+                    >
+                      <Card.Img
+                        className=" mx-auto"
+                        variant="top"
+                        style={{ width: "200px" }}
+                        src={project.image}
+                      />
+                      <Card.Body>
+                        <Card.Title>{project.myTitle}</Card.Title>
+                        <Card.Title>
+                          {/* Created By: {project.userId.username} */}
+                        </Card.Title>
+                        <Card.Text>{project.description}</Card.Text>
+                        <Button href={project.projectLink} variant="primary">
+                          View Source Code
+                        </Button>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Container>
               );
             })
           ) : (
@@ -66,9 +72,8 @@ class Projects extends Component {
               title="There is nothing to see now!"
               text="All your Publications will be shown here. Add a new post..."
             />
-          )}{" "}
-          {/* </Col> */}
-        </Row>
+          )}
+        </div>
       </>
     );
   }

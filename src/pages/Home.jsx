@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../components/NavBar/MainNavBar";
 //import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 import {
   Container,
   Row,
@@ -15,37 +16,27 @@ import {
 } from "react-bootstrap";
 import Cookies from "js-cookie";
 import mainStyle from "../components/Component.module.css";
-import { ImGithub } from "react-icons/im";
 
 class Home extends React.Component {
   state = {
     users: [],
     singleUser: [],
     feedCategory: [],
-    categorySelected: "projects",
+    categorySelected: "posts",
   };
-  //to get change the category
-  // handleDropDownChange = (category) => {
-  //   this.setState({ categorySelected: category });
-  // };
-  // //search events
   handleSearchQuery = (searchQuery) => {
     if (searchQuery) {
-      let feedCategory = this.state.feedCategory.filter((feed) =>
-        feed.projectName.toLowerCase().includes(searchQuery.toLowerCase())
+      let filteredCategory = this.state.feedCategory.filter((feed) =>
+        feed.myTitle.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
 
-      console.log(this.state.feedCategory, feedCategory);
-      if (feedCategory.length === 0) {
+      if (filteredCategory.length === 0) {
         this.fetchFeed();
       } else {
-        this.setState({ feedCategory });
+        this.setState({ feedCategory: filteredCategory });
       }
     } else {
       this.fetchFeed();
-      // this.setState({
-      //   feedCategory: categoryFetch[this.state.categorySelected].slice(0, 3),
-      // });
     }
   };
 
@@ -75,7 +66,6 @@ class Home extends React.Component {
 
   componentDidMount = async () => {
     this.fetchFeed();
-    ///////
   };
 
   componentDidUpdate(prevProps, PrevState) {
@@ -83,36 +73,19 @@ class Home extends React.Component {
       this.fetchFeed();
     }
   }
-  // const fetchedSingleFeed = await FetchDataFeed.json();
-  // this.setState({ singleUser: fetchedSingleFeed });
-
-  // /////////////////////////////////////
-  // const userResponse = await fetch('http://localhost:5000/api/users/me', {
-  //   credentials: 'include',
-  // });
-  // const fetchedSingleUser = await userResponse.json();
-  // this.setState({ singleUser: fetchedSingleUser });
-  // console.log(this.state.singleUser);
-
-  // const response = await fetch('http://localhost:5000/api/users/me', {
-  //   credentials: 'include',
-  // });
-  // const fetchedUsers = await response.json();
-  // this.setState({ users: fetchedUsers });
-  // };
-
   render() {
     return (
-      <>
+      <div style={{ margin: "0px", padding: "0px" }}>
         <NavBar />
-        <Row>
+        {/* End of navbar */}
+        <Row style={{ margin: "0px", padding: "0px" }}>
           <Col xs={3}>
             <Row>
               <Col className="ml-5 text-center">hello</Col>
             </Row>
           </Col>
           <Col xs={9} className="text-center">
-            <Row className="mt-5">
+            <Row style={{ margin: "0px", padding: "0px" }} className="mt-5">
               {/* start of the fetches */}
               <Col className="ml-3">
                 <Container>
@@ -129,40 +102,31 @@ class Home extends React.Component {
                     >
                       <Dropdown.Item
                         style={{ backgroundColor: "#0F1F26" }}
-                        onClick={() =>
-                          this.setState({ categorySelected: "projects" })
-                        }
-                      >
-                        Projects
-                      </Dropdown.Item>{" "}
-                      <Dropdown.Item
-                        style={{ backgroundColor: "#0F1F26" }}
-                        onClick={() =>
-                          this.setState({ categorySelected: "homeworks" })
-                        }
+                        onClick={() => {
+                          this.setState({ feedCategory: [] });
+                          this.setState({ categorySelected: "homeworks" });
+                        }}
                       >
                         Homeworks
                       </Dropdown.Item>{" "}
                       <Dropdown.Item
                         style={{ backgroundColor: "#0F1F26" }}
-                        onClick={() =>
-                          this.setState({ categorySelected: "posts" })
-                        }
+                        onClick={() => {
+                          this.setState({ feedCategory: [] });
+                          this.setState({ categorySelected: "projects" });
+                        }}
+                      >
+                        Projects
+                      </Dropdown.Item>{" "}
+                      <Dropdown.Item
+                        style={{ backgroundColor: "#0F1F26" }}
+                        onClick={() => {
+                          this.setState({ feedCategory: [] });
+                          this.setState({ categorySelected: "posts" });
+                        }}
                       >
                         Posts
                       </Dropdown.Item>
-                      {/* {postCategory.map((category, index) => {
-                        return (
-                          <Dropdown.Item
-                            style={{ backgroundColor: '#0F1F26' }}
-                            href='#/action-1'
-                            key={index}
-                            onClick={() => this.handleDropDownChange(category)}
-                          >
-                            {category}
-                          </Dropdown.Item>
-                        );
-                      })} */}
                     </DropdownButton>
                     <FormControl
                       placeholder="Search posts using category"
@@ -171,44 +135,166 @@ class Home extends React.Component {
                       onChange={(e) => this.handleSearchQuery(e.target.value)}
                     />
                   </InputGroup>
+                  <Row
+                    style={{ margin: "0px", padding: "0px" }}
+                    className="justify-content-center"
+                  >
+                    {this.state.categorySelected === "projects" && (
+                      <>
+                        {this.state.feedCategory.map((feed) => {
+                          return (
+                            <Col sm={12} md={10} key={`card-${feed._id}`}>
+                              <Card
+                                className={`mb-4 ${mainStyle.bg}`}
+                                style={{ border: "none" }}
+                              >
+                                <Card.Title
+                                  className={`mt-5 mb-4 ${mainStyle.titleBig} `}
+                                >
+                                  <h3>{feed.myTitle}</h3>
+                                </Card.Title>
+                                <Card.Img
+                                  variant="top"
+                                  className={`rounded mx-auto d-block ${mainStyle.bg}`}
+                                  style={{
+                                    height: "auto",
+                                    width: "100%",
+                                    maxWidth: "850px",
+                                    position: "center",
+                                  }}
+                                  src={feed.image}
+                                />
+                                <Card.Body>
+                                  <Card.Text
+                                    className={` text-left mt-1 mb-2 ${mainStyle.label}`}
+                                  >
+                                    <p>Author: {feed.userId.username}</p>
+                                  </Card.Text>
+                                  <Card.Text className="text-left">
+                                    <p> {feed.description}</p>
+                                  </Card.Text>
+                                  {feed.link && (
+                                    <Button href={feed.link} variant="primary">
+                                      View more
+                                    </Button>
+                                  )}
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          );
+                        })}
+                      </>
+                    )}
+                    {/* end of project fetch */}
+                    {this.state.categorySelected === "homeworks" && (
+                      <>
+                        {this.state.feedCategory.map((feed) => {
+                          return (
+                            <Col sm={12} md={10} key={`card-${feed._id}`}>
+                              <Card
+                                style={{ border: "0px" }}
+                                className={`mb-4 ${mainStyle.bg}`}
+                              >
+                                <Card.Title
+                                  className={`mt-5 mb-4 ${mainStyle.titleBig} `}
+                                >
+                                  <h3>{feed.myTitle}</h3>
+                                </Card.Title>
+                                <Card.Img
+                                  variant="top"
+                                  className={`rounded mx-auto d-block ${mainStyle.bg}`}
+                                  style={{
+                                    height: "auto",
+                                    width: "100%",
+                                    maxWidth: "850px",
+                                    position: "center",
+                                  }}
+                                  src={feed.image}
+                                />
+                                <Card.Body>
+                                  <Card.Title
+                                    className={` text-left mt-1 mb-2 ${mainStyle.title} `}
+                                  >
+                                    Author: {feed.userId.username}
+                                  </Card.Title>
+                                  <Card.Text className="text-left">
+                                    {feed.description}
+                                  </Card.Text>
+                                  {feed.link && (
+                                    <Button href={feed.link} variant="primary">
+                                      View more
+                                    </Button>
+                                  )}
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          );
+                        })}
+                      </>
+                    )}
+                    {/* end of homework fetch */}
+                    {this.state.categorySelected === "posts" && (
+                      <Row className="justify-content-center ">
+                        <Col sm={12} md={9}>
+                          {this.state.feedCategory.map((feed) => {
+                            return (
+                              <Card
+                                style={{ border: "0px" }}
+                                key={`card-${feed._id}`}
+                                className={`mb-4 ${mainStyle.bg}`}
+                              >
+                                <Card.Body>
+                                  <Row>
+                                    {" "}
+                                    <Image
+                                      variant="top"
+                                      className={`text-left  `}
+                                      style={{
+                                        height: "50px",
+                                        width: "50px",
+                                      }}
+                                      src={feed.userId.profilePhoto}
+                                      roundedCircle
+                                    />{" "}
+                                    <span
+                                      className={`pt-2 pl-2 ${mainStyle.label}`}
+                                    >
+                                      {feed.userId.firstname}{" "}
+                                      {feed.userId.lastname}
+                                    </span>
+                                  </Row>
+                                  <Card.Text
+                                    className={`text-left mt-1  ${mainStyle.text}`}
+                                  >
+                                    {feed.myTitle}
+                                  </Card.Text>
 
-                  <Row>
-                    {this.state.feedCategory.map((feed) => {
-                      return (
-                        <Col xs={12} key={`card-${feed._id}`}>
-                          <Card className=" mb-4">
-                            <Card.Img
-                              variant="top"
-                              className="rounded mx-auto d-block"
-                              style={{
-                                height: "350px",
-                                width: "250px",
-                                position: "center",
-                              }}
-                              src={feed.projectPhoto}
-                            />
-                            <Card.Body>
-                              <Card.Title style={{ height: "60px" }}>
-                                {feed.title}
-                              </Card.Title>
-                              <Card.Text>
-                                <h4> ${feed.projectDescription}</h4>
-                              </Card.Text>
-                              <Button href={feed.projectLink} variant="primary">
-                                Order now
-                              </Button>
-                            </Card.Body>
-                          </Card>
+                                  <Card.Img
+                                    variant="top"
+                                    className={`rounded mx-auto d-block ${mainStyle.bg}`}
+                                    style={{
+                                      height: "100%",
+                                      width: "100%",
+                                      maxWidth: "800px",
+                                      position: "center",
+                                    }}
+                                    src={feed.image}
+                                  />
+                                </Card.Body>
+                              </Card>
+                            );
+                          })}
                         </Col>
-                      );
-                    })}
+                      </Row>
+                    )}
                   </Row>
                 </Container>
               </Col>
             </Row>
           </Col>
         </Row>
-      </>
+        <Footer />
+      </div>
     );
   }
 }

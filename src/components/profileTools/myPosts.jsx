@@ -8,13 +8,10 @@ class Projects extends Component {
     projects: [],
   };
   componentDidMount = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/posts/otherUsersPosts",
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
+    const response = await fetch("http://localhost:5000/api/users/me/posts", {
+      method: "GET",
+      credentials: "include",
+    });
     const fetchedProjects = await response.json();
 
     this.setState({ projects: fetchedProjects });
@@ -71,7 +68,7 @@ class Projects extends Component {
                         style={{
                           height: "auto",
                           width: "120vh",
-                          maxWidth: "600px",
+                          maxWidth: "100%",
                           position: "center",
                         }}
                         src={feed.image}
