@@ -39,7 +39,7 @@ function MainNavBar(props) {
   //const [show, setShow ]=useState(false)
   console.log("status of logged in", props.isLoogedIn);
   return (
-    <div>
+    <>
       <Navbar
         variant="dark"
         className={` ${styles.bg} ${styles.text}`}
@@ -126,7 +126,7 @@ function MainNavBar(props) {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </>
   );
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);

@@ -1,6 +1,15 @@
 .bg {
   background-color: #0f1f26 !important ;
 }
+
+.dropdownToggle:after {
+  content: none !important;
+  border: 0px !important;
+}
+.dropdownToggle:active {
+  content: none !important;
+  border: 0px !important;
+}
 .bgBlack {
   background-color: #111111 !important ;
 }

@@ -220,11 +220,6 @@ class Home extends React.Component {
                                   <Card.Text className="text-left">
                                     {feed.description}
                                   </Card.Text>
-                                  {feed.link && (
-                                    <Button href={feed.link} variant="primary">
-                                      View more
-                                    </Button>
-                                  )}
                                 </Card.Body>
                               </Card>
                             </Col>
