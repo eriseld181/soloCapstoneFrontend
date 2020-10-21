@@ -62,11 +62,12 @@ class Homeworks extends Component {
                               className={`${mainStyle.bg}`}
                               style={{
                                 backgroundColor: "#0f1f26",
-                                width: "10px",
                               }}
                             >
                               <Dropdown.Item
-                                style={{ backgroundColor: "#0f1f26" }}
+                                style={{
+                                  backgroundColor: "#0f1f26",
+                                }}
                               >
                                 Edit
                               </Dropdown.Item>

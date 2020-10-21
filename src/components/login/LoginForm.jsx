@@ -9,7 +9,7 @@ import mainStyle from "../Component.module.css";
 import { connect } from "react-redux";
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispatch) => ({
-  toggleLogin: () => dispatch({ type: " TOGGLE_LOGIN" }),
+  toggleLogin: () => dispatch({ type: "TOGGLE_LOGIN", payload: true }),
 });
 
 function LoginForm(props) {
