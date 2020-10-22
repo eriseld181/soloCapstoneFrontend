@@ -1,5 +1,5 @@
 //ruhen te dhenat e state
-import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import { createStore, compose, applyMiddleware } from "redux";
 import baseReducer from "../reducers/index";
 import thunk from "redux-thunk";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

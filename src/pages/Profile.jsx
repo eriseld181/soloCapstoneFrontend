@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar/MainNavBar";
 //import NavBar from "../components/NavBar/NavBarText";
 import UserProfile from "../components/userProfile/UserProfile";
-import { Tab, Tabs, Row, Col, Carousel } from "react-bootstrap";
+import { Tab, Tabs } from "react-bootstrap";
 //import mainStyle from "../components/Component.module.css";
 import Footer from "../components/Footer";
 import Cookies from "js-cookie";
@@ -17,14 +17,17 @@ class Profile extends React.Component {
     user: [],
   };
 
-  componentDidMount = async () => {
-    console.log("this is cookie.get", Cookies.get("accessToken"));
+  userFetch = async () => {
     const response = await fetch("http://localhost:5000/api/users/me", {
       credentials: "include",
     });
     const fetchedUsers = await response.json();
     this.setState({ user: fetchedUsers });
-    console.log(this.state.user);
+  };
+  componentDidMount = async () => {
+    // console.log("this is cookie.get", Cookies.get("accessToken"));
+    this.userFetch();
+    // console.log(this.state.user);
   };
 
   render() {
@@ -32,6 +35,7 @@ class Profile extends React.Component {
       <>
         <NavBar />
         <UserProfile
+          userFetch={this.userFetch}
           image={this.state.user.profilePhoto}
           email={this.state.user.email}
           name={this.state.user.firstname}

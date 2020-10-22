@@ -4,19 +4,58 @@ import mainStyle from "../Component.module.css";
 import { ImGithub } from "react-icons/im";
 import { SiLinkedin } from "react-icons/si";
 import { FaLaptopCode } from "react-icons/fa";
-import Info from "../InfoText/Info";
+import { BiImageAdd } from "react-icons/bi";
 
 class UserProfile extends Component {
   render() {
+    const handleUpload = async (e) => {
+      const uploadImage = e.target.files[0];
+      const image = new FormData();
+      image.append("image", uploadImage);
+      const uploadPhoto = await fetch(
+        "http://localhost:5000/api/users/uploadImage",
+        {
+          method: "POST",
+          body: image,
+          credentials: "include",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+      if (uploadPhoto.ok) {
+        this.props.userFetch();
+      } else {
+        console.log("uploadd photo is not working");
+      }
+    };
     return (
       <Container className=" mt-5 mb-5 ">
         <Row className="justify-content-center mr-1 ">
           {" "}
           <Image
-            className={` mb-4  ${mainStyle.profilePhoto}`}
+            className={` mb-4  ${mainStyle.profilePhoto} `}
             src={this.props.image}
             roundedCircle
+          />{" "}
+          <label
+            className={` ${mainStyle.uploadPhoto} ${mainStyle.show} `}
+            for="file-input"
+            aria-required="true"
+          >
+            <BiImageAdd />
+          </label>
+          <input
+            style={{ display: "none" }}
+            key="image"
+            id="file-input"
+            type="file"
+            accept="image/*"
+            profile="file"
+            // value={this.state.image}
+            onChange={(e) => handleUpload(e)}
           />
+          {/* <input id="fileItem" type="image"> */}
         </Row>
         {/* end of image row */}
 

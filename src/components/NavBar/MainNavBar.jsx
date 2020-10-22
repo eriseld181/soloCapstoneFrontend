@@ -1,5 +1,6 @@
 //import React, { useState } from "react";
 import React from "react";
+
 import {
   Nav,
   Navbar,
@@ -29,9 +30,10 @@ const logOut = async (props) => {
 
   if (result.ok) {
     props.toggleLogin();
+    // document.cookie = "accessToken=p";
+    document.cookie = `accessToken=hello00;domain=http://localhost:000/`;
+
     props.history.push("/");
-  } else {
-    // setLink(link);
   }
 };
 
@@ -60,41 +62,43 @@ function MainNavBar(props) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {props.isLoggedIn && (
-              <Nav.Link>
-                <Link to="/home">
-                  {/* <AiFillHome className={` ${styles.icons}`} /> */}
+              <Nav>
+                {/* <AiFillHome className={` ${styles.icons}`} /> */}
+                <Link className="mr-3" to="/home">
                   Home
                 </Link>
-              </Nav.Link>
+              </Nav>
             )}
 
             {props.isLoggedIn && (
-              <Nav.Link>
-                <Link to="/profile">
-                  {/* <FaUser className={` ${styles.icons}`} /> */}
+              <Nav>
+                {/* <FaUser className={` ${styles.icons}`} /> */}
+                <Link className="mr-3 " to="/profile">
+                  {" "}
                   Profile
                 </Link>
-              </Nav.Link>
+              </Nav>
             )}
 
             {!props.isLoggedIn && (
-              <Nav.Link>
-                <Link to="about">About</Link>
-              </Nav.Link>
+              <Nav>
+                <Link className="mr-3  pt-2" to="about">
+                  About
+                </Link>
+              </Nav>
             )}
             {!props.isLoggedIn && (
-              <Nav.Link>
-                <Link to="/contact">Contact</Link>
-              </Nav.Link>
+              <Nav>
+                <Link className="mr-3 pt-2" to="/contact">
+                  Contact
+                </Link>{" "}
+              </Nav>
             )}
-            {props.isLoggedIn && (
-              <NavDropdown
-                bg="black"
-                className={` ${styles.bg} ${styles.text}`}
-                title="Tools"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item className={` ${styles.bg} ${styles.text}`}>
+            {!props.isLoggedIn && (
+              <NavDropdown bg="black" title="Tools" id="basic-nav-dropdown">
+                <NavDropdown.Item
+                  className={`pb-2 ${styles.bg} ${styles.text}`}
+                >
                   <Link to="/homeworks">Homeworks</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item className={` ${styles.bg} ${styles.text}`}>
@@ -108,15 +112,15 @@ function MainNavBar(props) {
           </Nav>
           <Form inline>
             {!props.isLoggedIn && (
-              <Nav.Link>
+              <Nav>
                 <Link to="/login">
                   <AiFillLock className={` ${styles.icons}`} />
                   Login
                 </Link>
-              </Nav.Link>
+              </Nav>
             )}
             {props.isLoggedIn && (
-              <Nav.Link>
+              <Nav>
                 <Link to="/">
                   <BiExit
                     className={` ${styles.icons}`}
@@ -124,7 +128,7 @@ function MainNavBar(props) {
                   />
                   Log out
                 </Link>
-              </Nav.Link>
+              </Nav>
             )}
           </Form>
         </Navbar.Collapse>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Col, Row, Container } from "react-bootstrap";
+import { Card, Button, Col, Container } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
 class Projects extends Component {
   state = {

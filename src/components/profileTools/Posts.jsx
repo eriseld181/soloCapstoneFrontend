@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Col, Row, Image } from "react-bootstrap";
+import { Card, Col, Row, Image } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../../components/Component.module.css";
 

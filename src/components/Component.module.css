@@ -1,7 +1,30 @@
+.uploadPhoto {
+  opacity: 0;
+  font-size: 300%;
+  position: absolute;
+  margin: 8% 0 1% 7%;
+}
+.uploadPhoto:hover {
+  opacity: 0.9;
+  font-size: 300%;
+  position: absolute;
+  margin: 8% 0 1% 7%;
+}
+
 .bg {
   background-color: #0f1f26 !important ;
 }
-
+.homeContent {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.example {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.example::-webkit-scrollbar {
+  display: none;
+}
 .dropdownToggle:after {
   content: none !important;
   border: 0px !important;
@@ -55,6 +78,18 @@
 .title {
   color: #03b8f7;
   font-size: 30px;
+}
+.titleWhite {
+  color: white;
+  font-size: 30px;
+}
+.mediumTitleWhite {
+  color: white;
+  font-size: 25px;
+}
+.mediumTitleBlue {
+  color: #03b8f7;
+  font-size: 25px;
 }
 .text {
   color: white;
@@ -115,7 +150,6 @@ a:hover {
 a.webLinks:hover {
   color: #03b8f7 !important;
   text-decoration: none !important;
-  font-size: 95% !important;
 }
 a.webLinks {
   color: white !important;

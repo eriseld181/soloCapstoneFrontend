@@ -1,7 +1,10 @@
 import React from "react";
 import NavBar from "../components/NavBar/MainNavBar";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import { ImGithub } from "react-icons/im";
+import { SiLinkedin } from "react-icons/si";
+import { FaLaptopCode } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -17,7 +20,7 @@ import {
 import Cookies from "js-cookie";
 import mainStyle from "../components/Component.module.css";
 
-class Home extends React.Component {
+class Home2 extends React.Component {
   state = {
     users: [],
     singleUser: [],
@@ -59,6 +62,22 @@ class Home extends React.Component {
       });
     }
   };
+  fetchUser = async () => {
+    const resp = await fetch("http://localhost:5000/api/users/me", {
+      credentials: "include",
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      console.log(data.firstname, " is data");
+      this.setState({
+        users: data,
+      });
+    } else {
+      this.setState({
+        users: [],
+      });
+    }
+  };
 
   checkLoggin = () => {
     if (Cookies.get("accessToken")) this.setState({ isLogged: true });
@@ -66,28 +85,182 @@ class Home extends React.Component {
 
   componentDidMount = async () => {
     this.fetchFeed();
+    this.fetchUser();
   };
 
   componentDidUpdate(prevProps, PrevState) {
     if (PrevState.categorySelected !== this.state.categorySelected) {
       this.fetchFeed();
+      this.fetchUser();
     }
   }
   render() {
+    console.log(this.state.users, "is in user");
     return (
-      <div style={{ margin: "0px", padding: "0px" }}>
+      <div
+        style={{
+          margin: "0px",
+          padding: "0px",
+          height: "100vh",
+          outline: "1px solid red",
+          overflow: "hidden",
+        }}
+      >
         <NavBar />
         {/* End of navbar */}
         <Row style={{ margin: "0px", padding: "0px" }}>
-          <Col xs={3}>
-            <Row className="justify-content-center">
-              <Col className="ml-5 text-center"></Col>
-            </Row>
+          <Col
+            xs={3}
+            className={` ${mainStyle.stickyContainer}`}
+            style={{ height: "60vh" }}
+          >
+            <Container
+              className="text-center"
+              style={{
+                height: "100%",
+                width: "80%",
+                outline: "1px solid red",
+              }}
+            >
+              <>
+                <Card
+                  // key={`card-${user._id}`}
+                  className={` ${mainStyle.bg}`}
+                  style={{ border: "none" }}
+                >
+                  <Image
+                    variant="top"
+                    className={`mt-4 mx-auto `}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      maxWidth: "200px",
+                    }}
+                    src={this.state.users.profilePhoto}
+                    roundedCircle
+                  />{" "}
+                  <Card.Title className={`mt-3 `}>
+                    <Link className={`  ${mainStyle.title}`} to="/profile">
+                      <span style={{ color: "#03b8f7" }}>
+                        {this.state.users.firstname} {this.state.users.lastname}
+                      </span>
+                    </Link>
+                  </Card.Title>
+                  <Card.Body>
+                    <Card.Text
+                      className={` text-center   ${mainStyle.mediumTitleWhite}`}
+                    >
+                      <i>{this.state.users.headline}</i>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Row className="justify-content-center">
+                  <Col className="ml-4">
+                    <p
+                      className={`text-left ml-3 ${mainStyle.mediumTitleBlue} `}
+                    >
+                      My Tools
+                    </p>
+                    <p className={` text-left ml-5 ${mainStyle.text}  `}>
+                      <Link
+                        className={` ${mainStyle.webLinks} `}
+                        to="homeworks"
+                        style={{ fontSize: "120%" }}
+                      >
+                        Homeworks
+                      </Link>
+                    </p>
+                    <p className={` text-left ml-5   `}>
+                      <Link
+                        className={` ${mainStyle.webLinks} `}
+                        style={{ fontSize: "120%" }}
+                        to="projects"
+                      >
+                        My Projects
+                      </Link>
+                    </p>
+                    <p className={` text-left ml-5   `}>
+                      <Link
+                        className={` ${mainStyle.webLinks} `}
+                        to="notes"
+                        style={{ fontSize: "120%" }}
+                      >
+                        My Notes
+                      </Link>
+                    </p>
+                  </Col>
+                </Row>
+                {/*end of Tools */}
+                <Row className="justify-content-center">
+                  <Col className="ml-4">
+                    <p
+                      className={`text-left ml-3 ${mainStyle.mediumTitleBlue} `}
+                    >
+                      Important Links
+                    </p>
+                    <p className={` text-left ml-5 ${mainStyle.text}  `}>
+                      <a
+                        style={{ fontStyle: "oblique" }}
+                        className={` mx-auto ${mainStyle.webLinks}`}
+                        rel="stylesheet"
+                        href={this.state.users.github}
+                      >
+                        <span style={{ fontSize: "125%" }}>
+                          <ImGithub className="mb-1 mr-2" /> GitHub
+                        </span>
+                      </a>
+                    </p>
+                    <p className={` text-left ml-5   `}>
+                      <a
+                        style={{ fontStyle: "oblique" }}
+                        className={` mx-auto  ${mainStyle.webLinks}`}
+                        rel="stylesheet"
+                        href={this.state.users.linkedin}
+                      >
+                        <span
+                          style={{ fontSize: "125%" }}
+                          className={` mx-auto  ${mainStyle.webLinks}`}
+                        >
+                          {" "}
+                          <SiLinkedin className="mb-1 mr-2" /> LinkedIn
+                        </span>
+                      </a>
+                    </p>
+                    <p className={` text-left ml-5   `}>
+                      <a
+                        style={{ fontStyle: "oblique" }}
+                        className={`  mx-auto ${mainStyle.webLinks}`}
+                        rel="stylesheet"
+                        href={this.state.users.portfolio}
+                      >
+                        <span style={{ fontSize: "125%" }}>
+                          <FaLaptopCode className="mb-1 mr-2" /> Portfolio
+                        </span>
+                      </a>
+                    </p>
+                  </Col>
+                </Row>
+                {/*end of Tools */}
+              </>
+            </Container>
           </Col>
-          <Col xs={12} className="text-center">
-            <Row style={{ margin: "0px", padding: "0px" }} className="mt-5">
+          <Col
+            xs={8}
+            className={`text-center  ${mainStyle.example} ${mainStyle.homeContent} `}
+            style={{
+              outline: "solid blue 2px",
+              height: "55vh",
+            }}
+          >
+            <Row
+              style={{
+                margin: "0px",
+                padding: "0px",
+              }}
+              className="mt-5 justify-content-right"
+            >
               {/* start of the fetches */}
-              <Col className="ml-3">
+              <Col className="ml-3 ">
                 <Container>
                   <InputGroup>
                     <DropdownButton
@@ -294,4 +467,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Home2;
