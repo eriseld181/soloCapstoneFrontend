@@ -1,45 +1,32 @@
-//import React, { useState } from "react";
 import React from "react";
-
-import {
-  Nav,
-  Navbar,
-  Image,
-  NavDropdown,
-  Button,
-  FormControl,
-  Form,
-} from "react-bootstrap";
+import { withRouter, Link } from "react-router-dom";
+import { Nav, Navbar, Image, NavDropdown, Form, Button } from "react-bootstrap";
 import styles from "./Navbar.module.css";
-import { Link } from "react-router-dom";
+
 import { AiFillLock } from "react-icons/ai";
 import { BiExit } from "react-icons/bi";
-//import { AiFillHome } from "react-icons/ai";
-//import { FaUser } from "react-icons/fa";
 import { connect } from "react-redux";
-//import Cookies from 'js-cookie'
+
 const mapStateToProps = (state) => state;
+
 const mapDispatchToProps = (dispatch) => ({
   toggleLogin: () => dispatch({ type: "TOGGLE_LOGIN", payload: false }),
 });
-const logOut = async (props) => {
-  const result = await fetch("http://localhost:5000/api/users/logout", {
-    // const result = await fetch('http://localhost:4006/profile/login', {
-    method: "POST",
-  });
-
-  if (result.ok) {
-    props.toggleLogin();
-    // document.cookie = "accessToken=p";
-    document.cookie = `accessToken=hello00;domain=http://localhost:000/`;
-
-    props.history.push("/");
-  }
-};
-
 function MainNavBar(props) {
-  //const [show, setShow ]=useState(false)
-  console.log("status of logged in", props.isLoggedIn);
+  const logOut = async () => {
+    const result = await fetch("http://localhost:5000/api/users/logout", {
+      method: "POST",
+      body: JSON.stringify(),
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (result.ok) {
+      props.history.push("/");
+      props.toggleLogin();
+    }
+  };
+
   return (
     <>
       <Navbar
@@ -61,19 +48,19 @@ function MainNavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {props.isLoggedIn && (
+            {!props.isLoggedIn && (
               <Nav>
                 {/* <AiFillHome className={` ${styles.icons}`} /> */}
-                <Link className="mr-3" to="/home">
+                <Link className="mr-3 pt-2" to="/home">
                   Home
                 </Link>
               </Nav>
             )}
 
-            {props.isLoggedIn && (
+            {!props.isLoggedIn && (
               <Nav>
                 {/* <FaUser className={` ${styles.icons}`} /> */}
-                <Link className="mr-3 " to="/profile">
+                <Link className="mr-3 pt-2" to="/profile">
                   {" "}
                   Profile
                 </Link>
@@ -97,7 +84,7 @@ function MainNavBar(props) {
             {!props.isLoggedIn && (
               <NavDropdown bg="black" title="Tools" id="basic-nav-dropdown">
                 <NavDropdown.Item
-                  className={`pb-2 ${styles.bg} ${styles.text}`}
+                  className={`mb-3 ${styles.bg} ${styles.text}`}
                 >
                   <Link to="/homeworks">Homeworks</Link>
                 </NavDropdown.Item>
@@ -119,15 +106,19 @@ function MainNavBar(props) {
                 </Link>
               </Nav>
             )}
-            {props.isLoggedIn && (
+            {!props.isLoggedIn && (
               <Nav>
-                <Link to="/">
-                  <BiExit
-                    className={` ${styles.icons}`}
-                    onClick={() => logOut()}
-                  />
+                <Button
+                  className={`${styles.text}`}
+                  style={{
+                    backgroundColor: "#111111",
+                    border: "none",
+                  }}
+                  onClick={logOut}
+                >
+                  <BiExit className={` ${styles.icons}`} />
                   Log out
-                </Link>
+                </Button>
               </Nav>
             )}
           </Form>
@@ -136,4 +127,7 @@ function MainNavBar(props) {
     </>
   );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(MainNavBar)
+);

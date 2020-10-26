@@ -1,36 +1,45 @@
 import React, { Component } from "react";
-import { Card, Col, Row, Container, Dropdown } from "react-bootstrap";
+import { Card, Col, Row, Container, Dropdown, Button } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../Component.module.css";
+// import DropMenu from "./DropMenu";
+import EditModalHomework from "../modals/EditModalHomework";
 import { BsThreeDots } from "react-icons/bs";
 class Homeworks extends Component {
   state = {
-    projects: [],
+    homeworks: [],
   };
-  componentDidMount = async () => {
+
+  homeworkFetch = async () => {
     const response = await fetch("http://localhost:5000/api/homeworks", {
       method: "GET",
       credentials: "include",
     });
-    const fetchedProjects = await response.json();
+    const fetchedhomeworks = await response.json();
 
-    this.setState({ projects: fetchedProjects });
+    this.setState({ homeworks: fetchedhomeworks });
+  };
+
+  componentDidMount = async () => {
+    this.homeworkFetch();
   };
 
   render() {
     console.log(
-      "eriseld all projects ",
-      this.state.projects.length > 0 && this.state.projects
+      "eriseld all homeworks ",
+      this.state.homeworks.length > 0 && this.state.homeworks
     );
 
     return (
       <Container>
-        {this.state.projects && this.state.projects.length > 0 ? (
-          this.state.projects.map((project) => {
-            return (
-              <Row className=" justify-content-center">
-                <Col sm={12} md={10} key={`card-${project._id}`}>
+        {" "}
+        <Row className=" justify-content-center">
+          <Col sm={12} md={10}>
+            {this.state.homeworks && this.state.homeworks.length > 0 ? (
+              this.state.homeworks.map((homework) => {
+                return (
                   <Card
+                    key={`card-${homework._id}`}
                     style={{ border: "0px" }}
                     className={`mb-4 ${mainStyle.bg}`}
                   >
@@ -40,17 +49,20 @@ class Homeworks extends Component {
                         <Card.Title
                           className={`mt-5 mb-4 text-center ${mainStyle.titleBig} `}
                         >
-                          <h3>{project.myTitle}</h3>
+                          <h3>{homework.myTitle}</h3>
                         </Card.Title>
                       </Col>
-                      <Col className="mr-4">
+                      <Col className="mr-3">
                         {" "}
                         <Card.Title
                           className={`mt-5 mb-4 text-right ${mainStyle.titleBig} `}
                         >
                           <Dropdown className={` ${mainStyle.dropdownToggle} `}>
                             <Dropdown.Toggle
-                              style={{ border: "none", boxShadow: "none" }}
+                              style={{
+                                border: "none",
+                                boxShadow: "none",
+                              }}
                               className={` ${mainStyle.dropdownToggle} ${mainStyle.bg}`}
                               variant="primary"
                               id="dropdown-basic"
@@ -68,16 +80,22 @@ class Homeworks extends Component {
                                 style={{
                                   backgroundColor: "#0f1f26",
                                 }}
+                                className="text-right mb-2"
                               >
-                                Edit
+                                <EditModalHomework
+                                  homework={homework}
+                                  homeworkFetch={this.homeworkFetch}
+                                />
                               </Dropdown.Item>
                               <Dropdown.Item
+                                className="text-right mb-1"
                                 style={{
-                                  width: "50%",
                                   backgroundColor: "#0f1f26",
                                 }}
                               >
-                                Delete
+                                <Button style={{ width: "100%" }}>
+                                  Delete
+                                </Button>
                               </Dropdown.Item>
                             </Dropdown.Menu>
                           </Dropdown>
@@ -94,28 +112,28 @@ class Homeworks extends Component {
                         maxWidth: "890px",
                         position: "center",
                       }}
-                      src={project.image}
+                      src={homework.image}
                     />
                     <Card.Body>
                       <Card.Text className=" text-left">
-                        {project.description}
+                        {homework.description}
                       </Card.Text>
                     </Card.Body>
                   </Card>
-                </Col>
+                );
+              })
+            ) : (
+              <Row style={{ margin: "0px", padding: "0px" }}>
+                {" "}
+                <DefaultComponent
+                  img="./publication.png"
+                  title="There is nothing to see now!"
+                  text="All your Publications will be shown here. Add a new post..."
+                />
               </Row>
-            );
-          })
-        ) : (
-          <Row style={{ margin: "0px", padding: "0px" }}>
-            {" "}
-            <DefaultComponent
-              img="./publication.png"
-              title="There is nothing to see now!"
-              text="All your Publications will be shown here. Add a new post..."
-            />
-          </Row>
-        )}
+            )}{" "}
+          </Col>
+        </Row>
       </Container>
     );
   }

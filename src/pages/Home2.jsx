@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/NavBar/MainNavBar";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { ImGithub } from "react-icons/im";
@@ -102,11 +101,10 @@ class Home2 extends React.Component {
           margin: "0px",
           padding: "0px",
           height: "100vh",
-          outline: "1px solid red",
+          // outline: "1px solid red",
           overflow: "hidden",
         }}
       >
-        <NavBar />
         {/* End of navbar */}
         <Row style={{ margin: "0px", padding: "0px" }}>
           <Col
@@ -119,7 +117,7 @@ class Home2 extends React.Component {
               style={{
                 height: "100%",
                 width: "80%",
-                outline: "1px solid red",
+                // outline: "1px solid red",
               }}
             >
               <>
@@ -248,8 +246,8 @@ class Home2 extends React.Component {
             xs={8}
             className={`text-center  ${mainStyle.example} ${mainStyle.homeContent} `}
             style={{
-              outline: "solid blue 2px",
-              height: "55vh",
+              // outline: "solid blue 2px",
+              height: "100vh",
             }}
           >
             <Row

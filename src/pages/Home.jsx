@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "../components/NavBar/MainNavBar";
 //import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import {
@@ -76,8 +75,6 @@ class Home extends React.Component {
   render() {
     return (
       <div style={{ margin: "0px", padding: "0px" }}>
-        <NavBar />
-        {/* End of navbar */}
         <Row style={{ margin: "0px", padding: "0px" }}>
           <Col xs={3}>
             <Row className="justify-content-center">

@@ -1,5 +1,5 @@
 import React from "react";
-import MainNavBar from "../components/NavBar/MainNavBar";
+
 import FeatureComponent from "../components/FeatureComponent";
 import { Container, Row, Col } from "react-bootstrap";
 import mainStyles from "../components/Component.module.css";
@@ -10,7 +10,6 @@ import Footer from "../components/Footer";
 export default function MainPage() {
   return (
     <div>
-      <MainNavBar />
       <JumbotronComponent
         title="E-Tech"
         subtitle="All your school tools in one platform."

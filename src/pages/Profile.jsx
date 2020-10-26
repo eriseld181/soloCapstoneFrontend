@@ -1,20 +1,19 @@
 import React from "react";
-import NavBar from "../components/NavBar/MainNavBar";
-//import NavBar from "../components/NavBar/NavBarText";
+
 import UserProfile from "../components/userProfile/UserProfile";
 import { Tab, Tabs } from "react-bootstrap";
-//import mainStyle from "../components/Component.module.css";
-import Footer from "../components/Footer";
-import Cookies from "js-cookie";
+
 import { Link } from "react-router-dom";
 import SingleUserProjects from "../components/profileTools/SingleUserProjects";
 import Homework from "../components/profileTools/Homework";
 import Notes from "../components/profileTools/Notes";
 import MyPosts from "../components/profileTools/myPosts";
+import Students from "../components/profileTools/Students";
 
 class Profile extends React.Component {
   state = {
     user: [],
+    allUsers: [],
   };
 
   userFetch = async () => {
@@ -33,7 +32,6 @@ class Profile extends React.Component {
   render() {
     return (
       <>
-        <NavBar />
         <UserProfile
           userFetch={this.userFetch}
           image={this.state.user.profilePhoto}
@@ -68,8 +66,8 @@ class Profile extends React.Component {
             <MyPosts />
           </Tab>
           <Tab
-            className={`justify-content-center `}
             eventKey="homeworks"
+            className={`justify-content-center `}
             title="Homeworks"
           >
             {" "}
@@ -82,10 +80,12 @@ class Profile extends React.Component {
           <Tab eventKey="projects" title="Projects">
             <SingleUserProjects />
           </Tab>
-          <Tab eventKey="students" title="Students"></Tab>
+          <Tab eventKey="students" title="Students">
+            <Students />
+          </Tab>
         </Tabs>
 
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }

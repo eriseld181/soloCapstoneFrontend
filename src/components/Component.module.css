@@ -1,14 +1,22 @@
+.cutText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .uploadPhoto {
   opacity: 0;
-  font-size: 300%;
+  font-size: 350%;
   position: absolute;
-  margin: 8% 0 1% 7%;
+  margin: 10% 0 1% 10%;
 }
 .uploadPhoto:hover {
   opacity: 0.9;
-  font-size: 300%;
+  font-size: 350%;
   position: absolute;
-  margin: 8% 0 1% 7%;
+  margin: 10% 0 1% 10%;
 }
 
 .bg {
@@ -86,6 +94,10 @@
 .mediumTitleWhite {
   color: white;
   font-size: 25px;
+}
+.smallTitleBlue {
+  color: #03b8f7;
+  font-size: 15px;
 }
 .mediumTitleBlue {
   color: #03b8f7;
@@ -186,6 +198,7 @@ a.webLinks {
   border-radius: 2px !important;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
 }
+
 .bg {
   background-color: black;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./pages/Home";
+import Home2 from "./pages/Home2";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -18,15 +19,17 @@ function App() {
   return (
     <>
       <Router>
+        <MainNavBar />
         <Switch>
           <Route path="/" exact component={MainPage} />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/home" exact component={Home} />
+          <Route path="/home2" exact component={Home2} />
           <Route path="/contact" exact component={Contact} />
           <Route path="#about" exact component={MainPage} />
-          <Route path="/contact" exact component={MainNavBar} />
+          <Route path="/" exact component={MainNavBar} />
           <Route path="/projects" exact component={MainProjects} />
           <Route path="/homeworks" exact component={Homeworks} />
           <Route path="/posts" exact component={Posts} />

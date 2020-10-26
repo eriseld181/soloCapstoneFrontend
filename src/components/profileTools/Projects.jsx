@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Button, Col, Container } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
+import EditModalProject from "../modals/EditModalProject";
 class Projects extends Component {
   state = {
     projects: [],
@@ -14,7 +15,6 @@ class Projects extends Component {
 
     this.setState({ projects: fetchedProjects });
   };
-
   render() {
     console.log(
       "diego all projects ",
