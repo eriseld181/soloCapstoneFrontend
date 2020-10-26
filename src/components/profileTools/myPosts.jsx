@@ -39,6 +39,15 @@ class Posts extends Component {
 
     this.setState({ posts: fetchedposts });
   };
+  postDelete = async (id) => {
+    const response = await fetch("http://localhost:5000/api/posts/" + id, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    if (response.ok) {
+      this.postFetch();
+    }
+  };
 
   componentDidMount = async () => {
     this.postFetch();
@@ -147,7 +156,10 @@ class Posts extends Component {
                                     backgroundColor: "#0f1f26",
                                   }}
                                 >
-                                  <Button style={{ width: "100%" }}>
+                                  <Button
+                                    onClick={() => this.postDelete(feed._id)}
+                                    style={{ width: "100%" }}
+                                  >
                                     Delete
                                   </Button>
                                 </Dropdown.Item>

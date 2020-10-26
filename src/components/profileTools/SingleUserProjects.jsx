@@ -8,6 +8,13 @@ import EditProjectModal from "../modals/EditModalProject";
 class Projects extends Component {
   state = {
     projects: [],
+    show: false,
+  };
+  handleClose = () => {
+    this.setState({ show: false });
+  };
+  handleShow = () => {
+    this.setState({ show: true });
   };
 
   projectfetch = async () => {
@@ -22,6 +29,16 @@ class Projects extends Component {
 
     this.setState({ projects: fetchedProjects });
   };
+  projectDelete = async (id) => {
+    const response = await fetch("http://localhost:5000/api/projects/" + id, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    if (response.ok) {
+      this.projectfetch();
+    }
+  };
+
   componentDidMount = async () => {
     this.projectfetch();
   };
@@ -85,8 +102,8 @@ class Projects extends Component {
                                 className="text-right mb-2"
                               >
                                 <EditProjectModal
-                                  project={project}
-                                  homeworkFetch={this.homeworkFetch}
+                                  projects={project}
+                                  projectsFetch={this.projectfetch}
                                 />
                               </Dropdown.Item>
                               <Dropdown.Item
@@ -95,7 +112,14 @@ class Projects extends Component {
                                   backgroundColor: "#0f1f26",
                                 }}
                               >
-                                Delete
+                                <Button
+                                  onClick={() =>
+                                    this.projectDelete(project._id)
+                                  }
+                                  style={{ width: "100%" }}
+                                >
+                                  Delete
+                                </Button>
                               </Dropdown.Item>
                             </Dropdown.Menu>
                           </Dropdown>
@@ -115,7 +139,7 @@ class Projects extends Component {
                       src={project.image}
                     />
                     <Card.Body>
-                      <Card.Text className=" text-left">
+                      <Card.Text className={`text-left`}>
                         {project.description}
                       </Card.Text>
                       <Card.Body>

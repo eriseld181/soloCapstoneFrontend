@@ -19,6 +19,15 @@ class Homeworks extends Component {
 
     this.setState({ homeworks: fetchedhomeworks });
   };
+  homeworkDelete = async (id) => {
+    const response = await fetch("http://localhost:5000/api/homeworks/" + id, {
+      method: "DELETE",
+      credentials: "include",
+    });
+    if (response.ok) {
+      this.homeworkFetch();
+    }
+  };
 
   componentDidMount = async () => {
     this.homeworkFetch();
@@ -93,7 +102,12 @@ class Homeworks extends Component {
                                   backgroundColor: "#0f1f26",
                                 }}
                               >
-                                <Button style={{ width: "100%" }}>
+                                <Button
+                                  onClick={() =>
+                                    this.homeworkDelete(homework._id)
+                                  }
+                                  style={{ width: "100%" }}
+                                >
                                   Delete
                                 </Button>
                               </Dropdown.Item>
