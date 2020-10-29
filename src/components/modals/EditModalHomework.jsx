@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import mainStyle from "../Component.module.css";
+// import mainStyle from "../Component.module.css";
 export default function EditModal(props) {
   const [homeworkTitle, setHomeworkTitle] = useState(props.homework.myTitle);
 

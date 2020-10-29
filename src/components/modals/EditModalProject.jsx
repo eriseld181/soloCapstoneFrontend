@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import mainStyle from "../Component.module.css";
+// import mainStyle from "../Component.module.css";
 
 export default function EditModalProject(props) {
   const url = process.env.REACT_APP_URLLOCAL;

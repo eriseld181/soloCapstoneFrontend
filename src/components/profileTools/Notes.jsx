@@ -17,34 +17,22 @@ class Projects extends Component {
   };
 
   render() {
-    console.log(
-      "eriseld all projects ",
-      this.state.projects.length > 0 && this.state.projects
-    );
-
     return (
       <>
         {" "}
         <Row className=" text-left mt-5">
           {this.state.projects && this.state.projects.length > 0 ? (
-            this.state.projects.map((project, i) => {
+            this.state.projects.map((project) => {
               return (
-                <Col xs={6}>
+                <Col xs={6} key={`card-${project._id}`}>
                   {" "}
                   <Card
-                    key={i}
                     className=" mb-4 "
                     style={{
                       backgroundColor: "#0F1F26",
                       border: "none",
                     }}
                   >
-                    {/* <Card.Img
-                      className=" mx-auto"
-                      variant="top"
-                      style={{ width: "200px" }}
-                      src={project.image}
-                    /> */}
                     <Card.Body>
                       <Card.Title className={` ${mainStyle.title}`}>
                         {project.myTitle}

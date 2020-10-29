@@ -21,11 +21,6 @@ class Projects extends Component {
   };
 
   render() {
-    console.log(
-      "eriseld all projects ",
-      this.state.projects.length > 0 && this.state.projects
-    );
-
     return (
       <>
         <Row

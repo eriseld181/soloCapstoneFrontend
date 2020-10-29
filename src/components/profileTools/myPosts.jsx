@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import {
   Card,
-  Modal,
   Col,
   Row,
   Image,
   Dropdown,
   Container,
   Button,
-  Form,
 } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../../components/Component.module.css";
@@ -39,6 +37,7 @@ class Posts extends Component {
 
     this.setState({ posts: fetchedposts });
   };
+
   postDelete = async (id) => {
     const response = await fetch("http://localhost:5000/api/posts/" + id, {
       method: "DELETE",
@@ -54,11 +53,6 @@ class Posts extends Component {
   };
 
   render() {
-    console.log(
-      "eriseld all posts ",
-      this.state.posts.length > 0 && this.state.posts
-    );
-
     return (
       <>
         <Container>
@@ -75,7 +69,10 @@ class Posts extends Component {
                 // outline: "solid red 2px",
               }}
             >
-              <AddNewPostModal className={`${mainStyle.cardDesignClean}`} />
+              <AddNewPostModal
+                postsFetch={this.postFetch}
+                className={`${mainStyle.cardDesignClean}`}
+              />
             </Col>
           </Row>
         </Container>

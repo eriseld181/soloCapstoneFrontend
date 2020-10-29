@@ -16,11 +16,6 @@ class Projects extends Component {
     this.setState({ projects: fetchedProjects });
   };
   render() {
-    console.log(
-      "diego all projects ",
-      this.state.projects.length > 0 && this.state.projects
-    );
-
     return (
       <>
         <div className=" text-center">
@@ -34,8 +29,9 @@ class Projects extends Component {
                     columns: "1",
                   }}
                 >
-                  <Col key={i}>
+                  <Col>
                     <Card
+                      key={i}
                       className=" mb-4 "
                       style={{
                         backgroundColor: "#0F1F26",

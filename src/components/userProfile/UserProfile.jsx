@@ -43,7 +43,7 @@ class UserProfile extends Component {
           />{" "}
           <label
             className={` ${mainStyle.uploadPhoto} ${mainStyle.show} `}
-            for="file-input"
+            htmlFor="file-input"
             aria-required="true"
           >
             <BiImageAdd />

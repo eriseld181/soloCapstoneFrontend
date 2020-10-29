@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 import { Card, Form, Button, Alert } from "react-bootstrap";
-import Info from "../InfoText/Info";
+// import Info from "../InfoText/Info";
 import styles from "./Login.module.css";
 import mainStyle from "../Component.module.css";
 
@@ -55,10 +55,10 @@ function LoginForm(props) {
           <Form.Group controlId="formBasicEmail">
             <Form.Label className={`${styles.labels}`}>
               Email address
-              <Info
+              {/* <Info
                 name="Email"
                 description="Please enter your email, for example: john@gmail.com"
-              />
+              /> */}
             </Form.Label>
             <Form.Control
               type="email"
@@ -75,16 +75,17 @@ function LoginForm(props) {
           <Form.Group controlId="formBasicPassword">
             <Form.Label className={`${styles.labels}`}>
               Password
-              <Info
+              {/* <Info
                 name="Password"
                 description="Please enter your password, it should have one letter uppercase(A) at least one number(1)."
-              />
+              /> */}
             </Form.Label>
 
             <Form.Control
               type="password"
               placeholder="Password"
               value={password}
+              autoComplete="password"
               onChange={(e) => {
                 setPassword(e.target.value);
               }}

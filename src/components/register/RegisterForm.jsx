@@ -3,7 +3,7 @@ import { Card, Form, Button, Col, Container } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 import styles from "../Component.module.css";
 import States from "./countries.json";
-import Info from "../InfoText/Info";
+// import Info from "../InfoText/Info";
 import mainStyle from "../Component.module.css";
 function RegisterForm(props) {
   const [email, setEmail] = useState("");
@@ -32,7 +32,6 @@ function RegisterForm(props) {
     });
 
     if (register.ok) {
-     
       props.history.push("/login");
     }
   };
@@ -61,11 +60,11 @@ function RegisterForm(props) {
               >
                 <Form.Label className={`${styles.labels}`}>
                   First Name
-                  <Info
+                  {/* <Info
                     name="First Name"
                     description="Please enter your first name,
                                          for example: John, Mickey"
-                  />
+                  /> */}
                 </Form.Label>
                 <Form.Control
                   type="text"
@@ -84,10 +83,10 @@ function RegisterForm(props) {
               >
                 <Form.Label className={`${styles.labels}`}>
                   Last Name
-                  <Info
+                  {/* <Info
                     name="Last Name"
                     description="Please enter your last name, for example: Connor, Mouse."
-                  />
+                  /> */}
                 </Form.Label>
                 <Form.Control
                   type="text"
@@ -108,37 +107,26 @@ function RegisterForm(props) {
               >
                 <Form.Label className={`${styles.labels}`}>
                   Email
-                  <Info
+                  {/* <Info
                     name="Email"
                     description="Please enter your email, for example: john@gmail.com"
-                  />
+                  /> */}
                 </Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
                   value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
 
-              <Form.Group
-                as={Col}
-                controlId="formGridPassword"
-                className={`mx-auto ${styles.bg}`}
-              >
-                <Form.Label className={`${styles.labels}`}>
-                  Password
-                  <Info
-                    name="Password"
-                    description="Please enter your password, it should have one letter uppercase(A) at least one number(1)."
-                  />
-                </Form.Label>
+              <Form.Group as={Col} className={`mx-auto ${styles.bg}`}>
+                <Form.Label className={`${styles.labels}`}>Password</Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="Password"
                   value={password}
+                  autoComplete="password"
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
@@ -148,16 +136,9 @@ function RegisterForm(props) {
 
             <Form.Row>
               <Form.Group as={Col} controlId="formGridState">
-                <Form.Label className={`${styles.labels}`}>
-                  State
-                  <Info
-                    name="Country"
-                    description="Please choose your state from the dropdown list below, type or click to show the states"
-                  />
-                </Form.Label>
+                <Form.Label className={`${styles.labels}`}>State</Form.Label>
                 <Form.Control
                   as="select"
-                  defaultValue="Choose..."
                   value={country}
                   onChange={(e) => {
                     setCountry(e.target.value);
@@ -176,10 +157,10 @@ function RegisterForm(props) {
               <Form.Group type="text" as={Col} controlId="formGridCity">
                 <Form.Label className={`${styles.labels}`}>
                   City
-                  <Info
+                  {/* <Info
                     name="City"
                     description="Please enter the city where do you live."
-                  />
+                  /> */}
                 </Form.Label>
                 <Form.Control
                   placeholder="Ex: London"

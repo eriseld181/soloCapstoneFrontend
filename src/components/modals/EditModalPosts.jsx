@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import mainStyle from "../Component.module.css";
+// import mainStyle from "../Component.module.css";
 
 export default function EditModalPosts(props) {
   const url = process.env.REACT_APP_URLLOCAL;
@@ -71,7 +71,7 @@ export default function EditModalPosts(props) {
             </Form.Group>
             <Form.Group>
               <Form.File
-                id="exampleFormControlFile1"
+                id="exampleFormControlFile"
                 label="Add A new Photo"
                 onChange={(e) => setPostImage(e.target.files[0])}
               />

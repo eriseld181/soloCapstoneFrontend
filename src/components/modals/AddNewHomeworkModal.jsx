@@ -4,8 +4,9 @@ import { Button, Modal, Col, Form, Row } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 // import myInfo from "../InfoText/Info";
 
-function AddNewPostModal(props) {
-  const [newPostTitle, setPostTitle] = useState("");
+function AddNewHomeworkModal(props) {
+  const [newHomeworkTitle, setHomeworkTitle] = useState("");
+  const [homeworkDescription, setHomeworkDescription] = useState("");
   const [myImage, setImage] = useState("");
 
   const [show, setShow] = useState(false);
@@ -13,19 +14,23 @@ function AddNewPostModal(props) {
   const handleShow = () => setShow(true);
 
   const AddNewPost = async () => {
-    const response = await fetch("http://localhost:5000/api/posts/add", {
+    const response = await fetch("http://localhost:5000/api/homeworks/add", {
       credentials: "include",
       method: "POST",
-      body: JSON.stringify({ myTitle: newPostTitle }),
+      body: JSON.stringify({
+        myTitle: newHomeworkTitle,
+        description: homeworkDescription,
+      }),
       headers: new Headers({ "Content-Type": "application/json" }),
     });
     const data = await response.json();
+
     if (data) {
       // const uploadImage = myImage;
       const image = new FormData();
       image.append("image", myImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/posts/" + data._id + "/uploadImage",
+        "http://localhost:5000/api/homeworks/" + data._id + "/uploadImage",
         {
           method: "POST",
           body: image,
@@ -40,11 +45,11 @@ function AddNewPostModal(props) {
       } else {
         console.log("upload photo is not working");
       }
-      props.postsFetch();
+      props.homeworkFetch();
     }
     handleClose();
-    props.postsFetch();
-    setPostTitle("");
+    props.homeworkFetch();
+    setHomeworkTitle("");
   };
 
   return (
@@ -81,42 +86,14 @@ function AddNewPostModal(props) {
                   borderRadius: "14px",
                 }}
               >
-                Add a new post...
+                Add a new Homework...
               </Col>
             </Row>
-            {/*  <Row className="mt-3  " style={{ marginLeft: "80%" }}>
-              {" "}
-              <Col
-                xs={9}
-                className=" mr-auto mb-3"
-                style={{
-                  backgroundColor: "white",
-                  width: "100%",
-                  padding: "5px",
-                  fontSize: "17px",
-                  borderRadius: "14px",
-                }}
-              >
-                Post
-              </Col> 
-            </Row>*/}
           </Col>{" "}
-          {/* <Col xs={3} className="text-left">
-            {" "}
-            <Button
-              style={{
-                width: "100%",
-                padding: "10px",
-                fontSize: "17px",
-              }}
-            >
-              Post
-            </Button>
-          </Col>{" "} */}
         </Button>
       </Row>
       <Modal
-        // className={`${mainStyle.cardDesignClean}`}
+        className={`${mainStyle.cardDesignClean}`}
         show={show}
         onHide={handleClose}
         animation={false}
@@ -124,21 +101,30 @@ function AddNewPostModal(props) {
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
-            <h5>Write a new post</h5>
+            <h5>Write a new homework</h5>
           </Row>
           <Row>
             {" "}
             <Col xs={12}>
               {" "}
               <Form>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group controlId="formBasicName">
+                  <Form.Label>Change Homework Title.</Form.Label>
                   <Form.Control
-                    onChange={(e) => setPostTitle(e.target.value)}
-                    value={newPostTitle}
-                    as="textarea"
-                    rows={2}
+                    type="name"
+                    value={newHomeworkTitle}
+                    onChange={(e) => setHomeworkTitle(e.target.value)}
+                    placeholder="Enter A New Title"
                   />
                 </Form.Group>
+                <Form.Label>Change the Description.</Form.Label>
+                <Form.Control
+                  value={homeworkDescription}
+                  onChange={(e) => setHomeworkDescription(e.target.value)}
+                  as="textarea"
+                  rows={3}
+                  placeholder="Enter a new Description..."
+                />
                 <Form.Group>
                   <Form.File
                     id="exampleFormControlFile1"
@@ -201,4 +187,4 @@ function AddNewPostModal(props) {
   );
 }
 
-export default AddNewPostModal;
+export default AddNewHomeworkModal;

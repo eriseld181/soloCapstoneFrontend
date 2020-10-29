@@ -21,7 +21,6 @@ export default class Students extends Component {
     // console.log(this.state.user);
   };
   render() {
-    console.log("this is all users", this.state.allUsers.users);
     return (
       <Container>
         <Table
