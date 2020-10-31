@@ -4,8 +4,9 @@ import { Button, Modal, Col, Form, Row } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 // import myInfo from "../InfoText/Info";
 
-function AddNewPostModal(props) {
-  const [newPostTitle, setPostTitle] = useState("");
+function AddNewNoteModal(props) {
+  const [newNoteTitle, setNoteTitle] = useState("");
+  const [noteDescription, setNoteDescription] = useState("");
   const [myImage, setImage] = useState("");
 
   const [show, setShow] = useState(false);
@@ -13,19 +14,23 @@ function AddNewPostModal(props) {
   const handleShow = () => setShow(true);
 
   const AddNewPost = async () => {
-    const response = await fetch("http://localhost:5000/api/posts/add", {
+    const response = await fetch("http://localhost:5000/api/notes/add", {
       credentials: "include",
       method: "POST",
-      body: JSON.stringify({ myTitle: newPostTitle }),
+      body: JSON.stringify({
+        myTitle: newNoteTitle,
+        description: noteDescription,
+      }),
       headers: new Headers({ "Content-Type": "application/json" }),
     });
     const data = await response.json();
+
     if (data) {
       // const uploadImage = myImage;
       const image = new FormData();
       image.append("image", myImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/posts/" + data._id + "/uploadImage",
+        "http://localhost:5000/api/notes/" + data._id + "/uploadImage",
         {
           method: "POST",
           body: image,
@@ -40,11 +45,11 @@ function AddNewPostModal(props) {
       } else {
         console.log("upload photo is not working");
       }
-      props.postsFetch();
+      props.noteFetch();
     }
     handleClose();
-    props.postsFetch();
-    setPostTitle("");
+    props.noteFetch();
+    setNoteTitle("");
   };
 
   return (
@@ -81,14 +86,14 @@ function AddNewPostModal(props) {
                   borderRadius: "14px",
                 }}
               >
-                Add a new post...
+                Add a Note...
               </Col>
             </Row>
           </Col>{" "}
         </Button>
       </Row>
       <Modal
-        // className={`${mainStyle.cardDesignClean}`}
+        className={`${mainStyle.cardDesignClean}`}
         show={show}
         onHide={handleClose}
         animation={false}
@@ -96,21 +101,30 @@ function AddNewPostModal(props) {
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
-            <h5>Write a new post</h5>
+            <h5>Add a new note</h5>
           </Row>
           <Row>
             {" "}
             <Col xs={12}>
               {" "}
               <Form>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group controlId="formBasicName">
+                  <Form.Label>Change Note Title.</Form.Label>
                   <Form.Control
-                    onChange={(e) => setPostTitle(e.target.value)}
-                    value={newPostTitle}
-                    as="textarea"
-                    rows={2}
+                    type="name"
+                    value={newNoteTitle}
+                    onChange={(e) => setNoteTitle(e.target.value)}
+                    placeholder="Enter A New Title"
                   />
                 </Form.Group>
+                <Form.Label>Change the Description.</Form.Label>
+                <Form.Control
+                  value={noteDescription}
+                  onChange={(e) => setNoteDescription(e.target.value)}
+                  as="textarea"
+                  rows={3}
+                  placeholder="Enter a new Description..."
+                />
                 <Form.Group>
                   <Form.File
                     id="exampleFormControlFile1"
@@ -119,6 +133,28 @@ function AddNewPostModal(props) {
                   />
                 </Form.Group>
               </Form>
+              {/* <Row className="justify-content-right ml-3">
+                {" "}
+                <Button onChange={(e) => setImage(e.target.files[0])}>
+                  {" "}
+                  <Col xs={12} className={`text-left ml-4 `}>
+                    {" "}
+                    <BsUpload
+                      className={`mt-2 mb-2 ml-2 text-center ${mainStyle.mediumTitleBlue}`}
+                    />{" "}
+                  </Col>
+                  <Col xs={12}>
+                    {" "}
+                    <p
+                      className={` text-left ${mainStyle.smallTitleBlue}`}
+                      style={{}}
+                    >
+                      {" "}
+                      Upload a photo
+                    </p>{" "}
+                  </Col>{" "}
+                </Button>
+              </Row> */}
             </Col>{" "}
             <Col
               xs={3}
@@ -126,17 +162,23 @@ function AddNewPostModal(props) {
               // style={{ outline: "1px solid red" }}
             >
               {" "}
+              {/* <Button
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  fontSize: "17px",
+                }}
+              >
+                Post
+              </Button> */}
             </Col>{" "}
           </Row>
         </Modal.Body>
         <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
-          <Button className={`${mainStyle.btnGradient}`} onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Discard
           </Button>
-          <Button
-            className={`${mainStyle.btnGradient}`}
-            onClick={(handleClose, AddNewPost)}
-          >
+          <Button variant="primary" onClick={(handleClose, AddNewPost)}>
             Publish
           </Button>
         </Modal.Footer>
@@ -145,4 +187,4 @@ function AddNewPostModal(props) {
   );
 }
 
-export default AddNewPostModal;
+export default AddNewNoteModal;

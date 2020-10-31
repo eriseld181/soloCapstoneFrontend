@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import { Nav, Navbar, Image, NavDropdown, Form, Button } from "react-bootstrap";
+import { Nav, Navbar, Image, Form, Button } from "react-bootstrap";
 import styles from "./Navbar.module.css";
 
 import { AiFillLock } from "react-icons/ai";
@@ -48,7 +48,7 @@ function MainNavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {!props.isLoggedIn && (
+            {props.isLoggedIn && (
               <Nav>
                 {/* <AiFillHome className={` ${styles.icons}`} /> */}
                 <Link className="mr-3 pt-2" to="/home">
@@ -57,7 +57,7 @@ function MainNavBar(props) {
               </Nav>
             )}
 
-            {!props.isLoggedIn && (
+            {props.isLoggedIn && (
               <Nav>
                 {/* <FaUser className={` ${styles.icons}`} /> */}
                 <Link className="mr-3 pt-2" to="/profile">
@@ -81,21 +81,6 @@ function MainNavBar(props) {
                 </Link>{" "}
               </Nav>
             )}
-            {!props.isLoggedIn && (
-              <NavDropdown bg="black" title="Tools" id="basic-nav-dropdown">
-                <NavDropdown.Item
-                  className={`mb-3 ${styles.bg} ${styles.text}`}
-                >
-                  <Link to="/homeworks">Homeworks</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item className={` ${styles.bg} ${styles.text}`}>
-                  <Link to="/projects">Projects</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item className={` ${styles.bg} ${styles.text}`}>
-                  <Link to="/notes">Notes</Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-            )}
           </Nav>
           <Form inline>
             {!props.isLoggedIn && (
@@ -106,7 +91,7 @@ function MainNavBar(props) {
                 </Link>
               </Nav>
             )}
-            {!props.isLoggedIn && (
+            {props.isLoggedIn && (
               <Nav>
                 <Button
                   className={`${styles.text}`}

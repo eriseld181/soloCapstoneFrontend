@@ -92,12 +92,7 @@ function AddNewHomeworkModal(props) {
           </Col>{" "}
         </Button>
       </Row>
-      <Modal
-        className={`${mainStyle.cardDesignClean}`}
-        show={show}
-        onHide={handleClose}
-        animation={false}
-      >
+      <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
@@ -133,28 +128,6 @@ function AddNewHomeworkModal(props) {
                   />
                 </Form.Group>
               </Form>
-              {/* <Row className="justify-content-right ml-3">
-                {" "}
-                <Button onChange={(e) => setImage(e.target.files[0])}>
-                  {" "}
-                  <Col xs={12} className={`text-left ml-4 `}>
-                    {" "}
-                    <BsUpload
-                      className={`mt-2 mb-2 ml-2 text-center ${mainStyle.mediumTitleBlue}`}
-                    />{" "}
-                  </Col>
-                  <Col xs={12}>
-                    {" "}
-                    <p
-                      className={` text-left ${mainStyle.smallTitleBlue}`}
-                      style={{}}
-                    >
-                      {" "}
-                      Upload a photo
-                    </p>{" "}
-                  </Col>{" "}
-                </Button>
-              </Row> */}
             </Col>{" "}
             <Col
               xs={3}
@@ -162,23 +135,17 @@ function AddNewHomeworkModal(props) {
               // style={{ outline: "1px solid red" }}
             >
               {" "}
-              {/* <Button
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  fontSize: "17px",
-                }}
-              >
-                Post
-              </Button> */}
             </Col>{" "}
           </Row>
         </Modal.Body>
         <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className={`${mainStyle.btnGradient}`} onClick={handleClose}>
             Discard
           </Button>
-          <Button variant="primary" onClick={(handleClose, AddNewPost)}>
+          <Button
+            className={`${mainStyle.btnGradient}`}
+            onClick={(handleClose, AddNewPost)}
+          >
             Publish
           </Button>
         </Modal.Footer>

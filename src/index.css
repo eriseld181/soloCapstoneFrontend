@@ -1,17 +1,50 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,  "Segoe UI ",  "Roboto ",  "Oxygen ",
-     "Ubuntu ",  "Cantarell ",  "Fira Sans ",  "Droid Sans ",  "Helvetica Neue ",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI ", "Roboto ",
+    "Oxygen ", "Ubuntu ", "Cantarell ", "Fira Sans ", "Droid Sans ",
+    "Helvetica Neue ", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* general colors for website created by Eriseld*/
-    background-color: #0F1F26!important;
-    color:#F6F6F6 !important ;
-  
+  background-color: #0f1f26 !important;
+  color: #f6f6f6 !important ;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas,  "Courier New ",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New ",
     monospace;
+}
+
+/* for buttons design */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background: rgb(3, 184, 247) !important;
+  background: linear-gradient(
+    60deg,
+    rgba(3, 184, 247, 1) 0%,
+    rgb(0 55 255) 100%
+  ) !important;
+  border-radius: 5px !important;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
+}
+/* .nav-link:hover {
+  color: red !important;
+} */
+.dropdown-menu {
+  width: 80%;
+
+  border-color: #03a5ba;
+  background-color: #0f1f26 !important;
+}
+
+.dropdown-toggle {
+  box-shadow: none !important;
+}
+.dropdown-item {
+  background-color: transparent !important;
+}
+
+.btn-primary {
+  background-color: transparent !important;
+  box-shadow: none;
 }

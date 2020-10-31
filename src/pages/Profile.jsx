@@ -53,7 +53,7 @@ class Profile extends React.Component {
           variant="pills"
           transition={false}
           className={`justify-content-center `}
-          defaultActiveKey="projects"
+          defaultActiveKey="notes"
           id="uncontrolled-tab-example"
         >
           <Tab

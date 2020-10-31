@@ -18,8 +18,8 @@ function LoginForm(props) {
   const [link, setLink] = useState(true);
 
   const userLogin = async (e) => {
-    const url = process.env.REACT_APP_URLLOCAL;
-    const result = await fetch(`${url}api/users/login`, {
+    const url = process.env.REACT_APP_URL;
+    const result = await fetch(`${url}/api/users/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       credentials: "include",

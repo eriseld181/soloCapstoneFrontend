@@ -3,10 +3,10 @@ import configureStore from "./store";
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <Provider store={configureStore()}>

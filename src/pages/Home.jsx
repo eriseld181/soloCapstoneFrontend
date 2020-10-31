@@ -12,6 +12,7 @@ import {
   DropdownButton,
   Card,
   Button,
+  Alert,
 } from "react-bootstrap";
 import Cookies from "js-cookie";
 import mainStyle from "../components/Component.module.css";
@@ -48,7 +49,7 @@ class Home extends React.Component {
     );
     if (resp.ok) {
       const data = await resp.json();
-      console.log(data);
+
       this.setState({
         feedCategory: data,
       });
@@ -82,96 +83,113 @@ class Home extends React.Component {
             </Row>
           </Col>
           <Col xs={12} className="text-center">
-            <Row style={{ margin: "0px", padding: "0px" }} className="mt-5">
+            <Row
+              className="justify-content-center mt-5"
+              style={{
+                margin: "0px",
+                padding: "0px",
+              }}
+            >
               {/* start of the fetches */}
-              <Col className="ml-3">
-                <Container>
-                  <InputGroup>
-                    <DropdownButton
-                      as={InputGroup.Prepend}
-                      id="dropdown-basic-button"
-                      title={
-                        this.state.categorySelected.slice(0, 1).toUpperCase() +
-                        this.state.categorySelected.slice(1)
-                      }
-                      className="mb-3"
-                      style={{ color: "black" }}
+              <Col xs={12}>
+                <InputGroup className={` ${mainStyle.imputGroupSize}  `}>
+                  <DropdownButton
+                    //  error1 not changing the color
+                    className={`   ${mainStyle.btnGradient} `}
+                    as={InputGroup.Prepend}
+                    id="dropdown-basic-button"
+                    title={
+                      this.state.categorySelected.slice(0, 1).toUpperCase() +
+                      this.state.categorySelected.slice(1)
+                    }
+                    className="mb-3"
+                    style={{ color: "black" }}
+                  >
+                    <Dropdown.Item
+                      style={{ backgroundColor: "#0F1F26" }}
+                      onClick={() => {
+                        this.setState({ feedCategory: [] });
+                        this.setState({ categorySelected: "homeworks" });
+                      }}
                     >
-                      <Dropdown.Item
-                        style={{ backgroundColor: "#0F1F26" }}
-                        onClick={() => {
-                          this.setState({ feedCategory: [] });
-                          this.setState({ categorySelected: "homeworks" });
-                        }}
-                      >
-                        Homeworks
-                      </Dropdown.Item>{" "}
-                      <Dropdown.Item
-                        style={{ backgroundColor: "#0F1F26" }}
-                        onClick={() => {
-                          this.setState({ feedCategory: [] });
-                          this.setState({ categorySelected: "projects" });
-                        }}
-                      >
-                        Projects
-                      </Dropdown.Item>{" "}
-                      <Dropdown.Item
-                        style={{ backgroundColor: "#0F1F26" }}
-                        onClick={() => {
-                          this.setState({ feedCategory: [] });
-                          this.setState({ categorySelected: "posts" });
-                        }}
-                      >
-                        Posts
-                      </Dropdown.Item>
-                    </DropdownButton>
-                    <FormControl
-                      placeholder="Search posts using category"
-                      aria-label="Search"
-                      aria-describedby="basic-addon1"
-                      onChange={(e) => this.handleSearchQuery(e.target.value)}
-                    />
-                  </InputGroup>
+                      Homeworks
+                    </Dropdown.Item>{" "}
+                    <Dropdown.Item
+                      style={{ backgroundColor: "#0F1F26" }}
+                      onClick={() => {
+                        this.setState({ feedCategory: [] });
+                        this.setState({ categorySelected: "projects" });
+                      }}
+                    >
+                      Projects
+                    </Dropdown.Item>{" "}
+                    <Dropdown.Item
+                      style={{ backgroundColor: "#0F1F26" }}
+                      onClick={() => {
+                        this.setState({ feedCategory: [] });
+                        this.setState({ categorySelected: "posts" });
+                      }}
+                    >
+                      Posts
+                    </Dropdown.Item>
+                  </DropdownButton>
+                  <FormControl
+                    placeholder="Search posts using category"
+                    aria-label="Search"
+                    aria-describedby="basic-addon1"
+                    onChange={(e) => this.handleSearchQuery(e.target.value)}
+                  />
+                </InputGroup>
+                <Container>
+                  {" "}
                   <Row
                     style={{ margin: "0px", padding: "0px" }}
                     className="justify-content-center"
                   >
                     {this.state.categorySelected === "projects" && (
                       <>
+                        <Alert variant="primary" className="mt-2 ">
+                          {" "}
+                          <span className="text-center">
+                            <i>
+                              Check the Projects provided from tutors. You can
+                              filter them by title or tutor name.
+                            </i>
+                          </span>{" "}
+                        </Alert>
                         {this.state.feedCategory.map((feed) => {
                           return (
-                            <Col sm={12} md={10} key={`card-${feed._id}`}>
+                            <Col sm={12} md={8} key={`card-${feed._id}`}>
                               <Card
                                 className={`mb-4 ${mainStyle.bg}`}
                                 style={{ border: "none" }}
                               >
                                 <Card.Title
-                                  className={`mt-5 mb-4 ${mainStyle.titleBig} `}
+                                  className={`mt-3 mb-4 ml-2 text-left ${mainStyle.titleBig} `}
                                 >
                                   <h3>{feed.myTitle}</h3>
                                 </Card.Title>
                                 <Card.Img
                                   variant="top"
-                                  className={`rounded mx-auto d-block ${mainStyle.bg}`}
-                                  style={{
-                                    height: "auto",
-                                    width: "100%",
-                                    maxWidth: "850px",
-                                    position: "center",
-                                  }}
+                                  className={`rounded mx-auto d-block ${mainStyle.bg} ${mainStyle.imageProjectContent}`}
                                   src={feed.image}
                                 />
                                 <Card.Body>
                                   <Card.Text
                                     className={` text-left mt-1 mb-2 ${mainStyle.label}`}
                                   >
-                                    <p>Author: {feed.userId.username}</p>
+                                    Author: {feed.userId.username}
                                   </Card.Text>
-                                  <Card.Text className="text-left">
-                                    <p> {feed.description}</p>
+                                  <Card.Text
+                                    className={`  ${mainStyle.textJustify}`}
+                                  >
+                                    {feed.description}
                                   </Card.Text>
                                   {feed.link && (
-                                    <Button href={feed.link} variant="primary">
+                                    <Button
+                                      href={feed.link}
+                                      className={`${mainStyle.btnGradient}`}
+                                    >
                                       View more
                                     </Button>
                                   )}
@@ -185,6 +203,15 @@ class Home extends React.Component {
                     {/* end of project fetch */}
                     {this.state.categorySelected === "homeworks" && (
                       <>
+                        <Alert variant="primary" className="mt-2 ">
+                          {" "}
+                          <span className="text-center">
+                            <i>
+                              Check the homeworks provided from tutors. You can
+                              filter them by title or tutor name.
+                            </i>
+                          </span>{" "}
+                        </Alert>
                         {this.state.feedCategory.map((feed) => {
                           return (
                             <Col sm={12} md={10} key={`card-${feed._id}`}>
@@ -214,7 +241,9 @@ class Home extends React.Component {
                                   >
                                     Author: {feed.userId.username}
                                   </Card.Title>
-                                  <Card.Text className="text-left">
+                                  <Card.Text
+                                    className={`  ${mainStyle.textJustify}`}
+                                  >
                                     {feed.description}
                                   </Card.Text>
                                 </Card.Body>

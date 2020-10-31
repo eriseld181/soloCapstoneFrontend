@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import mainStyle from "../Component.module.css";
-export default function EditModal(props) {
-  const [homeworkTitle, setHomeworkTitle] = useState(props.homework.myTitle);
+// import mainStyle from "../Component.module.css";
+export default function EditModalNotes(props) {
+  const [noteTitle, setNoteTitle] = useState(props.note.myTitle);
 
-  const [homeworkDescription, setHomeworkDescription] = useState(
-    props.homework.description
+  const [noteDescription, setNoteDescription] = useState(
+    props.note.description
   );
-  const [myImage, setHomeworkImage] = useState("");
+  const [myImage, setNoteImage] = useState("");
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const EditHomeworkFetch = async () => {
+  const EditNotesFetch = async () => {
     const response = await fetch(
-      "http://localhost:5000/api/homeworks/" + props.homework._id,
+      "http://localhost:5000/api/notes/" + props.note._id,
       {
         method: "PUT",
         body: JSON.stringify({
-          myTitle: homeworkTitle,
-          description: homeworkDescription,
+          myTitle: noteTitle,
+          description: noteDescription,
         }),
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -31,9 +31,7 @@ export default function EditModal(props) {
       const image = new FormData();
       image.append("image", uploadImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/homeworks/" +
-          props.homework._id +
-          "/uploadImage",
+        "http://localhost:5000/api/notes/" + props.note._id + "/uploadImage",
         {
           method: "POST",
           body: image,
@@ -48,7 +46,7 @@ export default function EditModal(props) {
       } else {
         console.log("upload photo is not working");
       }
-      props.homeworkFetch();
+      props.noteFetch();
     }
   };
 
@@ -59,33 +57,26 @@ export default function EditModal(props) {
       onFocus={(e) => e.stopPropagation()}
       onMouseOver={(e) => e.stopPropagation()}
     >
-      <Button
-        className={`${mainStyle.btnGradient}`}
-        style={{ width: "100%" }}
-        onClick={handleShow}
-      >
+      <Button style={{ width: "100%" }} onClick={handleShow}>
         Edit
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Body className={`${mainStyle.cardDesignClean}`}>
+      <Modal style={{ color: "black" }} show={show} onHide={handleClose}>
+        <Modal.Body>
           <Form>
-            <Form.Group
-              controlId="formBasicName"
-              className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}
-            >
-              <Form.Label>Change Homework Title.</Form.Label>
+            <Form.Group controlId="formBasicName">
+              <Form.Label>Change notes Title.</Form.Label>
               <Form.Control
                 type="name"
-                value={homeworkTitle}
-                onChange={(e) => setHomeworkTitle(e.target.value)}
+                value={noteTitle}
+                onChange={(e) => setNoteTitle(e.target.value)}
                 placeholder="Enter A New Title"
               />
             </Form.Group>
             <Form.Label>Change the Description.</Form.Label>
             <Form.Control
-              value={homeworkDescription}
-              onChange={(e) => setHomeworkDescription(e.target.value)}
+              value={noteDescription}
+              onChange={(e) => setNoteDescription(e.target.value)}
               as="textarea"
               rows={3}
               placeholder="Enter a new Description..."
@@ -95,25 +86,25 @@ export default function EditModal(props) {
               <Form.File
                 id="exampleFormControlFile1"
                 label="Add A new Photo"
-                onChange={(e) => setHomeworkImage(e.target.files[0])}
+                onChange={(e) => setNoteImage(e.target.files[0])}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
 
-        <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
+        <Modal.Footer>
           <Button
-            className={`${mainStyle.btnGradient}`}
+            variant="secondary"
             onClick={handleClose}
             style={{ backgroundColor: "blue" }}
           >
-            Discard
+            Close
           </Button>
           <Button
-            className={`${mainStyle.btnGradient}`}
+            variant="primary"
             onClick={() => {
               handleClose();
-              EditHomeworkFetch();
+              EditNotesFetch();
             }}
             style={{ backgroundColor: "blue" }}
           >

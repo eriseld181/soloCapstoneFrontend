@@ -34,7 +34,7 @@ class Posts extends Component {
       credentials: "include",
     });
     const fetchedposts = await response.json();
-
+    console.log(fetchedposts);
     this.setState({ posts: fetchedposts });
   };
 
@@ -58,10 +58,11 @@ class Posts extends Component {
         <Container>
           {" "}
           <Row
-            className="justify-content-center mb-1 mt-3 "
+            className="justify-content-center mb-1 mt-3  "
             style={{ margin: "0px", padding: "0px" }}
           >
             <Col
+              className="mx-auto"
               xs={6}
               style={{
                 margin: "0px",
@@ -94,7 +95,7 @@ class Posts extends Component {
                     <Card.Body>
                       <Row>
                         {" "}
-                        <Col>
+                        <Col sm={7} md={9}>
                           <Image
                             variant="top"
                             className={`text-left  `}
@@ -109,79 +110,59 @@ class Posts extends Component {
                             {feed.userId.firstname} {feed.userId.lastname}
                           </span>
                         </Col>
-                        <Col xs={3} className="mr-4">
+                        <Col sm={4} md={3}>
                           {" "}
                           {/* End of profile name and photo */}
-                          <Card.Title
-                            className={` text-right ${mainStyle.titleBig} `}
+                          <Dropdown
+                            className={` ${mainStyle.dropdownToggle} ml-auto `}
                           >
-                            <Dropdown
-                              className={` ${mainStyle.dropdownToggle} `}
+                            <Dropdown.Toggle
+                              className={` ${mainStyle.dropdownToggle}  `}
+                              variant="primary"
+                              id="dropdown-basic"
                             >
-                              <Dropdown.Toggle
-                                style={{
-                                  border: "none",
-                                  boxShadow: "none",
-                                }}
-                                className={` ${mainStyle.dropdownToggle} ${mainStyle.bg}`}
-                                variant="primary"
-                                id="dropdown-basic"
-                              >
-                                <BsThreeDots style={{ fontSize: "35px" }} />
-                              </Dropdown.Toggle>
+                              <BsThreeDots
+                                className={`${mainStyle.menuIcon}    `}
+                              />
+                            </Dropdown.Toggle>
 
-                              <Dropdown.Menu
-                                className={`${mainStyle.bg}`}
-                                style={{
-                                  backgroundColor: "#0f1f26",
-                                }}
-                              >
-                                <Dropdown.Item
-                                  style={{
-                                    backgroundColor: "#0f1f26",
-                                  }}
-                                  className="text-right mb-2"
+                            <Dropdown.Menu>
+                              <Dropdown.Item className="text-right mb-2">
+                                <EditModalPosts
+                                  posts={feed}
+                                  postsFetch={this.postFetch}
+                                />
+                              </Dropdown.Item>
+                              <Dropdown.Item className="text-right mb-1">
+                                <Button
+                                  className={`${mainStyle.btnGradient}`}
+                                  onClick={() => this.postDelete(feed._id)}
+                                  style={{ width: "100%" }}
                                 >
-                                  <EditModalPosts
-                                    posts={feed}
-                                    postsFetch={this.postFetch}
-                                  />
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  className="text-right mb-1"
-                                  style={{
-                                    backgroundColor: "#0f1f26",
-                                  }}
-                                >
-                                  <Button
-                                    onClick={() => this.postDelete(feed._id)}
-                                    style={{ width: "100%" }}
-                                  >
-                                    Delete
-                                  </Button>
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
-                          </Card.Title>
+                                  Delete
+                                </Button>
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
                         </Col>
                       </Row>
-                      <Card.Text
-                        className={`text-left mt-1  ${mainStyle.text}`}
-                      >
+                      <Card.Text className={`text-left   ${mainStyle.text}`}>
                         {feed.myTitle}
                       </Card.Text>
+                      {feed.image && (
+                        <div style={{ width: "100%", height: "500px" }}>
+                          <Card.Img
+                            variant="top"
+                            className={`rounded mx-auto d-block ${mainStyle.bg}`}
+                            style={{
+                              height: "500px",
 
-                      <Card.Img
-                        variant="top"
-                        className={`rounded mx-auto d-block ${mainStyle.bg}`}
-                        style={{
-                          height: "auto",
-                          width: "700px",
-                          maxWidth: "100%",
-                          position: "center",
-                        }}
-                        src={feed.image}
-                      />
+                              objectFit: "cover",
+                            }}
+                            src={feed.image}
+                          />
+                        </div>
+                      )}
                     </Card.Body>
                   </Card>
                 );

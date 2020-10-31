@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Button, Card } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 export default function DefaultComponent(props) {
   return (
@@ -17,9 +17,6 @@ export default function DefaultComponent(props) {
           <Card.Text className={`${mainStyle.textLabel} `}>
             {props.text}
           </Card.Text>
-          <Button className={`mt-3 `} variant="primary">
-            Post Now
-          </Button>
         </Card.Body>
       </Card>
     </Container>

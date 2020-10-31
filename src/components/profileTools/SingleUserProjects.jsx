@@ -67,128 +67,133 @@ class Projects extends Component {
               />
             </Col>
           </Row>
-        </Container>
-        <Container>
-          {" "}
-          <Row className=" justify-content-center">
-            <Col sm={12} md={10}>
-              {this.state.projects && this.state.projects.length > 0 ? (
-                this.state.projects.map((project) => {
-                  return (
-                    <Card
-                      key={`card-${project._id}`}
-                      style={{ border: "0px" }}
-                      className={`mb-4 ${mainStyle.bg}`}
-                    >
-                      <Row>
-                        <Col>
-                          {" "}
-                          <Card.Title
-                            className={`mt-5 mb-4 ml-3 text-left ${mainStyle.titleBig} `}
+        </Container>{" "}
+        <Row
+          className=" justify-content-center"
+          style={{ margin: "0px", padding: "0px" }}
+        >
+          <Col sm={12} md={8}>
+            {this.state.projects && this.state.projects.length > 0 ? (
+              this.state.projects.map((project) => {
+                return (
+                  <Card
+                    key={`card-${project._id}`}
+                    style={{ border: "0px" }}
+                    className={`mb-4 ${mainStyle.bg}`}
+                  >
+                    <Row>
+                      <Col sm={9}>
+                        {" "}
+                        <h3 className={`  text-left  `}>{project.myTitle}</h3>
+                      </Col>
+                      <Col sm={3}>
+                        {" "}
+                        <Dropdown
+                          className={` ${mainStyle.dropdownToggle} ml-auto mr-2 `}
+                        >
+                          <Dropdown.Toggle
+                            style={{
+                              border: "none",
+                              boxShadow: "none",
+                            }}
+                            className={` ${mainStyle.dropdownToggle} ${mainStyle.bg}`}
+                            variant="primary"
+                            id="dropdown-basic"
                           >
-                            <h3>{project.myTitle}</h3>
-                          </Card.Title>
-                        </Col>
-                        <Col className="mr-4">
-                          {" "}
-                          <Card.Title
-                            className={`mt-5 mb-4 text-right ${mainStyle.titleBig} `}
+                            <BsThreeDots className={`${mainStyle.menuIcon} `} />
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu
+                            className={`${mainStyle.bg}`}
+                            style={{
+                              backgroundColor: "#0f1f26",
+                            }}
                           >
-                            <Dropdown
-                              className={` ${mainStyle.dropdownToggle} `}
+                            <Dropdown.Item
+                              style={{
+                                backgroundColor: "#0f1f26",
+                              }}
+                              className="text-right mb-2"
                             >
-                              <Dropdown.Toggle
-                                style={{
-                                  border: "none",
-                                  boxShadow: "none",
-                                }}
-                                className={` ${mainStyle.dropdownToggle} ${mainStyle.bg}`}
-                                variant="primary"
-                                id="dropdown-basic"
+                              <EditProjectModal
+                                projects={project}
+                                projectsFetch={this.projectfetch}
+                              />
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              className="text-right mb-1"
+                              style={{
+                                backgroundColor: "#0f1f26",
+                              }}
+                            >
+                              <Button
+                                className={`${mainStyle.btnGradient}`}
+                                onClick={() => this.projectDelete(project._id)}
+                                style={{ width: "100%" }}
                               >
-                                <BsThreeDots style={{ fontSize: "35px" }} />
-                              </Dropdown.Toggle>
+                                Delete
+                              </Button>
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </Col>
+                    </Row>
+                    {project.image && (
+                      <div
+                        style={
+                          {
+                            // width: "100%",
+                            // objectFit: "cover",
+                          }
+                        }
+                      >
+                        {" "}
+                        <Card.Img
+                          variant="top"
+                          className={`rounded d-block ${mainStyle.bg}`}
+                          style={{
+                            objectFit: "cover",
+                            height: "450px",
+                            objectPosition: "center",
+                          }}
+                          src={project.image}
+                        />
+                      </div>
+                    )}
 
-                              <Dropdown.Menu
-                                className={`${mainStyle.bg}`}
-                                style={{
-                                  backgroundColor: "#0f1f26",
-                                }}
-                              >
-                                <Dropdown.Item
-                                  style={{
-                                    backgroundColor: "#0f1f26",
-                                  }}
-                                  className="text-right mb-2"
-                                >
-                                  <EditProjectModal
-                                    projects={project}
-                                    projectsFetch={this.projectfetch}
-                                  />
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  className="text-right mb-1"
-                                  style={{
-                                    backgroundColor: "#0f1f26",
-                                  }}
-                                >
-                                  <Button
-                                    onClick={() =>
-                                      this.projectDelete(project._id)
-                                    }
-                                    style={{ width: "100%" }}
-                                  >
-                                    Delete
-                                  </Button>
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
-                          </Card.Title>
-                        </Col>
-                      </Row>
-
-                      <Card.Img
-                        variant="top"
-                        className={`rounded mx-auto d-block ${mainStyle.bg}`}
-                        style={{
-                          height: "auto",
-                          width: "100%",
-                          maxWidth: "890px",
-                          position: "center",
-                        }}
-                        src={project.image}
-                      />
+                    <Card.Body>
+                      <Card.Text
+                        className={`text-left ${mainStyle.textJustify}`}
+                      >
+                        {project.description}
+                      </Card.Text>
                       <Card.Body>
-                        <Card.Text className={`text-left`}>
-                          {project.description}
+                        <Card.Text className="text-center">
+                          <Button
+                            className={`${mainStyle.btnGradient}`}
+                            href={project.projectLink}
+                            variant="primary"
+                          >
+                            View Source Code
+                          </Button>
                         </Card.Text>
-                        <Card.Body>
-                          <Card.Text className="text-center">
-                            <Button
-                              href={project.projectLink}
-                              variant="primary"
-                            >
-                              View Source Code
-                            </Button>
-                          </Card.Text>
-                        </Card.Body>
                       </Card.Body>
-                    </Card>
-                  );
-                })
-              ) : (
-                <Row style={{ margin: "0px", padding: "0px" }}>
-                  {" "}
-                  <DefaultComponent
-                    img="./publication.png"
-                    title="There is nothing to see now!"
-                    text="All your Publications will be shown here. Add a new post..."
-                  />
-                </Row>
-              )}
-            </Col>
-          </Row>{" "}
-        </Container>
+                    </Card.Body>
+                  </Card>
+                );
+              })
+            ) : (
+              <Row style={{ margin: "0px", padding: "0px" }}>
+                {" "}
+                <DefaultComponent
+                  img="./publication.png"
+                  title="There is nothing to see now!"
+                  text="All your Projects will be shown here. Add a new project..."
+                />
+              </Row>
+            )}
+          </Col>
+        </Row>{" "}
       </>
     );
   }

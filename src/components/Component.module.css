@@ -1,3 +1,21 @@
+h3 {
+  color: #03b8f7;
+  font-size: 23px;
+  width: 80%;
+}
+.menuIcon {
+  font-size: 30px;
+  box-shadow: none;
+}
+.imputGroupSize {
+  width: 50% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.textJustify {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
 .cutText {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -33,13 +51,22 @@
 .example::-webkit-scrollbar {
   display: none;
 }
+.dropdownToggle {
+  background-color: none;
+  width: fit-content;
+  border: none;
+  box-shadow: none;
+  content: none !important;
+}
 .dropdownToggle:after {
   content: none !important;
   border: 0px !important;
+  box-shadow: none;
 }
-.dropdownToggle:active {
+.dropdownToggle:focus {
   content: none !important;
   border: 0px !important;
+  box-shadow: none;
 }
 .bgBlack {
   background-color: #111111 !important ;
@@ -123,6 +150,13 @@
   font-size: 15px;
 }
 /* for image design */
+.imageProjectContent {
+  height: auto !important;
+  width: auto;
+  max-width: 700px;
+  max-height: 350px;
+  position: center;
+}
 .lpImage {
   width: 10% !important;
   height: 10px !important;
@@ -175,22 +209,36 @@ a.webLinks {
 .cardDesignClean {
   background-color: #0f1f26 !important ;
   border: none !important;
+  border-color: none !important;
 }
-/* for buttons design */
-/* .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
-  .background: rgb(3, 184, 247) !important;
+.cardDesignClean:focus {
+  background-color: #0f1f26 !important ;
+  box-shadow: none !important;
+}
+
+.btnGradient {
+  background: rgb(3, 184, 247) !important;
   background: linear-gradient(
     60deg,
     rgba(3, 184, 247, 1) 0%,
     rgb(0 55 255) 100%
   ) !important;
-  border-radius: 5px !important;
+  border-radius: 2px !important;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
-} */
-.btnGradient {
+}
+.gradient {
   background: rgb(3, 184, 247) !important;
   background: linear-gradient(
+    60deg,
+    rgba(3, 184, 247, 1) 0%,
+    rgb(0 55 255) 100%
+  ) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
+}
+.textGradient {
+  color: rgb(3, 184, 247) !important;
+  color: linear-gradient(
     60deg,
     rgba(3, 184, 247, 1) 0%,
     rgb(0 55 255) 100%
@@ -210,4 +258,21 @@ a.webLinks {
 }
 .textCol {
   width: 10px !important;
+}
+@media only screen and (max-width: 600px) {
+  .menuIcon {
+    margin-top: -85px;
+  }
+  .imputGroupSize {
+    width: 100% !important;
+  }
+  h3 {
+    font-size: 23px;
+    width: 80%;
+  }
+
+  /* .imageProjectContent {
+    object-fit: cover;
+    margin: 0px;
+  } */
 }

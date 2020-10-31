@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-// import mainStyle from "../Component.module.css";
+import mainStyle from "../Component.module.css";
 
 export default function EditModalProject(props) {
-  const url = process.env.REACT_APP_URLLOCAL;
+  const url = process.env.REACT_APP_URL;
   const [projectTitle, setProjectTitle] = useState(props.projects.myTitle);
   const [projectDescription, setprojectDescription] = useState(
     props.projects.description
@@ -15,7 +15,7 @@ export default function EditModalProject(props) {
   const handleShow = () => setShow(true);
 
   const EditProjectFetch = async () => {
-    const response = await fetch(` ${url}api/projects/${props.projects._id}`, {
+    const response = await fetch(` ${url}/api/projects/${props.projects._id}`, {
       method: "PUT",
       body: JSON.stringify({
         myTitle: projectTitle,
@@ -57,12 +57,16 @@ export default function EditModalProject(props) {
       onFocus={(e) => e.stopPropagation()}
       onMouseOver={(e) => e.stopPropagation()}
     >
-      <Button style={{ width: "100%" }} onClick={handleShow}>
+      <Button
+        style={{ width: "100%" }}
+        onClick={handleShow}
+        className={`${mainStyle.btnGradient}`}
+      >
         Edit
       </Button>
 
-      <Modal style={{ color: "black" }} show={show} onHide={handleClose}>
-        <Modal.Body>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           <Form>
             <Form.Group controlId="formBasicName">
               <Form.Label>Change Project Title.</Form.Label>
@@ -93,23 +97,18 @@ export default function EditModalProject(props) {
           </Form>
         </Modal.Body>
 
-        <Modal.Footer>
-          <Button
-            variant="secondary"
-            onClick={handleClose}
-            style={{ backgroundColor: "blue" }}
-          >
+        <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
+          <Button className={`${mainStyle.btnGradient}`} onClick={handleClose}>
             Discard
           </Button>
           <Button
-            variant="primary"
+            className={`${mainStyle.btnGradient}`}
             onClick={() => {
               handleClose();
               EditProjectFetch();
             }}
-            style={{ backgroundColor: "blue" }}
           >
-            Update
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

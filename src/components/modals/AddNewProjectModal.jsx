@@ -91,12 +91,7 @@ function AddNewProjectModal(props) {
           </Col>{" "}
         </Button>
       </Row>
-      <Modal
-        className={`${mainStyle.cardDesignClean}`}
-        show={show}
-        onHide={handleClose}
-        animation={false}
-      >
+      <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
@@ -141,10 +136,13 @@ function AddNewProjectModal(props) {
           </Row>
         </Modal.Body>
         <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className={`${mainStyle.btnGradient}`} onClick={handleClose}>
             Discard
           </Button>
-          <Button variant="primary" onClick={(handleClose, AddNewPost)}>
+          <Button
+            className={`${mainStyle.btnGradient}`}
+            onClick={(handleClose, AddNewPost)}
+          >
             Publish
           </Button>
         </Modal.Footer>

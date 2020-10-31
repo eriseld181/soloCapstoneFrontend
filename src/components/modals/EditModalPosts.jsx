@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-// import mainStyle from "../Component.module.css";
+import mainStyle from "../Component.module.css";
 
 export default function EditModalPosts(props) {
   const url = process.env.REACT_APP_URLLOCAL;
@@ -52,12 +52,16 @@ export default function EditModalPosts(props) {
       onFocus={(e) => e.stopPropagation()}
       onMouseOver={(e) => e.stopPropagation()}
     >
-      <Button style={{ width: "100%" }} onClick={handleShow}>
+      <Button
+        className={`${mainStyle.btnGradient}`}
+        style={{ width: "100%" }}
+        onClick={handleShow}
+      >
         Edit
       </Button>
 
-      <Modal style={{ color: "black" }} show={show} onHide={handleClose}>
-        <Modal.Body>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           <Form>
             <Form.Group controlId="formBasicName">
               <Form.Label>Change the Description.</Form.Label>
@@ -79,23 +83,18 @@ export default function EditModalPosts(props) {
           </Form>
         </Modal.Body>
 
-        <Modal.Footer>
-          <Button
-            variant="secondary"
-            onClick={handleClose}
-            style={{ backgroundColor: "blue" }}
-          >
+        <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
+          <Button className={`${mainStyle.btnGradient}`} onClick={handleClose}>
             Discard
           </Button>
           <Button
-            variant="primary"
+            className={`${mainStyle.btnGradient}`}
             onClick={() => {
               handleClose();
               EditPostFetch();
             }}
-            style={{ backgroundColor: "blue" }}
           >
-            Update
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

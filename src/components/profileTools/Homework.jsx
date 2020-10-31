@@ -11,6 +11,10 @@ class Homeworks extends Component {
     homeworks: [],
   };
 
+  handleShow1 = (props) => {
+    props();
+  };
+
   homeworkFetch = async () => {
     const response = await fetch("http://localhost:5000/api/homeworks", {
       method: "GET",
@@ -57,118 +61,120 @@ class Homeworks extends Component {
               />
             </Col>
           </Row>
-        </Container>
-        <Container>
-          {" "}
-          <Row className=" justify-content-center">
-            <Col sm={12} md={10}>
-              {this.state.homeworks && this.state.homeworks.length > 0 ? (
-                this.state.homeworks.map((homework) => {
-                  return (
-                    <Card
-                      key={`card-${homework._id}`}
-                      style={{ border: "0px" }}
-                      className={`mb-4 ${mainStyle.bg}`}
-                    >
-                      <Row>
-                        <Col>
-                          {" "}
-                          <Card.Title
-                            className={`mt-5 mb-4 text-center ${mainStyle.titleBig} `}
+        </Container>{" "}
+        <Row
+          style={{ margin: "0px", padding: "0px" }}
+          className=" justify-content-center"
+        >
+          <Col sm={12} md={8}>
+            {this.state.homeworks && this.state.homeworks.length > 0 ? (
+              this.state.homeworks.map((homework) => {
+                return (
+                  <Card
+                    style={{ outline: "solid red 2px" }}
+                    key={`card-${homework._id}`}
+                    style={{ border: "0px" }}
+                    className={`mb-4 ${mainStyle.bg}`}
+                  >
+                    <Row>
+                      <Col sm={9}>
+                        {" "}
+                        <Card.Title
+                          className={`mt-2 ml-3 text-left ${mainStyle.titleBig} `}
+                        >
+                          <h3>{homework.myTitle}</h3>
+                        </Card.Title>
+                      </Col>
+                      <Col sm={3}>
+                        <Dropdown
+                          className={` ${mainStyle.dropdownToggle} ml-auto mr-2 `}
+                        >
+                          <Dropdown.Toggle
+                            className={` ${mainStyle.dropdownToggle}  `}
+                            variant="primary"
+                            id="dropdown-basic"
                           >
-                            <h3>{homework.myTitle}</h3>
-                          </Card.Title>
-                        </Col>
-                        <Col className="mr-3">
-                          {" "}
-                          <Card.Title
-                            className={`mt-5 mb-4 text-right ${mainStyle.titleBig} `}
+                            <BsThreeDots className={`${mainStyle.menuIcon} `} />
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu
+                            className={`${mainStyle.bg}`}
+                            style={{
+                              backgroundColor: "#0f1f26",
+                            }}
                           >
-                            <Dropdown
-                              className={` ${mainStyle.dropdownToggle} `}
+                            <Dropdown.Item
+                              style={{
+                                backgroundColor: "#0f1f26",
+                              }}
+                              className="text-right mb-2"
                             >
-                              <Dropdown.Toggle
-                                style={{
-                                  border: "none",
-                                  boxShadow: "none",
-                                }}
-                                className={` ${mainStyle.dropdownToggle} ${mainStyle.bg}`}
-                                variant="primary"
-                                id="dropdown-basic"
+                              <EditModalHomework
+                                homework={homework}
+                                homeworkFetch={this.homeworkFetch}
+                              />
+                            </Dropdown.Item>
+                            <Dropdown.Item
+                              className="text-right mb-1"
+                              style={{
+                                backgroundColor: "#0f1f26",
+                              }}
+                            >
+                              <Button
+                                className={`${mainStyle.btnGradient}`}
+                                onClick={() =>
+                                  this.homeworkDelete(homework._id)
+                                }
+                                style={{ width: "100%" }}
                               >
-                                <BsThreeDots style={{ fontSize: "35px" }} />
-                              </Dropdown.Toggle>
-
-                              <Dropdown.Menu
-                                className={`${mainStyle.bg}`}
-                                style={{
-                                  backgroundColor: "#0f1f26",
-                                }}
-                              >
-                                <Dropdown.Item
-                                  style={{
-                                    backgroundColor: "#0f1f26",
-                                  }}
-                                  className="text-right mb-2"
-                                >
-                                  <EditModalHomework
-                                    homework={homework}
-                                    homeworkFetch={this.homeworkFetch}
-                                  />
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  className="text-right mb-1"
-                                  style={{
-                                    backgroundColor: "#0f1f26",
-                                  }}
-                                >
-                                  <Button
-                                    onClick={() =>
-                                      this.homeworkDelete(homework._id)
-                                    }
-                                    style={{ width: "100%" }}
-                                  >
-                                    Delete
-                                  </Button>
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
-                          </Card.Title>
-                        </Col>
-                      </Row>
-
-                      <Card.Img
-                        variant="top"
-                        className={`rounded mx-auto d-block ${mainStyle.bg}`}
-                        style={{
-                          height: "auto",
-                          width: "100%",
-                          maxWidth: "890px",
-                          position: "center",
-                        }}
-                        src={homework.image}
-                      />
-                      <Card.Body>
-                        <Card.Text className=" text-left">
-                          {homework.description}
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
-                  );
-                })
-              ) : (
-                <Row style={{ margin: "0px", padding: "0px" }}>
-                  {" "}
-                  <DefaultComponent
-                    img="./publication.png"
-                    title="There is nothing to see now!"
-                    text="All your Publications will be shown here. Add a new post..."
-                  />
-                </Row>
-              )}{" "}
-            </Col>
-          </Row>
-        </Container>
+                                Delete
+                              </Button>
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </Col>
+                    </Row>
+                    <Card.Body>
+                      <Card.Text className={` ${mainStyle.textJustify}`}>
+                        {homework.description}
+                      </Card.Text>
+                      {homework.image && (
+                        <div
+                          style={{
+                            objectFit: "cover",
+                            width: "100%",
+                          }}
+                        >
+                          {" "}
+                          <Card.Img
+                            variant="top"
+                            className={`rounded d-block ${mainStyle.bg}`}
+                            style={{
+                              objectFit: "cover",
+                              height: "450px",
+                              objectPosition: "center",
+                            }}
+                            src={homework.image}
+                          />
+                        </div>
+                      )}
+                    </Card.Body>
+                  </Card>
+                );
+              })
+            ) : (
+              <Row style={{ margin: "0px", padding: "0px" }}>
+                {" "}
+                <DefaultComponent
+                  img="./publication.png"
+                  title="There is nothing to see now!"
+                  text="All your Publications will be shown here. Add a new post..."
+                  show={this.handleShow}
+                />
+              </Row>
+            )}{" "}
+          </Col>
+        </Row>
       </>
     );
   }
