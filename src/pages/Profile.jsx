@@ -5,7 +5,7 @@ import { Tab, Tabs } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 import SingleUserProjects from "../components/profileTools/SingleUserProjects";
-import Homework from "../components/profileTools/Homework";
+import MyHomework from "../components/profileTools/MyHomework";
 import Notes from "../components/profileTools/Notes";
 import MyPosts from "../components/profileTools/myPosts";
 import Students from "../components/profileTools/Students";
@@ -53,7 +53,7 @@ class Profile extends React.Component {
           variant="pills"
           transition={false}
           className={`justify-content-center `}
-          defaultActiveKey="notes"
+          defaultActiveKey="myPosts"
           id="uncontrolled-tab-example"
         >
           <Tab
@@ -65,14 +65,17 @@ class Profile extends React.Component {
           >
             <MyPosts />
           </Tab>
-          <Tab
-            eventKey="homeworks"
-            className={`justify-content-center `}
-            title="Homeworks"
-          >
-            {" "}
-            <Homework />
-          </Tab>
+          {this.state.user.role && this.state.user.role === "tutor" && (
+            <Tab
+              eventKey="homeworks"
+              className={`justify-content-center `}
+              title="MyHomework"
+            >
+              {" "}
+              <MyHomework />
+            </Tab>
+          )}
+
           <Tab eventKey="notes" title="Notes">
             {" "}
             <Notes />
@@ -80,9 +83,11 @@ class Profile extends React.Component {
           <Tab eventKey="projects" title="Projects">
             <SingleUserProjects />
           </Tab>
-          <Tab eventKey="students" title="Students">
-            <Students />
-          </Tab>
+          {this.state.user.role && this.state.user.role === "tutor" && (
+            <Tab eventKey="students" title="Students">
+              <Students />
+            </Tab>
+          )}
         </Tabs>
 
         {/* <Footer /> */}

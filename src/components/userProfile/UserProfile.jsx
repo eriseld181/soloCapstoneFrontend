@@ -8,6 +8,7 @@ import { BiImageAdd } from "react-icons/bi";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
+import { ImUserTie } from "react-icons/im";
 
 class UserProfile extends Component {
   render() {
@@ -37,6 +38,7 @@ class UserProfile extends Component {
         <Row className="justify-content-center mr-1 ">
           {" "}
           <Image
+            style={{ objectFit: "cover" }}
             className={` mb-4  ${mainStyle.profilePhoto} `}
             src={this.props.image}
             roundedCircle
@@ -112,7 +114,17 @@ class UserProfile extends Component {
             </Row>
             <Row className={` ml-3 mr-3 justify-content-center `}>
               <Col xs={10} className={`mb-2 text-left ${mainStyle.textLabel}`}>
-                <FaUserGraduate className="mb-1 mr-2" /> {this.props.role}
+                {this.props.role && this.props.role === "student" ? (
+                  <span>
+                    {" "}
+                    <FaUserGraduate className="mb-1 mr-2" /> {this.props.role}
+                  </span>
+                ) : (
+                  <span>
+                    {" "}
+                    <ImUserTie className="mb-1 mr-2" /> {this.props.role}
+                  </span>
+                )}
               </Col>
             </Row>
           </Col>

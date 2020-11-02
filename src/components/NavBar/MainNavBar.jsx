@@ -48,7 +48,7 @@ function MainNavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {props.isLoggedIn && (
+            {!props.isLoggedIn && (
               <Nav>
                 {/* <AiFillHome className={` ${styles.icons}`} /> */}
                 <Link className="mr-3 pt-2" to="/home">
@@ -57,7 +57,7 @@ function MainNavBar(props) {
               </Nav>
             )}
 
-            {props.isLoggedIn && (
+            {!props.isLoggedIn && (
               <Nav>
                 {/* <FaUser className={` ${styles.icons}`} /> */}
                 <Link className="mr-3 pt-2" to="/profile">
@@ -91,11 +91,12 @@ function MainNavBar(props) {
                 </Link>
               </Nav>
             )}
-            {props.isLoggedIn && (
+            {!props.isLoggedIn && (
               <Nav>
                 <Button
-                  className={`${styles.text}`}
+                  className={`${styles.text} `}
                   style={{
+                    boxShadow: "none",
                     backgroundColor: "#111111",
                     border: "none",
                   }}

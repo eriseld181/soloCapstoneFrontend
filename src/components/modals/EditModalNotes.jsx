@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-// import mainStyle from "../Component.module.css";
+import mainStyle from "../Component.module.css";
 export default function EditModalNotes(props) {
   const [noteTitle, setNoteTitle] = useState(props.note.myTitle);
 
@@ -57,12 +57,16 @@ export default function EditModalNotes(props) {
       onFocus={(e) => e.stopPropagation()}
       onMouseOver={(e) => e.stopPropagation()}
     >
-      <Button style={{ width: "100%" }} onClick={handleShow}>
+      <Button
+        className={`${mainStyle.btnGradient}`}
+        style={{ width: "100%" }}
+        onClick={handleShow}
+      >
         Edit
       </Button>
 
-      <Modal style={{ color: "black" }} show={show} onHide={handleClose}>
-        <Modal.Body>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           <Form>
             <Form.Group controlId="formBasicName">
               <Form.Label>Change notes Title.</Form.Label>
@@ -92,13 +96,13 @@ export default function EditModalNotes(props) {
           </Form>
         </Modal.Body>
 
-        <Modal.Footer>
+        <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
           <Button
             variant="secondary"
             onClick={handleClose}
-            style={{ backgroundColor: "blue" }}
+            className={`${mainStyle.btnGradient}`}
           >
-            Close
+            Discard
           </Button>
           <Button
             variant="primary"
@@ -106,7 +110,7 @@ export default function EditModalNotes(props) {
               handleClose();
               EditNotesFetch();
             }}
-            style={{ backgroundColor: "blue" }}
+            className={`${mainStyle.btnGradient}`}
           >
             Save Changes
           </Button>

@@ -95,14 +95,13 @@ class Home extends React.Component {
                 <InputGroup className={` ${mainStyle.imputGroupSize}  `}>
                   <DropdownButton
                     //  error1 not changing the color
-                    className={`   ${mainStyle.btnGradient} `}
+                    className={`   ${mainStyle.btnGradient} mb-3`}
                     as={InputGroup.Prepend}
                     id="dropdown-basic-button"
                     title={
                       this.state.categorySelected.slice(0, 1).toUpperCase() +
                       this.state.categorySelected.slice(1)
                     }
-                    className="mb-3"
                     style={{ color: "black" }}
                   >
                     <Dropdown.Item

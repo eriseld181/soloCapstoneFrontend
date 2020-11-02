@@ -7,7 +7,7 @@ import mainStyle from "../Component.module.css";
 function AddNewNoteModal(props) {
   const [newNoteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
-  const [myImage, setImage] = useState("");
+  const [myImage] = useState("");
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -92,12 +92,7 @@ function AddNewNoteModal(props) {
           </Col>{" "}
         </Button>
       </Row>
-      <Modal
-        className={`${mainStyle.cardDesignClean}`}
-        show={show}
-        onHide={handleClose}
-        animation={false}
-      >
+      <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
@@ -109,7 +104,7 @@ function AddNewNoteModal(props) {
               {" "}
               <Form>
                 <Form.Group controlId="formBasicName">
-                  <Form.Label>Change Note Title.</Form.Label>
+                  <Form.Label>Write the Note Title.</Form.Label>
                   <Form.Control
                     type="name"
                     value={newNoteTitle}
@@ -117,7 +112,7 @@ function AddNewNoteModal(props) {
                     placeholder="Enter A New Title"
                   />
                 </Form.Group>
-                <Form.Label>Change the Description.</Form.Label>
+                <Form.Label>Enter the Description.</Form.Label>
                 <Form.Control
                   value={noteDescription}
                   onChange={(e) => setNoteDescription(e.target.value)}
@@ -126,59 +121,24 @@ function AddNewNoteModal(props) {
                   placeholder="Enter a new Description..."
                 />
                 <Form.Group>
-                  <Form.File
+                  {/* <Form.File
                     id="exampleFormControlFile1"
                     label="Add A New Photo(Recomended size: 500x300px)"
                     onChange={(e) => setImage(e.target.files[0])}
-                  />
+                  /> */}
                 </Form.Group>
               </Form>
-              {/* <Row className="justify-content-right ml-3">
-                {" "}
-                <Button onChange={(e) => setImage(e.target.files[0])}>
-                  {" "}
-                  <Col xs={12} className={`text-left ml-4 `}>
-                    {" "}
-                    <BsUpload
-                      className={`mt-2 mb-2 ml-2 text-center ${mainStyle.mediumTitleBlue}`}
-                    />{" "}
-                  </Col>
-                  <Col xs={12}>
-                    {" "}
-                    <p
-                      className={` text-left ${mainStyle.smallTitleBlue}`}
-                      style={{}}
-                    >
-                      {" "}
-                      Upload a photo
-                    </p>{" "}
-                  </Col>{" "}
-                </Button>
-              </Row> */}
-            </Col>{" "}
-            <Col
-              xs={3}
-              className="mt-2"
-              // style={{ outline: "1px solid red" }}
-            >
-              {" "}
-              {/* <Button
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  fontSize: "17px",
-                }}
-              >
-                Post
-              </Button> */}
             </Col>{" "}
           </Row>
         </Modal.Body>
         <Modal.Footer className={`${mainStyle.cardDesignClean}`}>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className={`${mainStyle.btnGradient}`} onClick={handleClose}>
             Discard
           </Button>
-          <Button variant="primary" onClick={(handleClose, AddNewPost)}>
+          <Button
+            className={`${mainStyle.btnGradient}`}
+            onClick={(handleClose, AddNewPost)}
+          >
             Publish
           </Button>
         </Modal.Footer>

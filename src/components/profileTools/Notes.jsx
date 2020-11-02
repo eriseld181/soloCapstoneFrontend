@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Col, Row, Container, Dropdown, Button } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
+//import { Link } from "react-router-dom";
 import mainStyle from "../../components/Component.module.css";
 import Pagination from "../Pagination";
 import AddNewNoteModal from "../modals/AddNewNoteModal";
@@ -21,7 +22,7 @@ function Notes() {
 
   const noteFetch = async () => {
     setLoading(true);
-    const response = await fetch(`${url}/api/notes`, {
+    const response = await fetch(`${url}/api/users/me/notes`, {
       method: "GET",
       credentials: "include",
     });
@@ -81,13 +82,19 @@ function Notes() {
         </Row>
       </Container>
       <Row
-        style={{ margin: "0px", padding: "0px" }}
-        className=" text-left mt-5"
+        style={{
+          width: "95%",
+          margin: "0px",
+          padding: "0px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          // outline: "solid red 2px",
+        }}
       >
         {currentnotes && currentnotes.length > 0 ? (
           currentnotes.map((note) => {
             return (
-              <Col xs={6} key={`card-${note._id}`}>
+              <Col xs={12} md={6} key={`card-${note._id}`}>
                 {" "}
                 <Card
                   className=" mb-1 "
@@ -98,14 +105,11 @@ function Notes() {
                 >
                   <Card.Body>
                     <Row>
-                      <Col sm={9} style={{ outline: "solid red 1px" }}>
+                      <Col>
                         {" "}
-                        <Card.Title
-                          // style={{ outline: "solid blue 2px" }}
-                          className={`mt-2 ml-3 text-left ${mainStyle.titleBig} `}
-                        >
-                          <h3>{note.myTitle}</h3>
-                        </Card.Title>
+                        <h3 className={`mt-2 ml-3 text-left `}>
+                          {note.myTitle}
+                        </h3>
                       </Col>
                       <Col sm={3}>
                         {" "}
@@ -121,7 +125,7 @@ function Notes() {
                             variant="primary"
                             id="dropdown-basic"
                           >
-                            <BsThreeDots style={{ fontSize: "35px" }} />
+                            <BsThreeDots className={`${mainStyle.menuIcon} `} />
                           </Dropdown.Toggle>
 
                           <Dropdown.Menu
@@ -148,6 +152,7 @@ function Notes() {
                               }}
                             >
                               <Button
+                                className={`${mainStyle.btnGradient}`}
                                 onClick={() => noteDelete(note._id)}
                                 style={{ width: "100%" }}
                               >
@@ -158,15 +163,17 @@ function Notes() {
                         </Dropdown>
                       </Col>
                     </Row>
+                    <Row>
+                      <Col xs={12}>
+                        {" "}
+                        <Card.Text
+                          className={` ${mainStyle.cutText} ${mainStyle.textJustify}  `}
+                        >
+                          {note.description}
+                        </Card.Text>
+                      </Col>
+                    </Row>
 
-                    <Card.Title>
-                      {/* Created By: {note.userId.username} */}
-                    </Card.Title>
-                    <Card.Text
-                      className={` ${mainStyle.cutText} ${mainStyle.textJustify}  `}
-                    >
-                      {note.description}
-                    </Card.Text>
                     {/* <Card.Img
                       className=" mx-auto"
                       variant="top"

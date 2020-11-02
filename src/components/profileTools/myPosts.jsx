@@ -102,6 +102,7 @@ class Posts extends Component {
                             style={{
                               height: "50px",
                               width: "50px",
+                              objectFit: "cover",
                             }}
                             src={feed.userId.profilePhoto}
                             roundedCircle

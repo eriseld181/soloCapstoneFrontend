@@ -19,12 +19,14 @@ export default function MainPage() {
         <Row>
           <Col sm={12} md={6} id="about" className="text-left pr-5 pb-4 ">
             <h1 className={`${mainStyles.title} mb-5`}>What is E-Tech?</h1>
-            <p className={`${mainStyles.textLabel} mb-3 mt-3`}>
+            <p
+              className={`${mainStyles.textLabel} ${mainStyles.textJustify} mb-3 mt-3`}
+            >
               E-Tech was founded in August 15 2020. Company purpose is to
               provide high quality services for every IT course online.We want
               to help students and tutors to work together in one environment
               will all the necessary tools to make their process comfortable and
-              effective. ...
+              effective...
             </p>
             <div className="text-center pt-3 mb-4">
               <Link

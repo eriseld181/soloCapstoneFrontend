@@ -3,7 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 
 export default function EditModalPosts(props) {
-  const url = process.env.REACT_APP_URLLOCAL;
+  const url = process.env.REACT_APP_URL;
   const [postTitle, setPostTitle] = useState(props.posts.myTitle);
 
   const [myImage, setPostImage] = useState("");
@@ -13,7 +13,7 @@ export default function EditModalPosts(props) {
   const handleShow = () => setShow(true);
 
   const EditPostFetch = async () => {
-    const response = await fetch(` ${url}api/posts/${props.posts._id}`, {
+    const response = await fetch(` ${url}/api/posts/${props.posts._id}`, {
       method: "PUT",
       body: JSON.stringify({
         myTitle: postTitle,
