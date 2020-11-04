@@ -16,24 +16,38 @@ import Cookie from "js-cookie";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainNavBar from "./components/NavBar/MainNavBar";
 function App() {
-  const [Check, setCheck] = useState(true);
   const [CheckActive, setCheckActive] = useState(false);
+  const [myNavBarEmpty, setMyNavBarEmpty] = useState(false);
+
+  const [Check, setCheck] = useState(true);
   const myCheck = async () => {
-    if ((Cookie.get = "activeL")) {
+    const response = await fetch("http://localhost:5000/api/users/me/", {
+      method: "GET",
+      credentials: "include",
+    });
+    if (response.ok) {
       setCheck(false);
       setCheckActive(true);
-    } else if ((Cookie.get = "")) {
+      setMyNavBarEmpty(true);
+    } else {
       setCheck(true);
       setCheckActive(false);
+      setMyNavBarEmpty(false);
     }
   };
+
   useEffect(() => {
     myCheck();
   }, []);
   return (
     <>
       <Router>
-        <MainNavBar Check={Check} CheckActive={CheckActive} myCheck={myCheck} />
+        <MainNavBar
+          Check={Check}
+          CheckActive={CheckActive}
+          myCheck={myCheck}
+          myNavBarEmpty={myNavBarEmpty}
+        />
 
         <Switch>
           <Route path="/" exact component={MainPage} />

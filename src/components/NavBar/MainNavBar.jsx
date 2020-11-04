@@ -14,12 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 function MainNavBar(props) {
-  // useEffect(() => {
-  //   myCheck();
-
-  //   // if cookie is valid => set Login
-  // }, []);
-
   const logOut = async () => {
     const result = await fetch("http://localhost:5000/api/users/logout", {
       method: "POST",
@@ -33,7 +27,7 @@ function MainNavBar(props) {
       props.myCheck();
     }
   };
-  // console.log((Cookie.get = "activeL"));
+  useEffect(() => props.isLoggedIn, [props.isLoggedIn]);
 
   return (
     <>
@@ -65,7 +59,6 @@ function MainNavBar(props) {
                 </Link>
               </Nav>
             )}
-
             {props.CheckActive && (
               <Nav>
                 {/* <FaUser className={` ${styles.icons}`} /> */}
@@ -75,7 +68,6 @@ function MainNavBar(props) {
                 </Link>
               </Nav>
             )}
-
             {props.Check && (
               <Nav>
                 <Link className="mr-3  pt-2" to="about">
@@ -89,7 +81,7 @@ function MainNavBar(props) {
                   Contact
                 </Link>{" "}
               </Nav>
-            )}
+            )}{" "}
           </Nav>
           <Form inline>
             {props.Check && (

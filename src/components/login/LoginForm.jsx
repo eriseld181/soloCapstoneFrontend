@@ -20,10 +20,12 @@ function LoginForm(props) {
 
   const userLogin = async (e) => {
     const url = process.env.REACT_APP_URL;
+
     const result = await fetch(`${url}/api/users/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       credentials: "include",
+
       headers: new Headers({
         "Content-Type": "application/json",
       }),
@@ -40,7 +42,7 @@ function LoginForm(props) {
       setLink(!link);
     }
   };
-  console.log(props.isLoggedIn[0], "hello");
+
   return (
     <div>
       <Card className={`${styles.bg}`}>
