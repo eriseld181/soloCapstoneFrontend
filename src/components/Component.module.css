@@ -251,10 +251,9 @@ a.webLinks {
   background-color: black;
 }
 .myfooter {
-  position: absolute;
-  bottom: 0;
+  background-color: #070a1d;
+
   width: 100%;
-  height: 2.5rem; /* Footer height */
 }
 .textCol {
   width: 10px !important;

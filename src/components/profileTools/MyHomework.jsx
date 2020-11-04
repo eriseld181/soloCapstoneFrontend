@@ -16,10 +16,13 @@ class MyHomework extends Component {
   };
 
   homeworkFetch = async () => {
-    const response = await fetch("http://localhost:5000/api/homeworks", {
-      method: "GET",
-      credentials: "include",
-    });
+    const response = await fetch(
+      "http://localhost:5000/api/users/me/homeworks",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
     const fetchedhomeworks = await response.json();
 
     this.setState({ homeworks: fetchedhomeworks });
@@ -140,7 +143,6 @@ class MyHomework extends Component {
                       {homework.image && (
                         <div
                           style={{
-                            objectFit: "cover",
                             width: "100%",
                           }}
                         >

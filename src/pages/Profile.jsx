@@ -69,7 +69,7 @@ class Profile extends React.Component {
             <Tab
               eventKey="homeworks"
               className={`justify-content-center `}
-              title="MyHomework"
+              title="Homework"
             >
               {" "}
               <MyHomework />

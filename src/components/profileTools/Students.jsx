@@ -47,21 +47,25 @@ export default class Students extends Component {
           {this.state.allUsers.users &&
             this.state.allUsers.users.map((user, i) => {
               return (
-                <tbody key={`card-${user._id}`}>
-                  <tr>
-                    <td>{i + 1}</td>
-                    <td>
-                      {user.firstname} {user.lastname}
-                    </td>
-                    <td>{user.role}</td>
-                    <td>{user.github}</td>
-                    <td>{user.linkedin}</td>
-                    <td>{user.portfolio}</td>
-                    <td className="d-flex justify-content-between">
-                      {user.email} <MdEmail className="mt-1" />
-                    </td>
-                  </tr>
-                </tbody>
+                <>
+                  {user.role && user.role === "student" && (
+                    <tbody key={`card-${user._id}`}>
+                      <tr>
+                        <td>{i + 1}</td>
+                        <td>
+                          {user.firstname} {user.lastname}
+                        </td>
+                        <td>{user.role}</td>
+                        <td>{user.github}</td>
+                        <td>{user.linkedin}</td>
+                        <td>{user.portfolio}</td>
+                        <td className="d-flex justify-content-between">
+                          {user.email} <MdEmail className="mt-1" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  )}
+                </>
               );
             })}
         </Table>

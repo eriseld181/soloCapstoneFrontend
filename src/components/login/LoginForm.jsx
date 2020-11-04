@@ -8,9 +8,10 @@ import mainStyle from "../Component.module.css";
 
 import { connect } from "react-redux";
 const mapStateToProps = (state) => state;
-const mapDispatchToProps = (dispatch) => ({
-  toggleLogin: () => dispatch({ type: "TOGGLE_LOGIN", payload: true }),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   toggleLogin: () => dispatch({ type: "TOGGLE_LOGIN", payload: true }),
+// toggleLogout: () => dispatch({ type: "TOGGLE_LOGOUT", payload: true }),
+//});
 
 function LoginForm(props) {
   const [email, setEmail] = useState("");
@@ -29,14 +30,17 @@ function LoginForm(props) {
     });
     if (result.ok) {
       setLink(link);
-      props.toggleLogin();
+      props.myCheck();
+      // props.toggleLogin();
+
+      // props.toggleLogout();
 
       props.history.push("/home");
     } else {
       setLink(!link);
     }
   };
-
+  console.log(props.isLoggedIn[0], "hello");
   return (
     <div>
       <Card className={`${styles.bg}`}>
@@ -119,6 +123,4 @@ function LoginForm(props) {
   );
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(LoginForm)
-);
+export default withRouter(connect(mapStateToProps)(LoginForm));

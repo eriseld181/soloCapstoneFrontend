@@ -10,13 +10,16 @@ import { SiLinkedin } from "react-icons/si";
 
 const Footer = () => (
   <>
-    <Row
-      style={{ margin: "0px", padding: "0px" }}
-      className={`text-center mt-5 pt-3  mb-0 ${mainStyle.bgBlack} $`}
+    {/* <Row
+      style={{
+        margin: "0px",
+        padding: "0px",
+      }}
+      className={`text-center mt-5 pt-3  mb-0 ${mainStyle.myfooter} $`}
     >
       <Col xs={{ span: 6, offset: 3 }}>
         <Row>
-          <Col xs={12} className="text-left mb-2">
+          <Col xs={12} className={`text-left mb-2 `}>
             <i className="fa fa-facebook footer-icon"></i>
             <i className="fa fa-instagram footer-icon"></i>
             <i className="fa fa-twitter footer-icon"></i>
@@ -36,12 +39,7 @@ const Footer = () => (
                 </p>
                 <p>
                   <Link to="/home" className={`  ${mainStyle.webLinks}`}>
-                    Home
-                  </Link>
-                </p>
-                <p>
-                  <Link to="/profile" className={`  ${mainStyle.webLinks}`}>
-                    Profile
+                    About
                   </Link>
                 </p>
               </Col>
@@ -52,26 +50,13 @@ const Footer = () => (
               <Col xs={12} className="footer-links">
                 <p>
                   <Link to="/profile/hw" className={`  ${mainStyle.webLinks}`}>
-                    menu 1
+                    Home
                   </Link>
                 </p>
                 <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 2
-                  </a>
-                </p>
-                <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 3
-                  </a>
+                  <Link to="/home" className={`  ${mainStyle.webLinks}`}>
+                    Profile
+                  </Link>
                 </p>
               </Col>
             </Row>
@@ -80,31 +65,14 @@ const Footer = () => (
             <Row>
               <Col xs={12} className="footer-links">
                 <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 4
-                  </a>
+                  <Link to="/profile/hw" className={`  ${mainStyle.webLinks}`}>
+                    Contact Us
+                  </Link>
                 </p>
                 <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 5
-                  </a>
-                </p>
-                <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 6
-                  </a>
+                  <Link to="/home" className={`  ${mainStyle.webLinks}`}>
+                    How to use
+                  </Link>
                 </p>
               </Col>
             </Row>
@@ -113,31 +81,14 @@ const Footer = () => (
             <Row>
               <Col xs={12} className="footer-links">
                 <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 7
-                  </a>
+                  <Link to="/profile/hw" className={`  ${mainStyle.webLinks}`}>
+                    Contact Us
+                  </Link>
                 </p>
                 <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 8
-                  </a>
-                </p>
-                <p>
-                  <a
-                    className={`  ${mainStyle.webLinks}`}
-                    href="/"
-                    alt="footer link"
-                  >
-                    menu 9
-                  </a>
+                  <Link to="/home" className={`  ${mainStyle.webLinks}`}>
+                    How to use
+                  </Link>
                 </p>
               </Col>
             </Row>
@@ -147,8 +98,8 @@ const Footer = () => (
           <Col xs={12} className="text-left mb-2"></Col>
         </Row>
       </Col>
-    </Row>
-    <Row style={{ backgroundColor: "black", margin: "0px", padding: "0px" }}>
+    </Row> */}
+    <Row style={{ backgroundColor: "#070a1d", margin: "0px", padding: "0px" }}>
       <Col xs={4} className="text-center mb-2 mt-2 "></Col>
       <Col xs={4} className="text-center mb-2 mt-2 ">
         &copy; {new Date().getFullYear()} Copyright:{" "}

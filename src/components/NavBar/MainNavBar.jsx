@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { Nav, Navbar, Image, Form, Button } from "react-bootstrap";
 import styles from "./Navbar.module.css";
@@ -10,9 +10,16 @@ import { connect } from "react-redux";
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleLogin: () => dispatch({ type: "TOGGLE_LOGIN", payload: false }),
+  toggleLogin: (data) => dispatch({ type: "TOGGLE_LOGIN", payload: data }),
 });
+
 function MainNavBar(props) {
+  // useEffect(() => {
+  //   myCheck();
+
+  //   // if cookie is valid => set Login
+  // }, []);
+
   const logOut = async () => {
     const result = await fetch("http://localhost:5000/api/users/logout", {
       method: "POST",
@@ -23,15 +30,17 @@ function MainNavBar(props) {
 
     if (result.ok) {
       props.history.push("/");
-      props.toggleLogin();
+      props.myCheck();
     }
   };
+  // console.log((Cookie.get = "activeL"));
 
   return (
     <>
       <Navbar
-        variant="dark"
-        className={` ${styles.bg} ${styles.text}`}
+        variant="light"
+        style={{ backgroundColor: "#070a1d" }}
+        className={`  ${styles.text}`}
         expand="lg"
       >
         <Navbar.Brand>
@@ -48,7 +57,7 @@ function MainNavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {!props.isLoggedIn && (
+            {props.CheckActive && (
               <Nav>
                 {/* <AiFillHome className={` ${styles.icons}`} /> */}
                 <Link className="mr-3 pt-2" to="/home">
@@ -57,7 +66,7 @@ function MainNavBar(props) {
               </Nav>
             )}
 
-            {!props.isLoggedIn && (
+            {props.CheckActive && (
               <Nav>
                 {/* <FaUser className={` ${styles.icons}`} /> */}
                 <Link className="mr-3 pt-2" to="/profile">
@@ -67,14 +76,14 @@ function MainNavBar(props) {
               </Nav>
             )}
 
-            {!props.isLoggedIn && (
+            {props.Check && (
               <Nav>
                 <Link className="mr-3  pt-2" to="about">
                   About
                 </Link>
               </Nav>
             )}
-            {!props.isLoggedIn && (
+            {props.Check && (
               <Nav>
                 <Link className="mr-3 pt-2" to="/contact">
                   Contact
@@ -83,7 +92,7 @@ function MainNavBar(props) {
             )}
           </Nav>
           <Form inline>
-            {!props.isLoggedIn && (
+            {props.Check && (
               <Nav>
                 <Link to="/login">
                   <AiFillLock className={` ${styles.icons}`} />
@@ -91,7 +100,7 @@ function MainNavBar(props) {
                 </Link>
               </Nav>
             )}
-            {!props.isLoggedIn && (
+            {props.CheckActive && (
               <Nav>
                 <Button
                   className={`${styles.text} `}
