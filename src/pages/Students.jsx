@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { MdEmail } from "react-icons/md";
-import mainStyle from "../Component.module.css";
+import mainStyle from "../components/Component.module.css";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 export default class Students extends Component {
   state = {
@@ -43,21 +43,13 @@ export default class Students extends Component {
               >
                 Full Name
               </Th>
-              <Th
-                className={` ${mainStyle.tableBorder}  ${mainStyle.clearSpaces}`}
-              >
-                Role
-              </Th>
+
               <Th
                 className={`   ${mainStyle.tableBorder}  ${mainStyle.clearSpaces}`}
               >
                 GitHub Link
               </Th>
-              <Th
-                className={`    ${mainStyle.tableBorder}  ${mainStyle.clearSpaces}`}
-              >
-                LinkedIn
-              </Th>
+
               <Th
                 className={`   ${mainStyle.tableBorder}  ${mainStyle.clearSpaces}`}
               >
@@ -82,54 +74,64 @@ export default class Students extends Component {
                             {index + 1}
                           </p>
                         </Td>
-                        <Td className={` ${mainStyle.tableBorder} `}>
-                          <p className={` ${mainStyle.postText} `}>
-                            {user.firstname} {user.lastname}
-                          </p>
+                        <Td
+                          className={` ${mainStyle.tableBorder} ${mainStyle.postText} `}
+                        >
+                          {user.firstname} {user.lastname}
                         </Td>
-                        <Td className={` ${mainStyle.tableBorder} `}>
+                        {/* <Td className={` ${mainStyle.tableBorder} `}>
                           <p className={` ${mainStyle.postText} `}>
                             {user.role}
                           </p>
-                        </Td>
-                        <Td className={` ${mainStyle.tableBorder} `}>
-                          <p className={` ${mainStyle.postText} `}>
-                            {user.github}
-                          </p>
-                        </Td>
-                        <Td className={` ${mainStyle.tableBorder} `}>
-                          <p className={` ${mainStyle.postText} `}>
-                            {" "}
-                            <a
-                              href={user.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              linkedin.com/in/{user.firstname}
-                            </a>
-                          </p>{" "}
-                        </Td>
-                        <Td className={` ${mainStyle.tableBorder} `}>
-                          <p className={` ${mainStyle.postText} `}>
-                            {" "}
-                            <a
-                              href={user.portfolio}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {user.portfolio}
-                            </a>
-                          </p>{" "}
-                        </Td>
-                        <Td>
-                          <p
-                            className={`  ${mainStyle.postText} ml-1  d-flex `}
+                        </Td> */}
+                        <Td
+                          className={` ${mainStyle.tableBorder} ${mainStyle.postText}`}
+                        >
+                          <a
+                            href={user.portfolio}
+                            target="_blank"
+                            rel="noopener noreferrer"
                           >
-                            {user.email}{" "}
-                            <MdEmail
-                              className={` ${mainStyle.socialIcons} ml-auto `}
-                            />
-                          </p>
+                            Open Git
+                          </a>
+                        </Td>
+
+                        <Td
+                          className={` ${mainStyle.tableBorder}  ${mainStyle.postText} `}
+                        >
+                          {" "}
+                          <a
+                            href={user.portfolio}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Open Portfolio
+                          </a>
+                        </Td>
+                        <Td className={` ${mainStyle.tableBorder}   `}>
+                          <Row className={` ${mainStyle.clearSpaces}   `}>
+                            <Col
+                              className={`  ${mainStyle.postText}   ${mainStyle.clearSpaces} `}
+                              sm={6}
+                            >
+                              {" "}
+                              <span>{user.email}</span>
+                            </Col>{" "}
+                            <Col
+                              sm={6}
+                              className={`  ${mainStyle.postText} ${mainStyle.clearSpaces} `}
+                            >
+                              {" "}
+                              <a
+                                href={user.portfolio}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={` ${mainStyle.webLinks} ${mainStyle.icon}  `}
+                              >
+                                <MdEmail />
+                              </a>
+                            </Col>
+                          </Row>
                         </Td>
                       </Tr>
                     )}

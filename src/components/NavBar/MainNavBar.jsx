@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { Nav, Navbar, Image, Form, Button } from "react-bootstrap";
 import styles from "./Navbar.module.css";
@@ -14,6 +14,15 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 function MainNavBar(props) {
+  const [user, setUser] = useState([]);
+  const userFetch = async () => {
+    const response = await fetch("http://localhost:5000/api/users/me", {
+      credentials: "include",
+    });
+    const fetchedUsers = await response.json();
+    setUser(fetchedUsers);
+  };
+
   const logOut = async () => {
     const result = await fetch("http://localhost:5000/api/users/logout", {
       method: "POST",
@@ -27,7 +36,9 @@ function MainNavBar(props) {
       props.myCheck();
     }
   };
-  useEffect(() => {}, [props.isLoggedIn]);
+  useEffect(() => {
+    userFetch();
+  }, [props.isLoggedIn]);
 
   return (
     <>
@@ -87,6 +98,15 @@ function MainNavBar(props) {
                 <Link className="mr-3 pt-2" to="/profile">
                   {" "}
                   Profile
+                </Link>
+              </Nav>
+            )}
+            {props.CheckActive && user.role === "tutor" && (
+              <Nav>
+                {/* <FaUser className={` ${styles.icons}`} /> */}
+                <Link className="mr-3 pt-2" to="/students">
+                  {" "}
+                  Students
                 </Link>
               </Nav>
             )}

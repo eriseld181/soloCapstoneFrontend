@@ -48,3 +48,9 @@ code {
   background-color: transparent !important;
   box-shadow: none;
 }
+@media screen and (max-width: 40em) {
+  .responsiveTable tbody tr {
+    border: 1px solid white !important;
+    padding: 0.25em;
+  }
+}

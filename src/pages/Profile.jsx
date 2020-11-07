@@ -2,13 +2,12 @@ import React from "react";
 
 import UserProfile from "../components/userProfile/UserProfile";
 import { Tab, Tabs } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
 import SingleUserProjects from "../components/profileTools/SingleUserProjects";
 import MyHomework from "../components/profileTools/MyHomework";
 import Notes from "../components/profileTools/Notes";
 import MyPosts from "../components/profileTools/myPosts";
-import Students from "../components/profileTools/Students";
+//import Students from "../components/profileTools/Students";
 
 class Profile extends React.Component {
   state = {
@@ -51,7 +50,7 @@ class Profile extends React.Component {
           variant="pills"
           transition={false}
           className={`justify-content-center `}
-          defaultActiveKey="myPosts"
+          defaultActiveKey="posts"
           id="uncontrolled-tab-example"
         >
           <Tab
@@ -81,11 +80,11 @@ class Profile extends React.Component {
           <Tab eventKey="projects" title="Projects">
             <SingleUserProjects />
           </Tab>
-          {this.state.user.role && this.state.user.role === "tutor" && (
+          {/* {this.state.user.role && this.state.user.role === "tutor" && (
             <Tab eventKey="students" title="Students">
               <Students />
             </Tab>
-          )}
+          )} */}
         </Tabs>
 
         {/* <Footer /> */}

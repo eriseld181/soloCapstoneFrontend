@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 import Home from "./pages/Home";
+import Students from "./pages/Students";
 import Home2 from "./pages/Home2";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
@@ -52,6 +53,7 @@ function App() {
             <Login myCheck={myCheck} />
           </Route>
           <Route path="/register" exact component={Register} />
+          <Route path="/students" exact component={Students} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/home" exact component={Home} />
           <Route path="/home2" exact component={Home2} />
