@@ -5,7 +5,7 @@ import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../../components/Component.module.css";
 import Pagination from "../Pagination";
 import AddNewNoteModal from "../modals/AddNewNoteModal";
-import EditModalNotes from "../modals/EditModalNotes";
+import EditModalNotes from "../modals/EditNotesModal";
 import { BsThreeDots } from "react-icons/bs";
 function Notes() {
   const url = process.env.REACT_APP_URL;
@@ -186,11 +186,16 @@ function Notes() {
             );
           })
         ) : (
-          <DefaultComponent
-            img="./publication.png"
-            title="There is nothing to see now!"
-            text="All your notes will be shown here. Add a new note..."
-          />
+          <Col sm={12}>
+            <Row className="justify-content-center">
+              {" "}
+              <DefaultComponent
+                img="./notes.png"
+                title="There is nothing to see now!"
+                text="All your notes will be shown here. Add a new note..."
+              />
+            </Row>
+          </Col>
         )}
       </Row>{" "}
       <div className="container mt-2">

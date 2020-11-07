@@ -3,7 +3,7 @@ import { Card, Col, Row, Container, Dropdown, Button } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../Component.module.css";
 // import DropMenu from "./DropMenu";
-import EditModalHomework from "../modals/EditModalHomework";
+import EditModalHomework from "../modals/EditHomeworkModal";
 import AddNewHomeworkModal from "../modals/AddNewHomeworkModal";
 import { BsThreeDots } from "react-icons/bs";
 class Homeworks extends Component {
@@ -71,7 +71,6 @@ class Homeworks extends Component {
               this.state.homeworks.map((homework) => {
                 return (
                   <Card
-                    style={{ outline: "solid red 2px" }}
                     key={`card-${homework._id}`}
                     style={{ border: "0px" }}
                     className={`mb-4 ${mainStyle.bg}`}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Row } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 export default function EditModalNotes(props) {
   const [noteTitle, setNoteTitle] = useState(props.note.myTitle);
@@ -7,7 +7,7 @@ export default function EditModalNotes(props) {
   const [noteDescription, setNoteDescription] = useState(
     props.note.description
   );
-  const [myImage, setNoteImage] = useState("");
+  // const [myImage, setNoteImage] = useState("");
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -27,25 +27,25 @@ export default function EditModalNotes(props) {
       }
     );
     if (response.ok) {
-      const uploadImage = myImage;
-      const image = new FormData();
-      image.append("image", uploadImage);
-      const uploadPhoto = await fetch(
-        "http://localhost:5000/api/notes/" + props.note._id + "/uploadImage",
-        {
-          method: "POST",
-          body: image,
-          credentials: "include",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
-      if (uploadPhoto.ok) {
-        console.log("data is added");
-      } else {
-        console.log("upload photo is not working");
-      }
+      // const uploadImage = myImage;
+      //   const image = new FormData();
+      //   image.append("image", uploadImage);
+      //   const uploadPhoto = await fetch(
+      //     "http://localhost:5000/api/notes/" + props.note._id + "/uploadImage",
+      //     {
+      //       method: "POST",
+      //       body: image,
+      //       credentials: "include",
+      //       headers: {
+      //         "Access-Control-Allow-Origin": "*",
+      //       },
+      //     }
+      //   );
+      //   if (uploadPhoto.ok) {
+      //     console.log("data is added");
+      //   } else {
+      //     console.log("upload photo is not working");
+      //   }
       props.noteFetch();
     }
   };
@@ -65,32 +65,33 @@ export default function EditModalNotes(props) {
         Edit
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} animation={false} centered>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           <Form>
             <Form.Group controlId="formBasicName">
-              <Form.Label>Change notes Title.</Form.Label>
+              <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
+                <h3 className={`${mainStyle.title}`}>Edit the note</h3>
+              </Row>
+              <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change the title
+              </Form.Label>
               <Form.Control
                 type="name"
                 value={noteTitle}
                 onChange={(e) => setNoteTitle(e.target.value)}
-                placeholder="Enter A New Title"
+                placeholder="Enter a new title"
               />
             </Form.Group>
-            <Form.Label>Change the Description.</Form.Label>
-            <Form.Control
-              value={noteDescription}
-              onChange={(e) => setNoteDescription(e.target.value)}
-              as="textarea"
-              rows={3}
-              placeholder="Enter a new Description..."
-            />
-
+            <Form.Label className={`${mainStyle.labelWhite}`}>
+              Change the description
+            </Form.Label>
             <Form.Group>
-              <Form.File
-                id="exampleFormControlFile1"
-                label="Add A new Photo"
-                onChange={(e) => setNoteImage(e.target.files[0])}
+              <Form.Control
+                value={noteDescription}
+                onChange={(e) => setNoteDescription(e.target.value)}
+                as="textarea"
+                rows={3}
+                placeholder="Enter a new description..."
               />
             </Form.Group>
           </Form>

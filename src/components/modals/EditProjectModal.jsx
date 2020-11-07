@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Row } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 
 export default function EditModalProject(props) {
@@ -8,6 +8,7 @@ export default function EditModalProject(props) {
   const [projectDescription, setprojectDescription] = useState(
     props.projects.description
   );
+  const [projectLink, setProjectLink] = useState(props.projects.link);
   const [myImage, setProjectImage] = useState("");
 
   const [show, setShow] = useState(false);
@@ -20,6 +21,7 @@ export default function EditModalProject(props) {
       body: JSON.stringify({
         myTitle: projectTitle,
         description: projectDescription,
+        link: projectLink,
       }),
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -42,7 +44,7 @@ export default function EditModalProject(props) {
         }
       );
       if (uploadPhoto.ok) {
-        console.log("data is added");
+        console.log("New photo  is added to the database");
       } else {
         console.log("upload photo is not working");
       }
@@ -65,32 +67,51 @@ export default function EditModalProject(props) {
         Edit
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} animation={false} centered>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
+          {" "}
+          <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
+            <h3 className={`${mainStyle.title}`}>Edit the project</h3>
+          </Row>
           <Form>
             <Form.Group controlId="formBasicName">
-              <Form.Label>Change Project Title.</Form.Label>
+              <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change the title
+              </Form.Label>
               <Form.Control
                 type="name"
                 value={projectTitle}
                 onChange={(e) => setProjectTitle(e.target.value)}
-                placeholder="Enter A New Title"
+                placeholder="Enter A new title"
               />{" "}
             </Form.Group>
             <Form.Group controlId="formBasicName">
-              <Form.Label>Change the Project Description.</Form.Label>
+              <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change repository link
+              </Form.Label>
+              <Form.Control
+                type="name"
+                value={projectLink}
+                onChange={(e) => setProjectLink(e.target.value)}
+                placeholder="Edit the repository link"
+              />{" "}
+            </Form.Group>
+            <Form.Group controlId="formBasicName">
+              <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change the description
+              </Form.Label>
               <Form.Control
                 value={projectDescription}
                 onChange={(e) => setprojectDescription(e.target.value)}
                 as="textarea"
                 rows={3}
-                placeholder="Enter a new Description..."
+                placeholder="Enter a new description..."
               />
             </Form.Group>
             <Form.Group>
               <Form.File
                 id="exampleFormControlFile1"
-                label="Add A new Photo"
+                label="Replace the project preview(image)"
                 onChange={(e) => setProjectImage(e.target.files[0])}
               />
             </Form.Group>

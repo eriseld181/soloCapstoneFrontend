@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+
 import Home from "./pages/Home";
 import Home2 from "./pages/Home2";
 import Profile from "./pages/Profile";
@@ -20,12 +21,8 @@ function App() {
   const [myNavBarEmpty, setMyNavBarEmpty] = useState(false);
 
   const [Check, setCheck] = useState(true);
-  const myCheck = async () => {
-    const response = await fetch("http://localhost:5000/api/users/me/", {
-      method: "GET",
-      credentials: "include",
-    });
-    if (response.ok) {
+  const myCheck = useCallback(async () => {
+    if (Cookie.get("activeL")) {
       setCheck(false);
       setCheckActive(true);
       setMyNavBarEmpty(true);
@@ -34,11 +31,11 @@ function App() {
       setCheckActive(false);
       setMyNavBarEmpty(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     myCheck();
-  }, []);
+  }, [myCheck]);
   return (
     <>
       <Router>

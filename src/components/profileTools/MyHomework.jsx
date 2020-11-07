@@ -3,7 +3,7 @@ import { Card, Col, Row, Container, Dropdown, Button } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../Component.module.css";
 // import DropMenu from "./DropMenu";
-import EditModalHomework from "../modals/EditModalHomework";
+import EditModalHomework from "../modals/EditHomeworkModal";
 import AddNewHomeworkModal from "../modals/AddNewHomeworkModal";
 import { BsThreeDots } from "react-icons/bs";
 class MyHomework extends Component {
@@ -47,17 +47,9 @@ class MyHomework extends Component {
         <Container>
           {" "}
           <Row
-            className="justify-content-center mb-1 mt-3 "
-            style={{ margin: "0px", padding: "0px" }}
+            className={`justify-content-center mb-1 mt-3 ${mainStyle.clearSpaces}  `}
           >
-            <Col
-              xs={6}
-              style={{
-                margin: "0px",
-                padding: "0px",
-                // outline: "solid red 2px",
-              }}
-            >
+            <Col xs={6} className={` ${mainStyle.clearSpaces}  `}>
               <AddNewHomeworkModal
                 homeworkFetch={this.homeworkFetch}
                 className={`${mainStyle.cardDesignClean}`}
@@ -65,10 +57,7 @@ class MyHomework extends Component {
             </Col>
           </Row>
         </Container>{" "}
-        <Row
-          style={{ margin: "0px", padding: "0px" }}
-          className=" justify-content-center"
-        >
+        <Row className={`justify-content-center ${mainStyle.clearSpaces}  `}>
           <Col sm={12} md={8}>
             {this.state.homeworks && this.state.homeworks.length > 0 ? (
               this.state.homeworks.map((homework) => {
@@ -81,11 +70,9 @@ class MyHomework extends Component {
                     <Row>
                       <Col sm={9}>
                         {" "}
-                        <Card.Title
-                          className={`mt-2 ml-3 text-left ${mainStyle.titleBig} `}
-                        >
-                          <h3>{homework.myTitle}</h3>
-                        </Card.Title>
+                        <h3 className={`  text-left mb-2  `}>
+                          {homework.myTitle}
+                        </h3>
                       </Col>
                       <Col sm={3}>
                         <Dropdown
@@ -99,29 +86,14 @@ class MyHomework extends Component {
                             <BsThreeDots className={`${mainStyle.menuIcon} `} />
                           </Dropdown.Toggle>
 
-                          <Dropdown.Menu
-                            className={`${mainStyle.bg}`}
-                            style={{
-                              backgroundColor: "#0f1f26",
-                            }}
-                          >
-                            <Dropdown.Item
-                              style={{
-                                backgroundColor: "#0f1f26",
-                              }}
-                              className="text-right mb-2"
-                            >
+                          <Dropdown.Menu>
+                            <Dropdown.Item className="text-right mb-2">
                               <EditModalHomework
                                 homework={homework}
                                 homeworkFetch={this.homeworkFetch}
                               />
                             </Dropdown.Item>
-                            <Dropdown.Item
-                              className="text-right mb-1"
-                              style={{
-                                backgroundColor: "#0f1f26",
-                              }}
-                            >
+                            <Dropdown.Item className="text-right mb-1">
                               <Button
                                 className={`${mainStyle.btnGradient}`}
                                 onClick={() =>
@@ -136,38 +108,28 @@ class MyHomework extends Component {
                         </Dropdown>
                       </Col>
                     </Row>
-                    <Card.Body>
-                      <Card.Text className={` ${mainStyle.textJustify}`}>
-                        {homework.description}
-                      </Card.Text>
-                      {homework.image && (
-                        <div
-                          style={{
-                            width: "100%",
-                          }}
-                        >
-                          {" "}
-                          <Card.Img
-                            variant="top"
-                            className={`rounded d-block ${mainStyle.bg}`}
-                            style={{
-                              objectFit: "cover",
-                              height: "450px",
-                              objectPosition: "center",
-                            }}
-                            src={homework.image}
-                          />
-                        </div>
-                      )}
-                    </Card.Body>
+
+                    <Card.Text className={` ${mainStyle.textJustify}`}>
+                      {homework.description}
+                    </Card.Text>
+                    {homework.image && (
+                      <div>
+                        {" "}
+                        <Card.Img
+                          variant="top"
+                          className={`rounded mx-auto d-block ${mainStyle.bg} ${mainStyle.postImage}`}
+                          src={homework.image}
+                        />
+                      </div>
+                    )}
                   </Card>
                 );
               })
             ) : (
-              <Row style={{ margin: "0px", padding: "0px" }}>
+              <Row className={` ${mainStyle.clearSpaces}  `}>
                 {" "}
                 <DefaultComponent
-                  img="./publication.png"
+                  img="./homeworks.png"
                   title="There is nothing to see now!"
                   text="All your Publications will be shown here. Add a new post..."
                   show={this.handleShow}

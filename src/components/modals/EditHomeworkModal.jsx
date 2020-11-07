@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Row } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 export default function EditModal(props) {
   const [homeworkTitle, setHomeworkTitle] = useState(props.homework.myTitle);
@@ -67,14 +67,16 @@ export default function EditModal(props) {
         Edit
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} animation={false} centered>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
+          <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
+            <h3 className={`${mainStyle.title}`}>Edit the homework</h3>
+          </Row>
           <Form>
-            <Form.Group
-              controlId="formBasicName"
-              className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}
-            >
-              <Form.Label>Change Homework Title.</Form.Label>
+            <Form.Group controlId="formBasicName">
+              <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change the title
+              </Form.Label>
               <Form.Control
                 type="name"
                 value={homeworkTitle}
@@ -82,7 +84,9 @@ export default function EditModal(props) {
                 placeholder="Enter A New Title"
               />
             </Form.Group>
-            <Form.Label>Change the Description.</Form.Label>
+            <Form.Label className={`${mainStyle.labelWhite}`}>
+              Change the description
+            </Form.Label>
             <Form.Control
               value={homeworkDescription}
               onChange={(e) => setHomeworkDescription(e.target.value)}

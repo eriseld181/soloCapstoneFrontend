@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Row } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 
 export default function EditModalPosts(props) {
@@ -60,11 +60,16 @@ export default function EditModalPosts(props) {
         Edit
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} animation={false} centered>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
+          <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
+            <h3 className={`${mainStyle.title}`}>Edit the post</h3>
+          </Row>
           <Form>
             <Form.Group controlId="formBasicName">
-              <Form.Label>Change the Description.</Form.Label>
+              <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change the text.
+              </Form.Label>
               <Form.Control
                 value={postTitle}
                 onChange={(e) => setPostTitle(e.target.value)}

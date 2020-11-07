@@ -96,7 +96,7 @@ function AddNewHomeworkModal(props) {
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
-            <h5>Write a new homework</h5>
+            <h3 className={`${mainStyle.title}`}>Post a new homework</h3>
           </Row>
           <Row>
             {" "}
@@ -104,21 +104,24 @@ function AddNewHomeworkModal(props) {
               {" "}
               <Form>
                 <Form.Group controlId="formBasicName">
-                  <Form.Label>Change Homework Title.</Form.Label>
+                  <Form.Label className={`${mainStyle.labelWhite}`}>
+                    {" "}
+                    Homework title
+                  </Form.Label>
                   <Form.Control
                     type="name"
                     value={newHomeworkTitle}
                     onChange={(e) => setHomeworkTitle(e.target.value)}
-                    placeholder="Enter A New Title"
+                    placeholder="Enter a new title"
                   />
                 </Form.Group>
-                <Form.Label>Change the Description.</Form.Label>
+                <Form.Label>Homework description.</Form.Label>
                 <Form.Control
                   value={homeworkDescription}
                   onChange={(e) => setHomeworkDescription(e.target.value)}
                   as="textarea"
                   rows={3}
-                  placeholder="Enter a new Description..."
+                  placeholder="Enter a new description..."
                 />
                 <Form.Group>
                   <Form.File

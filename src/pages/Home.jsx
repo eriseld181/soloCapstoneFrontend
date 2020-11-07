@@ -75,21 +75,10 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div style={{ margin: "0px", padding: "0px" }}>
-        <Row style={{ margin: "0px", padding: "0px" }}>
-          <Col xs={3}>
-            <Row className="justify-content-center">
-              <Col className="ml-5 text-center"></Col>
-            </Row>
-          </Col>
+      <>
+        <Row className={` ${mainStyle.clearSpaces}  `}>
           <Col xs={12} className="text-center">
-            <Row
-              className="justify-content-center mt-5"
-              style={{
-                margin: "0px",
-                padding: "0px",
-              }}
-            >
+            <Row className="justify-content-center mt-5">
               {/* start of the fetches */}
               <Col xs={12}>
                 <InputGroup className={` ${mainStyle.imputGroupSize}  `}>
@@ -140,10 +129,7 @@ class Home extends React.Component {
                 </InputGroup>
                 <Container>
                   {" "}
-                  <Row
-                    style={{ margin: "0px", padding: "0px" }}
-                    className="justify-content-center"
-                  >
+                  <Row className="justify-content-center">
                     {this.state.categorySelected === "projects" && (
                       <>
                         <Alert variant="primary" className="mt-2 ">
@@ -163,7 +149,7 @@ class Home extends React.Component {
                                 style={{ border: "none" }}
                               >
                                 <Card.Title
-                                  className={`mt-3 mb-1 ml-2 text-left ${mainStyle.titleBig} `}
+                                  className={`mt-3 mb-1  text-left ${mainStyle.titleBig} `}
                                 >
                                   <h3>{feed.myTitle}</h3>
                                 </Card.Title>
@@ -348,7 +334,7 @@ class Home extends React.Component {
           </Col>
         </Row>
         <Footer />
-      </div>
+      </>
     );
   }
 }

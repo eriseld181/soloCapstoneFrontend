@@ -4,7 +4,7 @@ import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../Component.module.css";
 // import DropMenu from "./DropMenu";
 import { BsThreeDots } from "react-icons/bs";
-import EditProjectModal from "../modals/EditModalProject";
+import EditProjectModal from "../modals/EditProjectModal";
 import AddNewProjectModal from "../modals/AddNewProjectModal";
 class Projects extends Component {
   state = {
@@ -78,13 +78,14 @@ class Projects extends Component {
                 return (
                   <Card
                     key={`card-${project._id}`}
-                    style={{ border: "0px" }}
-                    className={`mb-4 ${mainStyle.bg}`}
+                    className={`mb-4 ${mainStyle.cardDesignClean}`}
                   >
                     <Row>
                       <Col sm={9}>
                         {" "}
-                        <h3 className={`  text-left  `}>{project.myTitle}</h3>
+                        <h3 className={`  text-left mb-2  `}>
+                          {project.myTitle}
+                        </h3>
                       </Col>
                       <Col sm={3}>
                         {" "}
@@ -92,40 +93,22 @@ class Projects extends Component {
                           className={` ${mainStyle.dropdownToggle} ml-auto mr-2 `}
                         >
                           <Dropdown.Toggle
-                            style={{
-                              border: "none",
-                              boxShadow: "none",
-                            }}
-                            className={` ${mainStyle.dropdownToggle} ${mainStyle.bg}`}
+                            className={` ${mainStyle.dropdownToggle}
+                             `}
                             variant="primary"
                             id="dropdown-basic"
                           >
                             <BsThreeDots className={`${mainStyle.menuIcon} `} />
                           </Dropdown.Toggle>
 
-                          <Dropdown.Menu
-                            className={`${mainStyle.bg}`}
-                            style={{
-                              backgroundColor: "#0f1f26",
-                            }}
-                          >
-                            <Dropdown.Item
-                              style={{
-                                backgroundColor: "#0f1f26",
-                              }}
-                              className="text-right mb-2"
-                            >
+                          <Dropdown.Menu className={`${mainStyle.bg}`}>
+                            <Dropdown.Item className="text-right mb-2">
                               <EditProjectModal
                                 projects={project}
                                 projectsFetch={this.projectfetch}
                               />
                             </Dropdown.Item>
-                            <Dropdown.Item
-                              className="text-right mb-1"
-                              style={{
-                                backgroundColor: "#0f1f26",
-                              }}
-                            >
+                            <Dropdown.Item className="text-right mb-1">
                               <Button
                                 className={`${mainStyle.btnGradient}`}
                                 onClick={() => this.projectDelete(project._id)}
@@ -139,54 +122,38 @@ class Projects extends Component {
                       </Col>
                     </Row>
                     {project.image && (
-                      <div
-                        style={
-                          {
-                            // width: "100%",
-                            // objectFit: "cover",
-                          }
-                        }
-                      >
+                      <div>
                         {" "}
                         <Card.Img
                           variant="top"
-                          className={`rounded d-block ${mainStyle.bg}`}
-                          style={{
-                            objectFit: "cover",
-                            height: "450px",
-                            objectPosition: "center",
-                          }}
+                          className={`rounded mx-auto d-block ${mainStyle.bg} ${mainStyle.postImage}`}
                           src={project.image}
                         />
                       </div>
                     )}
-
-                    <Card.Body>
-                      <Card.Text
-                        className={`text-left ${mainStyle.textJustify}`}
+                    <Card.Text
+                      className={`text-left mt-2 ${mainStyle.textJustify}  ${mainStyle.postText}`}
+                    >
+                      {project.description}
+                    </Card.Text>
+                    <Card.Text className="text-center">
+                      <Button
+                        className={`${mainStyle.btnGradient}`}
+                        href={project.link}
+                        target="_blank"
+                        variant="primary"
                       >
-                        {project.description}
-                      </Card.Text>
-                      <Card.Body>
-                        <Card.Text className="text-center">
-                          <Button
-                            className={`${mainStyle.btnGradient}`}
-                            href={project.projectLink}
-                            variant="primary"
-                          >
-                            View Source Code
-                          </Button>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card.Body>
+                        View Source Code
+                      </Button>
+                    </Card.Text>
                   </Card>
                 );
               })
             ) : (
-              <Row style={{ margin: "0px", padding: "0px" }}>
+              <Row className={` ${mainStyle.clearSpaces}  `}>
                 {" "}
                 <DefaultComponent
-                  img="./publication.png"
+                  img="./projects.png"
                   title="There is nothing to see now!"
                   text="All your Projects will be shown here. Add a new project..."
                 />

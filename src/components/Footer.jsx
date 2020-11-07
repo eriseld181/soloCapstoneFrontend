@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import mainStyle from "./Component.module.css";
 import { SiFacebook } from "react-icons/si";
 import { SiInstagram } from "react-icons/si";

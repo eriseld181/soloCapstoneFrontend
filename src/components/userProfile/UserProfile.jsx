@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Image, Container } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 import { ImGithub } from "react-icons/im";
 import { SiLinkedin } from "react-icons/si";
@@ -34,8 +34,11 @@ class UserProfile extends Component {
       }
     };
     return (
-      <Container className=" mt-5 mb-5 ">
-        <Row className="justify-content-center mr-1 ">
+      <div style={{ margin: "0px", padding: "0px" }}>
+        <Row
+          style={{ margin: "0px", padding: "0px" }}
+          className="justify-content-center mr-1 mt-5 "
+        >
           {" "}
           <Image
             style={{ objectFit: "cover" }}
@@ -64,56 +67,119 @@ class UserProfile extends Component {
         </Row>
         {/* end of image row */}
         <Row
+          style={{ margin: "0px", padding: "0px" }}
           className={`mb-2 justify-content-center ${mainStyle.profileTitle}`}
         >
           {this.props.name} {this.props.lastname}
         </Row>
-        <Row className={`mb-2 justify-content-center ${mainStyle.textLabel}`}>
-          <i>{this.props.headline}</i>
-        </Row>
+        {this.props.headline ? (
+          <Row
+            style={{ margin: "0px", padding: "0px" }}
+            className={`mb-2 justify-content-center ${mainStyle.profileSubTitle}`}
+          >
+            <i>{this.props.headline}</i>
+          </Row>
+        ) : (
+          <Row
+            style={{ margin: "0px", padding: "0px" }}
+            className={`mb-2 justify-content-center ${mainStyle.profileSubTitle}`}
+          >
+            <i>Add a headline...</i>
+          </Row>
+        )}
         {/* end of full name row */}
-        <Row className={` justify-content-center ${mainStyle.label}`}>
-          <Col xs={12} sm={6} md={8}>
+        <Row
+          style={{ margin: "0px", padding: "0px" }}
+          className={` justify-content-center `}
+        >
+          <Col xs={10} sm={10} md={8} style={{ margin: "0px", padding: "0px" }}>
             {" "}
-            <p className={`text-left mt-3 ${mainStyle.label}`}>About</p>
+            <p className={`text-left mt-1 ${mainStyle.title}`}>About</p>
           </Col>
-        </Row>
-        <Row className={` justify-content-center   ${mainStyle.titleLabel}`}>
-          <Col xs={12} sm={6} md={8} style={{ textAlign: " justify" }}>
-            {" "}
-            {this.props.about}
-          </Col>
-        </Row>
+        </Row>{" "}
+        {this.props.about ? (
+          <Row
+            style={{ margin: "0px", padding: "0px" }}
+            className={` justify-content-center   ${mainStyle.text}`}
+          >
+            <Col
+              style={{ margin: "0px", padding: "0px" }}
+              xs={11}
+              sm={11}
+              md={8}
+            >
+              <p style={{ textAlign: " justify" }}>{this.props.about}</p>{" "}
+            </Col>
+          </Row>
+        ) : (
+          <Row
+            style={{ margin: "0px", padding: "0px" }}
+            className={` justify-content-center   ${mainStyle.text}`}
+          >
+            <Col
+              style={{ margin: "0px", padding: "0px" }}
+              xs={11}
+              sm={11}
+              md={8}
+            >
+              <p style={{ textAlign: " justify" }}>
+                There is no desrciption yet.
+              </p>{" "}
+            </Col>
+          </Row>
+        )}
         {/* end of about row */}
-        <Row className={` ml-3 mr-3 justify-content-center `}>
+        <Row
+          style={{ margin: "0px", padding: "0px" }}
+          className={` justify-content-center `}
+        >
           <Col
-            className={`mt-5 ml-3 mr-3 `}
+            style={{ margin: "0px", padding: "0px" }}
+            className={`mt-3 ml-5 `}
             sm={12}
             md={6}
             lg={4}
             // style={{ outline: "solid blue 1px" }}
           >
-            <Row className={` ml-3 mr-3 justify-content-center `}>
+            <Row
+              style={{ margin: "0px", padding: "0px" }}
+              className={` justify-content-center `}
+            >
               {" "}
-              {this.props.country && this.props.city && (
+              {this.props.country && this.props.city ? (
                 <Col
                   xs={10}
                   md={10}
-                  className={`mb-2 text-left ${mainStyle.textLabel}`}
+                  className={`mb-2 text-left ${mainStyle.postText}`}
                 >
                   <BsGeoAlt className="mb-1 mr-2" />
                   {this.props.country}, {this.props.city}
                 </Col>
+              ) : (
+                <Col
+                  xs={10}
+                  md={10}
+                  className={`mb-2 text-left ${mainStyle.postText}`}
+                >
+                  <BsGeoAlt className="mb-1 mr-2" />
+                  Location missing
+                </Col>
               )}
             </Row>
-            <Row className={` ml-3 mr-3 justify-content-center `}>
-              <Col xs={10} className={`mb-2 text-left ${mainStyle.textLabel}`}>
+            <Row
+              style={{ margin: "0px", padding: "0px" }}
+              className={`justify-content-center `}
+            >
+              <Col xs={10} className={`mb-2 text-left ${mainStyle.postText}`}>
                 <BsEnvelopeFill className={`mb-1 mr-2 text-left `} />{" "}
                 {this.props.email}
               </Col>
             </Row>
-            <Row className={` ml-3 mr-3 justify-content-center `}>
-              <Col xs={10} className={`mb-2 text-left ${mainStyle.textLabel}`}>
+            <Row
+              style={{ margin: "0px", padding: "0px" }}
+              className={` justify-content-center `}
+            >
+              <Col xs={10} className={`mb-2 text-left ${mainStyle.postText}`}>
                 {this.props.role && this.props.role === "student" ? (
                   <span>
                     {" "}
@@ -128,43 +194,46 @@ class UserProfile extends Component {
               </Col>
             </Row>
           </Col>
+
           <Col
+            sm={12}
             md={6}
-            lg={6}
-            xl={4}
-            className=" pt-5 "
+            lg={4}
+            className=" pt-3 mr-5 "
             // style={{ outline: "solid green 1px" }}
           >
             <Row
-              className={`mb-2 justify-content-center  ${mainStyle.textLabel}`}
+              style={{ margin: "0px", padding: "0px" }}
+              className={`mb-2 justify-content-center  mr-4 ${mainStyle.postText}`}
             >
+              <ImGithub className="mb-1 mr-1 " />
               <a
-                style={{ fontStyle: "oblique" }}
-                className={` text-left ${mainStyle.webLinks}`}
+                className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
                 rel="stylesheet"
                 href={this.props.github}
               >
-                <ImGithub className="mb-1 mr-2" /> GitHub
+                GitHub
               </a>
             </Row>
             <Row
-              className={`mb-2 justify-content-center ${mainStyle.textLabel}`}
+              className={`mb-2 justify-content-center  mr-4  ${mainStyle.postText}`}
             >
+              {" "}
+              <SiLinkedin className="mb-1 mr-1" />
               <a
-                style={{ fontStyle: "oblique" }}
-                className={` text-left  ${mainStyle.webLinks}`}
+                className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
                 rel="stylesheet"
                 href={this.props.linkedin}
               >
-                <SiLinkedin className="mb-1 mr-2" /> LinkedIn
+                {" "}
+                LinkedIn
               </a>
             </Row>
             <Row
-              className={`mb-2 justify-content-center ${mainStyle.textLabel}`}
+              className={`mb-2 justify-content-center mr-4  ${mainStyle.postText}`}
             >
               <a
-                style={{ fontStyle: "oblique" }}
-                className={`  text-left ${mainStyle.webLinks}`}
+                className={`  text-left ${mainStyle.webLinks} ${mainStyle.postText}`}
                 rel="stylesheet"
                 href={this.props.portfolio}
               >
@@ -173,7 +242,8 @@ class UserProfile extends Component {
             </Row>
           </Col>
         </Row>
-      </Container>
+        {/* end of personal info */}
+      </div>
     );
   }
 }

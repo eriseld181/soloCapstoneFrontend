@@ -51,7 +51,7 @@ class Home2 extends React.Component {
     );
     if (resp.ok) {
       const data = await resp.json();
-      console.log(data);
+
       this.setState({
         feedCategory: data,
       });
@@ -67,7 +67,7 @@ class Home2 extends React.Component {
     });
     if (resp.ok) {
       const data = await resp.json();
-      console.log(data.firstname, " is data");
+
       this.setState({
         users: data,
       });
@@ -94,7 +94,6 @@ class Home2 extends React.Component {
     }
   }
   render() {
-    console.log(this.state.users, "is in user");
     return (
       <div
         style={{

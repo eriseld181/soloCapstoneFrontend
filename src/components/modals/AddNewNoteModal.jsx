@@ -92,11 +92,11 @@ function AddNewNoteModal(props) {
           </Col>{" "}
         </Button>
       </Row>
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={handleClose} animation={false} centered>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
-            <h5>Add a new note</h5>
+            <h3 className={`${mainStyle.title}`}>Write a new note</h3>
           </Row>
           <Row>
             {" "}
@@ -104,7 +104,9 @@ function AddNewNoteModal(props) {
               {" "}
               <Form>
                 <Form.Group controlId="formBasicName">
-                  <Form.Label>Write the Note Title.</Form.Label>
+                  <Form.Label className={`${mainStyle.labelWhite}`}>
+                    Note title
+                  </Form.Label>
                   <Form.Control
                     type="name"
                     value={newNoteTitle}
@@ -112,7 +114,9 @@ function AddNewNoteModal(props) {
                     placeholder="Enter A New Title"
                   />
                 </Form.Group>
-                <Form.Label>Enter the Description.</Form.Label>
+                <Form.Label className={`${mainStyle.labelWhite}`}>
+                  Note description
+                </Form.Label>
                 <Form.Control
                   value={noteDescription}
                   onChange={(e) => setNoteDescription(e.target.value)}

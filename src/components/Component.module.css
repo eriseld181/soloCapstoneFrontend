@@ -1,7 +1,6 @@
-h3 {
-  color: #03b8f7;
-  font-size: 23px;
-  width: 80%;
+.clearSpaces {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 .menuIcon {
   font-size: 30px;
@@ -11,17 +10,6 @@ h3 {
   width: 50% !important;
   margin-left: auto !important;
   margin-right: auto !important;
-}
-.textJustify {
-  text-align: justify !important;
-  text-justify: inter-word !important;
-}
-.cutText {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
 
 .uploadPhoto {
@@ -105,14 +93,41 @@ h3 {
   border-radius: 2px !important;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
 }
-/* for text design */
-.label {
+/* For Text Design */
+
+.textJustify {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
+h3 {
   color: #03b8f7;
-  font-size: 20px;
+  font-size: 23px;
+  width: 80%;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+/* For Profile Text */
+.profileTitle {
+  color: #03b8f7;
+  font-size: 40px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.smallProfileTitle {
+  color: #03b8f7;
+  font-size: 25px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.profileSubTitle {
+  font-size: 23px;
+}
+/* For Website Titles */
+.titleBig {
+  color: #03b8f7;
+  font-size: 60px;
 }
 .title {
   color: #03b8f7;
   font-size: 30px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 .titleWhite {
   color: white;
@@ -122,34 +137,56 @@ h3 {
   color: white;
   font-size: 25px;
 }
-.smallTitleBlue {
-  color: #03b8f7;
-  font-size: 15px;
-}
 .mediumTitleBlue {
   color: #03b8f7;
   font-size: 25px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.postText {
+  font-size: 19px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .text {
   color: white;
   font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.titleBig {
+.smallTitleBlue {
   color: #03b8f7;
-  font-size: 60px;
+  font-size: 15px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
-.profileTitle {
+/* For Text Lables */
+.label {
   color: #03b8f7;
-  font-size: 30px;
+  font-size: 20px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.labelWhite {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .textLabel {
   font-size: 20px;
 }
-
-.aboutText {
-  font-size: 15px;
+.cutText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 /* for image design */
+.postImage {
+  height: 500px;
+  object-fit: cover;
+}
+.postProfileImage {
+  height: 50px !important;
+  width: 50px !important;
+  object-fit: cover !important;
+}
+
 .imageProjectContent {
   height: auto !important;
   width: auto;
@@ -180,16 +217,16 @@ h3 {
 /* for link design */
 a {
   color: white !important;
-  font-weight: 600 !important;
+
   margin-right: 5px !important;
 }
 a:active {
   color: #111111 !important;
-  font-weight: 600 !important;
+  font-family: Arial, Helvetica, sans-serif;
 }
 a:hover {
   color: white !important;
-  font-weight: 600 !important;
+  font-family: Arial, Helvetica, sans-serif;
   text-decoration: none !important;
 }
 
@@ -259,6 +296,12 @@ a.webLinks {
   width: 10px !important;
 }
 @media only screen and (max-width: 600px) {
+  .postImage {
+    height: 220px;
+
+    object-fit: cover;
+  }
+
   .menuIcon {
     margin-top: -85px;
   }

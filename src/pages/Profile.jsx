@@ -24,9 +24,7 @@ class Profile extends React.Component {
     this.setState({ user: fetchedUsers });
   };
   componentDidMount = async () => {
-    // console.log("this is cookie.get", Cookies.get("accessToken"));
     this.userFetch();
-    // console.log(this.state.user);
   };
 
   render() {
@@ -48,8 +46,8 @@ class Profile extends React.Component {
           city={this.state.user.city}
           country={this.state.user.country}
         />
-
         <Tabs
+          style={{ margin: "0px", padding: "0px" }}
           variant="pills"
           transition={false}
           className={`justify-content-center `}

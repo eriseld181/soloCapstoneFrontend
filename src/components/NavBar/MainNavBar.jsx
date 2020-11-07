@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { Nav, Navbar, Image, Form, Button } from "react-bootstrap";
 import styles from "./Navbar.module.css";
@@ -27,26 +27,48 @@ function MainNavBar(props) {
       props.myCheck();
     }
   };
-  useEffect(() => props.isLoggedIn, [props.isLoggedIn]);
+  useEffect(() => {}, [props.isLoggedIn]);
 
   return (
     <>
       <Navbar
         variant="light"
-        style={{ backgroundColor: "#070a1d" }}
+        style={{
+          margin: "0px",
+          padding: "0px",
+          width: "100%",
+          backgroundColor: "#070a1d",
+        }}
         className={`  ${styles.text}`}
         expand="lg"
       >
-        <Navbar.Brand>
-          {" "}
-          <Link to="/">
-            <Image
-              src="../../e-tech-logo-main.png"
-              style={{ width: "200px" }}
-              className="App-log ml-5"
-            />
-          </Link>
-        </Navbar.Brand>
+        {props.CheckActive ? (
+          <>
+            <Navbar.Brand>
+              {" "}
+              <Link to="/home">
+                <Image
+                  src="../../e-tech-logo-main.png"
+                  style={{ width: "200px" }}
+                  className="App-log ml-5"
+                />
+              </Link>
+            </Navbar.Brand>
+          </>
+        ) : (
+          <>
+            <Navbar.Brand>
+              {" "}
+              <Link to="/">
+                <Image
+                  src="../../e-tech-logo-main.png"
+                  style={{ width: "200px" }}
+                  className="App-log ml-5"
+                />
+              </Link>
+            </Navbar.Brand>{" "}
+          </>
+        )}
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

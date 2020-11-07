@@ -7,6 +7,7 @@ import mainStyle from "../Component.module.css";
 function AddNewProjectModal(props) {
   const [newProjectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
+  const [projectLink, setProjectLink] = useState("");
   const [myImage, setImage] = useState("");
 
   const [show, setShow] = useState(false);
@@ -20,6 +21,7 @@ function AddNewProjectModal(props) {
       body: JSON.stringify({
         myTitle: newProjectTitle,
         description: projectDescription,
+        link: projectLink,
       }),
       headers: new Headers({ "Content-Type": "application/json" }),
     });
@@ -85,17 +87,17 @@ function AddNewProjectModal(props) {
                   borderRadius: "14px",
                 }}
               >
-                Add a new Project...
+                Post a new Project...
               </Col>
             </Row>
           </Col>{" "}
         </Button>
       </Row>
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={handleClose} animation={false} centered>
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
-            <h5>Write a new project</h5>
+            <h3 className={`${mainStyle.title}`}>Post a new project</h3>
           </Row>
           <Row>
             {" "}
@@ -103,26 +105,40 @@ function AddNewProjectModal(props) {
               {" "}
               <Form>
                 <Form.Group controlId="formBasicName">
-                  <Form.Label>Change Project Title.</Form.Label>
+                  <Form.Label className={`${mainStyle.labelWhite}`}>
+                    Project Title
+                  </Form.Label>
                   <Form.Control
                     type="name"
                     value={newProjectTitle}
                     onChange={(e) => setProjectTitle(e.target.value)}
-                    placeholder="Enter A New Title"
+                    placeholder="Enter a new title"
+                  />
+                  <Form.Label className={`${mainStyle.labelWhite} mt-3`}>
+                    Respository Link
+                  </Form.Label>
+                  <Form.Control
+                    type="name"
+                    value={projectLink}
+                    onChange={(e) => setProjectLink(e.target.value)}
+                    placeholder="Paste the link here..."
                   />
                 </Form.Group>
-                <Form.Label>Change the Description.</Form.Label>
+                <Form.Label className={`${mainStyle.labelWhite}`}>
+                  Project Description
+                </Form.Label>
                 <Form.Control
                   value={projectDescription}
                   onChange={(e) => setProjectDescription(e.target.value)}
                   as="textarea"
                   rows={3}
-                  placeholder="Enter a new Description..."
+                  placeholder="Enter a new description..."
                 />
+
                 <Form.Group>
                   <Form.File
                     id="exampleFormControlFile1"
-                    label="Add A New Photo(Recomended size: 500x300px)"
+                    label="Replace the project preview(image)"
                     onChange={(e) => setImage(e.target.files[0])}
                   />
                 </Form.Group>

@@ -43,15 +43,14 @@ export default class Students extends Component {
               <th>Contact</th>
             </tr>
           </thead>
-
           {this.state.allUsers.users &&
-            this.state.allUsers.users.map((user, i) => {
+            this.state.allUsers.users.map((user, index) => {
               return (
                 <>
-                  {user.role && user.role === "student" && (
-                    <tbody key={`card-${user._id}`}>
+                  <tbody key={user._id}>
+                    {user.role && user.role === "student" && (
                       <tr>
-                        <td>{i + 1}</td>
+                        <td>{index + 1}</td>
                         <td>
                           {user.firstname} {user.lastname}
                         </td>
@@ -63,8 +62,8 @@ export default class Students extends Component {
                           {user.email} <MdEmail className="mt-1" />
                         </td>
                       </tr>
-                    </tbody>
-                  )}
+                    )}
+                  </tbody>
                 </>
               );
             })}

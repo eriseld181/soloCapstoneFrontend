@@ -92,11 +92,12 @@ function AddNewPostModal(props) {
         show={show}
         onHide={handleClose}
         animation={false}
+        centered
       >
         <Modal.Body className={`${mainStyle.cardDesignClean}`}>
           {" "}
           <Row className={`mt-2 mb-3 ml-1 ${mainStyle.mediumTitleBlue}`}>
-            <h5>Write a new post</h5>
+            <h3 className={`${mainStyle.title}`}>Write a new post</h3>
           </Row>
           <Row>
             {" "}
@@ -104,9 +105,13 @@ function AddNewPostModal(props) {
               {" "}
               <Form>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
+                  <Form.Label className={`${mainStyle.labelWhite}`}>
+                    Text
+                  </Form.Label>
                   <Form.Control
                     onChange={(e) => setPostTitle(e.target.value)}
                     value={newPostTitle}
+                    placeholder="  What's on your mind..."
                     as="textarea"
                     rows={2}
                   />
@@ -114,7 +119,7 @@ function AddNewPostModal(props) {
                 <Form.Group>
                   <Form.File
                     id="exampleFormControlFile1"
-                    label="Add A New Photo(Recomended size: 500x300px)"
+                    label="Add a new photo(Recomended size: 650x450px)"
                     onChange={(e) => setImage(e.target.files[0])}
                   />
                 </Form.Group>
