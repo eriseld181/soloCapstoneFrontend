@@ -33,7 +33,7 @@ function LoginForm(props) {
 
     const result = await fetch(url + "/api/users/login", {
       method: "POST",
-      body: JSON.stringify({ credentials, password }),
+      body: JSON.stringify({ email, password }),
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
