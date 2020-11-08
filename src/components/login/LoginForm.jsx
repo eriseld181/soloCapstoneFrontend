@@ -21,11 +21,20 @@ function LoginForm(props) {
   const userLogin = async (e) => {
     const url = process.env.REACT_APP_URL;
 
-    const result = await fetch(`${url}/api/users/login`, {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      credentials: "include",
+    // const result = await fetch(`${url}/api/users/login`, {
+    //   method: "POST",
+    //   body: JSON.stringify({ email, password }),
+    //   credentials: "include",
 
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+
+    const result = await fetch(url + "/api/users/login", {
+      method: "POST",
+      body: JSON.stringify({ credentials, password }),
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
