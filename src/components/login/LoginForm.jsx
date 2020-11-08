@@ -8,6 +8,7 @@ import mainStyle from "../Component.module.css";
 
 import { connect } from "react-redux";
 const mapStateToProps = (state) => state;
+const url = process.env.REACT_APP_URL;
 // const mapDispatchToProps = (dispatch) => ({
 //   toggleLogin: () => dispatch({ type: "TOGGLE_LOGIN", payload: true }),
 // toggleLogout: () => dispatch({ type: "TOGGLE_LOGOUT", payload: true }),
@@ -19,25 +20,14 @@ function LoginForm(props) {
   const [link, setLink] = useState(true);
 
   const userLogin = async (e) => {
-    const url = process.env.REACT_APP_URL;
-
-    // const result = await fetch(`${url}/api/users/login`, {
-    //   method: "POST",
-    //   body: JSON.stringify({ email, password }),
-    //   credentials: "include",
-
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-
-    const result = await fetch(url + "/api/users/login", {
+    const result = await fetch(`${url}/api/users/login`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       credentials: "include",
-      headers: {
+
+      headers: new Headers({
         "Content-Type": "application/json",
-      },
+      }),
     });
 
     if (result.ok) {
