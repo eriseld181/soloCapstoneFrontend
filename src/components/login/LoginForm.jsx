@@ -26,10 +26,11 @@ function LoginForm(props) {
       body: JSON.stringify({ email, password }),
       credentials: "include",
 
-      headers: new Headers({
+      headers: {
         "Content-Type": "application/json",
-      }),
+      },
     });
+
     if (result.ok) {
       setLink(link);
       props.myCheck();
