@@ -7,8 +7,9 @@ import SingleUserProjects from "../components/profileTools/SingleUserProjects";
 import MyHomework from "../components/profileTools/MyHomework";
 import Notes from "../components/profileTools/Notes";
 import MyPosts from "../components/profileTools/myPosts";
+import mainStyle from "../components/Component.module.css";
 //import Students from "../components/profileTools/Students";
-
+const url = process.env.REACT_APP_URL;
 class Profile extends React.Component {
   state = {
     user: [],
@@ -16,7 +17,7 @@ class Profile extends React.Component {
   };
 
   userFetch = async () => {
-    const response = await fetch("http://localhost:5000/api/users/me", {
+    const response = await fetch(`${url}/api/users/me/`, {
       credentials: "include",
     });
     const fetchedUsers = await response.json();
@@ -46,11 +47,10 @@ class Profile extends React.Component {
           country={this.state.user.country}
         />
         <Tabs
-          style={{ margin: "0px", padding: "0px" }}
           variant="pills"
           transition={false}
-          className={`justify-content-center `}
-          defaultActiveKey="posts"
+          className={`justify-content-center ${mainStyle.clearSpaces} `}
+          defaultActiveKey="myPosts"
           id="uncontrolled-tab-example"
         >
           <Tab

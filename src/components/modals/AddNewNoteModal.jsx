@@ -8,13 +8,13 @@ function AddNewNoteModal(props) {
   const [newNoteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
   const [myImage] = useState("");
-
+  const url = process.env.REACT_APP_URL;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const AddNewPost = async () => {
-    const response = await fetch("http://localhost:5000/api/notes/add", {
+    const response = await fetch(`${url}/api/notes/add`, {
       credentials: "include",
       method: "POST",
       body: JSON.stringify({
@@ -30,7 +30,7 @@ function AddNewNoteModal(props) {
       const image = new FormData();
       image.append("image", myImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/notes/" + data._id + "/uploadImage",
+        `${url}/api/notes/` + data._id + "/uploadImage",
         {
           method: "POST",
           body: image,

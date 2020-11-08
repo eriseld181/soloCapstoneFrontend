@@ -6,7 +6,7 @@ import styles from "./Navbar.module.css";
 import { AiFillLock } from "react-icons/ai";
 import { BiExit } from "react-icons/bi";
 import { connect } from "react-redux";
-
+const url = process.env.REACT_APP_URL;
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
 function MainNavBar(props) {
   const [user, setUser] = useState([]);
   const userFetch = async () => {
-    const response = await fetch("http://localhost:5000/api/users/me", {
+    const response = await fetch(`${url}/api/users/me/`, {
       credentials: "include",
     });
     const fetchedUsers = await response.json();
@@ -24,7 +24,7 @@ function MainNavBar(props) {
   };
 
   const logOut = async () => {
-    const result = await fetch("http://localhost:5000/api/users/logout", {
+    const result = await fetch(`${url}/api/users/logout`, {
       method: "POST",
       body: JSON.stringify(),
       credentials: "include",
@@ -83,7 +83,7 @@ function MainNavBar(props) {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="mr-auto ml-3">
             {props.CheckActive && (
               <Nav>
                 {/* <AiFillHome className={` ${styles.icons}`} /> */}

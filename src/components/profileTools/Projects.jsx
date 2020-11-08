@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Card, Button, Col, Container } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
-
+const url = process.env.REACT_APP_URL;
 class Projects extends Component {
   state = {
     projects: [],
   };
   componentDidMount = async () => {
-    const response = await fetch("http://localhost:5000/api/projects/", {
+    const response = await fetch(`${url}/api/users/me/projects/`, {
       method: "GET",
       credentials: "include",
     });

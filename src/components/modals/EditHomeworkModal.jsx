@@ -8,32 +8,27 @@ export default function EditModal(props) {
     props.homework.description
   );
   const [myImage, setHomeworkImage] = useState("");
-
+  const url = process.env.REACT_APP_URL;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const EditHomeworkFetch = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/homeworks/" + props.homework._id,
-      {
-        method: "PUT",
-        body: JSON.stringify({
-          myTitle: homeworkTitle,
-          description: homeworkDescription,
-        }),
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch(`${url}/api/homeworks/${props.homework._id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        myTitle: homeworkTitle,
+        description: homeworkDescription,
+      }),
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    });
     if (response.ok) {
       const uploadImage = myImage;
       const image = new FormData();
       image.append("image", uploadImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/homeworks/" +
-          props.homework._id +
-          "/uploadImage",
+        `${url}/api/homeworks/${props.homework._id}/uploadImage`,
         {
           method: "POST",
           body: image,

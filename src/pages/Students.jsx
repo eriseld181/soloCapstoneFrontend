@@ -4,13 +4,14 @@ import { Container, Row, Col } from "react-bootstrap";
 import { MdEmail } from "react-icons/md";
 import mainStyle from "../components/Component.module.css";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+const url = process.env.REACT_APP_URL;
 export default class Students extends Component {
   state = {
     allUsers: [],
   };
 
   allUsersFetch = async () => {
-    const response = await fetch("http://localhost:5000/api/users/", {
+    const response = await fetch(`${url}/api/users/`, {
       credentials: "include",
     });
     const fetchedUsers = await response.json();
@@ -109,7 +110,7 @@ export default class Students extends Component {
                           </a>
                         </Td>
                         <Td className={` ${mainStyle.tableBorder}   `}>
-                          <Row className={` ${mainStyle.clearSpaces}   `}>
+                          <Row className={` ${mainStyle.clearSpaces} d-flex  `}>
                             <Col
                               className={`  ${mainStyle.postText}   ${mainStyle.clearSpaces} `}
                               sm={6}

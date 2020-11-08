@@ -3,7 +3,7 @@ import { Modal, Button, Form, Row } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 export default function EditModalNotes(props) {
   const [noteTitle, setNoteTitle] = useState(props.note.myTitle);
-
+  const url = process.env.REACT_APP_URL;
   const [noteDescription, setNoteDescription] = useState(
     props.note.description
   );
@@ -14,18 +14,15 @@ export default function EditModalNotes(props) {
   const handleShow = () => setShow(true);
 
   const EditNotesFetch = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/notes/" + props.note._id,
-      {
-        method: "PUT",
-        body: JSON.stringify({
-          myTitle: noteTitle,
-          description: noteDescription,
-        }),
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch(`${url}/api/notes/${props.note._id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        myTitle: noteTitle,
+        description: noteDescription,
+      }),
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    });
     if (response.ok) {
       // const uploadImage = myImage;
       //   const image = new FormData();

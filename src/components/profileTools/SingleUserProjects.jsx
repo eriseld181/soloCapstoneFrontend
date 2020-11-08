@@ -6,6 +6,7 @@ import mainStyle from "../Component.module.css";
 import { BsThreeDots } from "react-icons/bs";
 import EditProjectModal from "../modals/EditProjectModal";
 import AddNewProjectModal from "../modals/AddNewProjectModal";
+const url = process.env.REACT_APP_URL;
 class Projects extends Component {
   state = {
     projects: [],
@@ -19,19 +20,16 @@ class Projects extends Component {
   };
 
   projectfetch = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/users/me/projects",
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${url}/api/users/me/projects`, {
+      method: "GET",
+      credentials: "include",
+    });
     const fetchedProjects = await response.json();
 
     this.setState({ projects: fetchedProjects });
   };
   projectDelete = async (id) => {
-    const response = await fetch("http://localhost:5000/api/projects/" + id, {
+    const response = await fetch(`${url}/api/projects/${id}`, {
       method: "DELETE",
       credentials: "include",
     });

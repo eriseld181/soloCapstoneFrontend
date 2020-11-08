@@ -12,9 +12,9 @@ function AddNewHomeworkModal(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const url = process.env.REACT_APP_URL;
   const AddNewPost = async () => {
-    const response = await fetch("http://localhost:5000/api/homeworks/add", {
+    const response = await fetch(`${url}/api/homeworks/add`, {
       credentials: "include",
       method: "POST",
       body: JSON.stringify({
@@ -30,7 +30,7 @@ function AddNewHomeworkModal(props) {
       const image = new FormData();
       image.append("image", myImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/homeworks/" + data._id + "/uploadImage",
+        `${url}/api/homeworks/` + data._id + "/uploadImage",
         {
           method: "POST",
           body: image,

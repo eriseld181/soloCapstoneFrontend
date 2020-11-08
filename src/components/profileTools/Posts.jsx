@@ -2,19 +2,16 @@ import React, { Component } from "react";
 import { Card, Col, Row, Image } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
 import mainStyle from "../../components/Component.module.css";
-
+const url = process.env.REACT_APP_URL;
 class Projects extends Component {
   state = {
     projects: [],
   };
   componentDidMount = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/posts/otherUsersPosts",
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${url}/api//posts/otherUsersPosts`, {
+      method: "GET",
+      credentials: "include",
+    });
     const fetchedProjects = await response.json();
 
     this.setState({ projects: fetchedProjects });

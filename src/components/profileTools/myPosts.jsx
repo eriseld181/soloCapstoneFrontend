@@ -6,7 +6,7 @@ import { BsThreeDots } from "react-icons/bs";
 
 import EditModalPosts from "../modals/EditPostModal";
 import AddNewPostModal from "../modals/AddNewPostModal";
-
+const url = process.env.REACT_APP_URL;
 class Posts extends Component {
   state = {
     posts: [],
@@ -21,7 +21,7 @@ class Posts extends Component {
   };
 
   postFetch = async () => {
-    const response = await fetch("http://localhost:5000/api/users/me/posts", {
+    const response = await fetch(`${url}/api/users/me/posts`, {
       method: "GET",
       credentials: "include",
     });
@@ -31,7 +31,7 @@ class Posts extends Component {
   };
 
   postDelete = async (id) => {
-    const response = await fetch("http://localhost:5000/api/posts/" + id, {
+    const response = await fetch(`${url}/api/posts/${id}`, {
       method: "DELETE",
       credentials: "include",
     });

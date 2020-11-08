@@ -6,6 +6,7 @@ import mainStyle from "../Component.module.css";
 import EditModalHomework from "../modals/EditHomeworkModal";
 import AddNewHomeworkModal from "../modals/AddNewHomeworkModal";
 import { BsThreeDots } from "react-icons/bs";
+const url = process.env.REACT_APP_URL;
 class MyHomework extends Component {
   state = {
     homeworks: [],
@@ -16,19 +17,16 @@ class MyHomework extends Component {
   };
 
   homeworkFetch = async () => {
-    const response = await fetch(
-      "http://localhost:5000/api/users/me/homeworks",
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${url}/api/users/me/homeworks`, {
+      method: "GET",
+      credentials: "include",
+    });
     const fetchedhomeworks = await response.json();
 
     this.setState({ homeworks: fetchedhomeworks });
   };
   homeworkDelete = async (id) => {
-    const response = await fetch("http://localhost:5000/api/homeworks/" + id, {
+    const response = await fetch(`${url}/api/homeworks/${id}`, {
       method: "DELETE",
       credentials: "include",
     });

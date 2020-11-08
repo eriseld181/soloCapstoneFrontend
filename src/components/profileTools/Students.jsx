@@ -4,13 +4,14 @@ import { Container } from "react-bootstrap";
 import { MdEmail } from "react-icons/md";
 import mainStyle from "../Component.module.css";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+const url = process.env.REACT_APP_URL;
 export default class Students extends Component {
   state = {
     allUsers: [],
   };
 
   allUsersFetch = async () => {
-    const response = await fetch("http://localhost:5000/api/users/", {
+    const response = await fetch(`${url}/api/users/`, {
       credentials: "include",
     });
     const fetchedUsers = await response.json();

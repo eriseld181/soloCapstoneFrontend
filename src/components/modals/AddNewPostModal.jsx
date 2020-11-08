@@ -7,13 +7,13 @@ import mainStyle from "../Component.module.css";
 function AddNewPostModal(props) {
   const [newPostTitle, setPostTitle] = useState("");
   const [myImage, setImage] = useState("");
-
+  const url = process.env.REACT_APP_URL;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const AddNewPost = async () => {
-    const response = await fetch("http://localhost:5000/api/posts/add", {
+    const response = await fetch(`${url}/api/posts/add`, {
       credentials: "include",
       method: "POST",
       body: JSON.stringify({ myTitle: newPostTitle }),
@@ -25,7 +25,7 @@ function AddNewPostModal(props) {
       const image = new FormData();
       image.append("image", myImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/posts/" + data._id + "/uploadImage",
+        `${url}/api/posts/` + data._id + "/uploadImage",
         {
           method: "POST",
           body: image,

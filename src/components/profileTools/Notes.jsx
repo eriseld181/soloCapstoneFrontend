@@ -33,7 +33,7 @@ function Notes() {
   };
 
   const noteDelete = async (id) => {
-    const response = await fetch(url + "/api/notes/" + id, {
+    const response = await fetch(`${url}/api/notes/${id}`, {
       method: "DELETE",
       credentials: "include",
     });

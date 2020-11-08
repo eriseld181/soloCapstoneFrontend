@@ -13,9 +13,9 @@ function AddNewProjectModal(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const url = process.env.REACT_APP_URL;
   const AddNewPost = async () => {
-    const response = await fetch("http://localhost:5000/api/projects/add", {
+    const response = await fetch(`${url}/api/projects/add`, {
       credentials: "include",
       method: "POST",
       body: JSON.stringify({
@@ -31,7 +31,7 @@ function AddNewProjectModal(props) {
       const image = new FormData();
       image.append("image", myImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/projects/" + data._id + "/uploadImage",
+        `${url}/api/projects/` + data._id + "/uploadImage",
         {
           method: "POST",
           body: image,

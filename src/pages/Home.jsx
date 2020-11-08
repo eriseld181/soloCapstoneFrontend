@@ -16,6 +16,7 @@ import {
 } from "react-bootstrap";
 import Cookies from "js-cookie";
 import mainStyle from "../components/Component.module.css";
+const url = process.env.REACT_APP_URL;
 
 class Home extends React.Component {
   state = {
@@ -41,12 +42,9 @@ class Home extends React.Component {
   };
 
   fetchFeed = async () => {
-    const resp = await fetch(
-      "http://localhost:5000/api/" + this.state.categorySelected,
-      {
-        credentials: "include",
-      }
-    );
+    const resp = await fetch(`${url}/api/` + this.state.categorySelected, {
+      credentials: "include",
+    });
     if (resp.ok) {
       const data = await resp.json();
 

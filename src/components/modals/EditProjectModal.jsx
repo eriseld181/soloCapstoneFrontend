@@ -31,9 +31,7 @@ export default function EditModalProject(props) {
       const image = new FormData();
       image.append("image", uploadImage);
       const uploadPhoto = await fetch(
-        "http://localhost:5000/api/projects/" +
-          props.projects._id +
-          "/uploadImage",
+        `${url}/api/projects/` + props.projects._id + "/uploadImage",
         {
           method: "POST",
           body: image,

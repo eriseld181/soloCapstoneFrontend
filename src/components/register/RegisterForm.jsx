@@ -3,6 +3,7 @@ import { Card, Form, Button, Col, Container } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 import styles from "../Component.module.css";
 import States from "./countries.json";
+
 // import Info from "../InfoText/Info";
 import mainStyle from "../Component.module.css";
 function RegisterForm(props) {
@@ -12,6 +13,7 @@ function RegisterForm(props) {
   const [lastname, setLastname] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+  const url = process.env.REACT_APP_URL;
 
   const userData = {
     email,
@@ -23,7 +25,7 @@ function RegisterForm(props) {
   };
 
   const userRegister = async () => {
-    const register = await fetch("http://localhost:5000/api/users/register", {
+    const register = await fetch(`${url}/api/users/register`, {
       method: "POST",
       body: JSON.stringify(userData),
       headers: new Headers({

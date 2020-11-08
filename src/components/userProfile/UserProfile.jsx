@@ -9,24 +9,21 @@ import { BsGeoAlt } from "react-icons/bs";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { ImUserTie } from "react-icons/im";
-
+const url = process.env.REACT_APP_URL;
 class UserProfile extends Component {
   render() {
     const handleUpload = async (e) => {
       const uploadImage = e.target.files[0];
       const image = new FormData();
       image.append("image", uploadImage);
-      const uploadPhoto = await fetch(
-        "http://localhost:5000/api/users/uploadImage",
-        {
-          method: "POST",
-          body: image,
-          credentials: "include",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
+      const uploadPhoto = await fetch(`${url}/api/users/me/uploadImage`, {
+        method: "POST",
+        body: image,
+        credentials: "include",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
       if (uploadPhoto.ok) {
         this.props.userFetch();
       } else {
