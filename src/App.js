@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-
 import Home from "./pages/Home";
 import Students from "./pages/Students";
 import Home2 from "./pages/Home2";
@@ -14,7 +13,6 @@ import Posts from "./components/profileTools/Posts";
 import Notes from "./components/profileTools/Notes";
 import Cookie from "js-cookie";
 // import style from "./App.css";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainNavBar from "./components/NavBar/MainNavBar";
 function App() {
@@ -23,7 +21,8 @@ function App() {
   const [Check, setCheck] = useState(true);
 
   const myCheck = useCallback(async () => {
-    if (Cookie.get("accessToken")) {
+    // if (Cookie.get("accessToken")) {
+    if ({ credentials: "include" } === true) {
       setCheck(false);
       setCheckActive(true);
       setMyNavBarEmpty(true);
