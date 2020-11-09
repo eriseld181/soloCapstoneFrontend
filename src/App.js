@@ -20,10 +20,11 @@ import MainNavBar from "./components/NavBar/MainNavBar";
 function App() {
   const [CheckActive, setCheckActive] = useState(false);
   const [myNavBarEmpty, setMyNavBarEmpty] = useState(false);
-
   const [Check, setCheck] = useState(true);
+
   const myCheck = useCallback(async () => {
     if (Cookie.get("activeL")) {
+      console.log(Cookie.get("activeL"));
       setCheck(false);
       setCheckActive(true);
       setMyNavBarEmpty(true);
