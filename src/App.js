@@ -23,8 +23,7 @@ function App() {
   const [Check, setCheck] = useState(true);
 
   const myCheck = useCallback(async () => {
-    if (Cookie.get("activeL")) {
-      console.log(Cookie.get("activeL"));
+    if (Cookie.get("accessToken")) {
       setCheck(false);
       setCheckActive(true);
       setMyNavBarEmpty(true);
