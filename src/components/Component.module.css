@@ -107,22 +107,22 @@ h3 {
   color: #03b8f7;
   font-size: 23px;
   width: 80%;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 h4 {
   font-size: 22px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 /* For Profile Text */
 .profileTitle {
   color: #03b8f7;
   font-size: 40px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 .smallProfileTitle {
   color: #03b8f7;
   font-size: 25px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 .profileSubTitle {
   font-size: 23px;
@@ -135,7 +135,7 @@ h4 {
 .title {
   color: #03b8f7;
   font-size: 30px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 .titleWhite {
   color: white;
@@ -148,7 +148,7 @@ h4 {
 .mediumTitleBlue {
   color: #03b8f7;
   font-size: 25px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 .postText {
   font-size: 19px;
@@ -162,13 +162,13 @@ h4 {
 .smallTitleBlue {
   color: #03b8f7;
   font-size: 15px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 /* For Text Lables */
 .label {
   color: #03b8f7;
   font-size: 20px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Source Serif Pro", Georgia, Garamond, serif;
 }
 .labelWhite {
   font-size: 18px;

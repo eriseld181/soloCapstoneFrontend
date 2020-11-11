@@ -66,78 +66,69 @@ export default class Students extends Component {
           {this.state.allUsers.users &&
             this.state.allUsers.users.map((user, index) => {
               return (
-                <>
-                  <Tbody key={user._id} className={``}>
-                    {user.role && user.role === "student" && (
-                      <Tr className={` ${mainStyle.tableBorder}  `}>
-                        <Td className={` ${mainStyle.tableBorder} `}>
-                          <p className={` ${mainStyle.postText} `}>
-                            {index + 1}
-                          </p>
-                        </Td>
-                        <Td
-                          className={` ${mainStyle.tableBorder} ${mainStyle.postText} `}
-                        >
-                          {user.firstname} {user.lastname}
-                        </Td>
-                        {/* <Td className={` ${mainStyle.tableBorder} `}>
+                <Tbody key={user._id} className={``}>
+                  {user.role && user.role === "student" && (
+                    <Tr className={` ${mainStyle.tableBorder}  `}>
+                      <Td className={` ${mainStyle.tableBorder} `}>
+                        <p className={` ${mainStyle.postText} `}>{index + 1}</p>
+                      </Td>
+                      <Td
+                        className={` ${mainStyle.tableBorder} ${mainStyle.postText} `}
+                      >
+                        {user.firstname} {user.lastname}
+                      </Td>
+                      {/* <Td className={` ${mainStyle.tableBorder} `}>
                           <p className={` ${mainStyle.postText} `}>
                             {user.role}
                           </p>
                         </Td> */}
-                        <Td
-                          className={` ${mainStyle.tableBorder} ${mainStyle.postText}`}
+                      <Td
+                        className={` ${mainStyle.tableBorder} ${mainStyle.postText}`}
+                      >
+                        <a
+                          href={user.portfolio}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          <a
-                            href={user.portfolio}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Open Git
-                          </a>
-                        </Td>
+                          Open Git
+                        </a>
+                      </Td>
 
-                        <Td
-                          className={` ${mainStyle.tableBorder}  ${mainStyle.postText} `}
+                      <Td
+                        className={` ${mainStyle.tableBorder}  ${mainStyle.postText} `}
+                      >
+                        {" "}
+                        <a
+                          href={user.portfolio}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          {" "}
-                          <a
-                            href={user.portfolio}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          Open Portfolio
+                        </a>
+                      </Td>
+                      <Td className={` ${mainStyle.tableBorder}   `}>
+                        <Row
+                          className={` ${mainStyle.clearSpaces} justify-content-between `}
+                        >
+                          <Col
+                            className={`  ${mainStyle.postText}   ${mainStyle.clearSpaces} `}
+                            xs={"auto"}
                           >
-                            Open Portfolio
-                          </a>
-                        </Td>
-                        <Td className={` ${mainStyle.tableBorder}   `}>
-                          <Row className={` ${mainStyle.clearSpaces} d-flex  `}>
-                            <Col
-                              className={`  ${mainStyle.postText}   ${mainStyle.clearSpaces} `}
-                              sm={6}
-                            >
-                              {" "}
-                              <span>{user.email}</span>
-                            </Col>{" "}
-                            <Col
-                              sm={6}
-                              className={`  ${mainStyle.postText} ${mainStyle.clearSpaces} `}
-                            >
-                              {" "}
-                              <a
-                                href={user.portfolio}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={` ${mainStyle.webLinks} ${mainStyle.icon}  `}
-                              >
-                                <MdEmail />
-                              </a>
-                            </Col>
-                          </Row>
-                        </Td>
-                      </Tr>
-                    )}
-                  </Tbody>
-                </>
+                            {" "}
+                            <span>{user.email}</span>
+                          </Col>{" "}
+                          <Col
+                            xs={"auto"}
+                            className={`  ${mainStyle.postText} ${mainStyle.clearSpaces} `}
+                          >
+                            {" "}
+                            <MdEmail />
+                          </Col>
+                        </Row>
+                      </Td>
+                    </Tr>
+                  )}
+                </Tbody>
               );
             })}
         </Table>

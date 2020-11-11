@@ -15,13 +15,22 @@ import Cookie from "js-cookie";
 // import style from "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainNavBar from "./components/NavBar/MainNavBar";
+const url = process.env.REACT_APP_URL;
 function App() {
   const [CheckActive, setCheckActive] = useState(false);
   const [myNavBarEmpty, setMyNavBarEmpty] = useState(false);
   const [Check, setCheck] = useState(true);
 
   const myCheck = useCallback(async () => {
-    if (Cookie.get("accessToken")) {
+    const user = await fetch(`${url}/api/users/me`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+
+    if (user.ok) {
       setCheck(false);
       setCheckActive(true);
       setMyNavBarEmpty(true);

@@ -38,7 +38,7 @@ function MainNavBar(props) {
   };
   useEffect(() => {
     userFetch();
-  }, [props.isLoggedIn]);
+  }, []);
 
   return (
     <>
