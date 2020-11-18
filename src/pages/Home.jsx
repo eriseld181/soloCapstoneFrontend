@@ -152,23 +152,10 @@ class Home extends React.Component {
                                   <h3>{feed.myTitle}</h3>
                                 </Card.Title>
                                 {feed.image && (
-                                  <div
-                                    style={
-                                      {
-                                        // width: "100%",
-                                        // objectFit: "cover",
-                                      }
-                                    }
-                                  >
-                                    {" "}
+                                  <div>
                                     <Card.Img
                                       variant="top"
-                                      className={`rounded d-block ${mainStyle.bg}`}
-                                      style={{
-                                        objectFit: "cover",
-                                        height: "400px",
-                                        objectPosition: "center",
-                                      }}
+                                      className={`rounded mx-auto d-block ${mainStyle.bg} ${mainStyle.postImage}`}
                                       src={feed.image}
                                     />
                                   </div>
@@ -224,20 +211,10 @@ class Home extends React.Component {
                                   <h3>{feed.myTitle}</h3>
                                 </Card.Title>
                                 {feed.image && (
-                                  <div
-                                    style={{
-                                      width: "100%",
-                                    }}
-                                  >
-                                    {" "}
+                                  <div>
                                     <Card.Img
                                       variant="top"
-                                      className={`rounded d-block ${mainStyle.bg}`}
-                                      style={{
-                                        objectFit: "cover",
-                                        height: "450px",
-                                        objectPosition: "center",
-                                      }}
+                                      className={`rounded mx-auto d-block ${mainStyle.bg} ${mainStyle.postImage}`}
                                       src={feed.image}
                                     />
                                   </div>
@@ -300,20 +277,10 @@ class Home extends React.Component {
                                     </Card.Text>
 
                                     {feed.image && (
-                                      <div
-                                        style={{
-                                          width: "100%",
-                                          height: "450px",
-                                        }}
-                                      >
+                                      <div>
                                         <Card.Img
                                           variant="top"
-                                          className={`rounded mx-auto d-block ${mainStyle.bg}`}
-                                          style={{
-                                            height: "450px",
-
-                                            objectFit: "cover",
-                                          }}
+                                          className={`rounded mx-auto d-block ${mainStyle.bg} ${mainStyle.postImage}`}
                                           src={feed.image}
                                         />
                                       </div>
