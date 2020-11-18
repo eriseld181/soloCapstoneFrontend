@@ -40,11 +40,11 @@ function RegisterForm(props) {
 
   return (
     <div className={` mt-5 `}>
-      <Card className={`${styles.bg}`}>
+      <Card className={`${styles.bg} ${styles.cardDesignClean}`}>
         <Card.Img
           className={`mx-auto mt-5 ${styles.bg}`}
           variant="top"
-          style={{ width: "400px" }}
+          style={{ width: "300px" }}
           src="../../e-tech-logo-main.png"
         />
         <Card.Body className={`mx-auto ${styles.bg}`}>
@@ -54,7 +54,7 @@ function RegisterForm(props) {
         </Card.Body>
         <Container>
           <Form style={{ width: "70%" }} className={`mx-auto  mb-5`}>
-            <Form.Row>
+            <Form.Row className={`${styles.cardDesignClean}`}>
               <Form.Group
                 className={`mx-auto  ${styles.bg}`}
                 as={Col}
@@ -101,7 +101,7 @@ function RegisterForm(props) {
               </Form.Group>
             </Form.Row>
 
-            <Form.Row>
+            <Form.Row className={`${styles.cardDesignClean}`}>
               <Form.Group
                 className={`mx-auto ${styles.bg}`}
                 as={Col}
@@ -136,7 +136,7 @@ function RegisterForm(props) {
               </Form.Group>
             </Form.Row>
 
-            <Form.Row>
+            <Form.Row className={`${styles.cardDesignClean}`}>
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label className={`${styles.labels}`}>State</Form.Label>
                 <Form.Control
