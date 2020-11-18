@@ -112,14 +112,14 @@ function MainNavBar(props) {
             )}
             {props.Check && (
               <Nav>
-                <Link className="mr-3  pt-2" to="about">
+                <Link className="mr-3 ml-1  pt-1" to="about">
                   About
                 </Link>
               </Nav>
             )}
             {props.Check && (
               <Nav>
-                <Link className="mr-3 pt-2" to="/contact">
+                <Link className="mr-3 pt-1" to="/contact">
                   Contact
                 </Link>{" "}
               </Nav>
@@ -128,7 +128,7 @@ function MainNavBar(props) {
           <Form inline>
             {props.Check && (
               <Nav>
-                <Link to="/login">
+                <Link to="/login" className="ml-2 mr-3 pt-1">
                   <AiFillLock className={` ${styles.icons}`} />
                   Login
                 </Link>

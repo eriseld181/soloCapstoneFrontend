@@ -10,7 +10,7 @@ export default function Login(props) {
     <>
       <Container
         className={`justify-content-center mt-5 pt-5 
-        ${mainStyle.webLinks}`}
+        ${mainStyle.webLinks}  `}
       >
         <LoginForm myCheck={props.myCheck} />
       </Container>

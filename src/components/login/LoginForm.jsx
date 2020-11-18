@@ -44,20 +44,20 @@ function LoginForm(props) {
   };
 
   return (
-    <div>
-      <Card className={`${styles.bg}`}>
+    <>
+      <Card className={`${styles.bg} ${mainStyle.cardDesignClean} `}>
         <Card.Img
-          className={`mx-auto mt-4 ${styles.bg}`}
+          className={`mx-auto  ${styles.bg}`}
           variant="top"
-          style={{ width: "400px" }}
+          style={{ width: "300px" }}
           src="../../e-tech-logo-main.png"
         />
         <Card.Body className={`mx-auto ${styles.bg}`}>
-          <Card.Title className={`mb-3 ${styles.bg}`}>
+          <Card.Title className={`mb-1 ${styles.bg}`}>
             Please Login to Continue!
           </Card.Title>
         </Card.Body>
-        <Form style={{ width: "40%" }} className={`mx-auto mb-5 `}>
+        <Form className={`mx-auto mb-3 `}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label className={`${styles.labels}`}>
               Email address
@@ -121,7 +121,7 @@ function LoginForm(props) {
           )}
         </Form>
       </Card>
-    </div>
+    </>
   );
 }
 
