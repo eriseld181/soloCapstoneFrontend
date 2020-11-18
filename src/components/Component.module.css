@@ -1,6 +1,8 @@
 .clearSpaces {
-  margin: 0px !important;
-  padding: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 .menuIcon {
   font-size: 30px;
@@ -9,11 +11,6 @@
 .icon {
   font-size: 20px;
   box-shadow: none;
-}
-.imputGroupSize {
-  width: 50% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
 }
 
 .uploadPhoto {
@@ -186,8 +183,14 @@ h4 {
 }
 /* for image design */
 .postImage {
-  height: 500px;
+  height: 450px;
   object-fit: cover;
+  width: 650px;
+}
+.homeworkImage {
+  height: 450px;
+  object-fit: cover;
+  width: 720px;
 }
 .postProfileImage {
   height: 50px !important;
@@ -303,9 +306,22 @@ a.webLinks {
 .textCol {
   width: 10px !important;
 }
+/* @media only screen and (max-width: 1280px) {
+  .homeworkImage {
+    height: 450px;
+    object-fit: cover;
+    width: 650px;
+  }
+} */
 @media only screen and (max-width: 600px) {
+  .homeworkImage {
+    height: 230px;
+
+    width: 320px;
+  }
   .postImage {
-    height: 220px;
+    height: 230px;
+    width: 315px;
 
     object-fit: cover;
   }
@@ -326,7 +342,13 @@ a.webLinks {
     margin: 0px;
   } */
 }
+/* @media only screen and (max-width: 375px) {
+  .homeworkImage {
+    height: 180px;
 
+    width: 235px;
+  }
+} */
 .tableBorder {
   border-width: 1px;
   border-color: white;
