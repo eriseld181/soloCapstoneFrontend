@@ -68,7 +68,7 @@ class Posts extends Component {
           </Col>
         </Row>
         <Row className={`justify-content-center ${mainStyle.clearSpaces}  `}>
-          <Col sm={12} md={4} lg={7} className={` ${mainStyle.clearSpaces}  `}>
+          <Col sm={12} md={4} lg={6} className={` ${mainStyle.clearSpaces}  `}>
             {" "}
             {this.state.posts && this.state.posts.length > 0 ? (
               this.state.posts.map((feed) => {

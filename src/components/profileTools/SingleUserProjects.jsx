@@ -70,7 +70,7 @@ class Projects extends Component {
           className=" justify-content-center"
           style={{ margin: "0px", padding: "0px" }}
         >
-          <Col sm={12} md={8}>
+          <Col sm={12} md={6}>
             {this.state.projects && this.state.projects.length > 0 ? (
               this.state.projects.map((project) => {
                 return (

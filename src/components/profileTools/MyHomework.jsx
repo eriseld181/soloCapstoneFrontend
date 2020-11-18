@@ -56,7 +56,7 @@ class MyHomework extends Component {
           </Row>
         </Container>{" "}
         <Row className={`justify-content-center ${mainStyle.clearSpaces}  `}>
-          <Col sm={12} md={8}>
+          <Col sm={12} md={6}>
             {this.state.homeworks && this.state.homeworks.length > 0 ? (
               this.state.homeworks.map((homework) => {
                 return (
