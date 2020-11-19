@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Container } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 import { ImGithub } from "react-icons/im";
 import { SiLinkedin } from "react-icons/si";
@@ -8,6 +8,7 @@ import { BiImageAdd } from "react-icons/bi";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
 import { ImUserTie } from "react-icons/im";
 const url = process.env.REACT_APP_URL;
 class UserProfile extends Component {
@@ -87,12 +88,15 @@ class UserProfile extends Component {
         {/* end of full name row */}
         <Row
           style={{ margin: "0px", padding: "0px" }}
-          className={` justify-content-center `}
+          className={` justify-content-around `}
         >
-          <Col xs={10} sm={10} md={8} style={{ margin: "0px", padding: "0px" }}>
-            {" "}
-            <p className={`text-left mt-1 ${mainStyle.title}`}>About</p>
-          </Col>
+          {" "}
+          <p className={`text-left mt-1 pr-5 mr-5 ${mainStyle.title}`}>
+            About
+          </p>{" "}
+          <p className={`text-right mt-1 ${mainStyle.title}`}>
+            <FiSettings />
+          </p>
         </Row>{" "}
         {this.props.about ? (
           <Row
@@ -103,7 +107,7 @@ class UserProfile extends Component {
               style={{ margin: "0px", padding: "0px" }}
               xs={11}
               sm={11}
-              md={8}
+              md={7}
             >
               <p style={{ textAlign: " justify" }}>{this.props.about}</p>{" "}
             </Col>
