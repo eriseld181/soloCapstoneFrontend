@@ -32,7 +32,7 @@ class UserProfile extends Component {
       }
     };
     return (
-      <div style={{ margin: "0px", padding: "0px" }}>
+      <>
         <Row
           style={{ margin: "0px", padding: "0px" }}
           className="justify-content-center mr-1 mt-5 "
@@ -132,68 +132,148 @@ class UserProfile extends Component {
         {/* end of about row */}
         <Row
           style={{ margin: "0px", padding: "0px" }}
-          className={` justify-content-center `}
+          // style={{ outline: "solid red 2px" }}
+          className=" justify-content-between mb-3"
         >
-          <Col
-            style={{ margin: "0px", padding: "0px" }}
-            className={`mt-3 ml-5 `}
-            sm={12}
-            md={6}
-            lg={4}
-            // style={{ outline: "solid blue 1px" }}
-          >
-            <Row
-              style={{ margin: "0px", padding: "0px" }}
-              className={` justify-content-center `}
-            >
+          <Col xs={6} sm={6} md={5}>
+            <div>
+              {" "}
+              {this.props.role && this.props.role === "student" ? (
+                <div className={`mb-2 text-right ${mainStyle.postText}`}>
+                  <FaUserGraduate className="mb-1 mr-2" /> {this.props.role}
+                </div>
+              ) : (
+                <div
+                  xs={10}
+                  md={10}
+                  className={`mb-2 text-right ${mainStyle.postText}`}
+                >
+                  <ImUserTie className="mb-1 mr-2" /> {this.props.role}
+                </div>
+              )}
+            </div>
+            {/* end of role div */}
+            <div>
               {" "}
               {this.props.country && this.props.city ? (
-                <Col
-                  xs={10}
-                  md={10}
-                  className={`mb-2 text-left ${mainStyle.postText}`}
-                >
+                <div className={`mb-2 text-right ${mainStyle.postText}`}>
                   <BsGeoAlt className="mb-1 mr-2" />
                   {this.props.country}, {this.props.city}
-                </Col>
+                </div>
               ) : (
-                <Col
+                <div
+                  xs={10}
+                  md={10}
+                  className={`mb-2 text-right ${mainStyle.postText}`}
+                >
+                  <BsGeoAlt className="mb-1 mr-2" />
+                  <i>Add a Location</i>
+                </div>
+              )}
+            </div>
+            {/* end of location div */}
+            <div>
+              {" "}
+              {this.props.email ? (
+                <div className={`mb-2 text-right ${mainStyle.postText}`}>
+                  <BsEnvelopeFill className={`mb-1 mr-2 text-right `} />{" "}
+                  {this.props.email}
+                </div>
+              ) : (
+                <div
+                  xs={10}
+                  md={10}
+                  className={`mb-2 text-right ${mainStyle.postText}`}
+                >
+                  <BsEnvelopeFill className={`mb-1 mr-2 text-right `} />
+                  <i>Add an Email</i>
+                </div>
+              )}
+            </div>
+          </Col>{" "}
+          <Col xs={6} sm={6} md={5}>
+            {" "}
+            <div>
+              {" "}
+              {this.props.github ? (
+                <div className={`mb-2 text-left ${mainStyle.postText}`}>
+                  <a
+                    className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
+                    rel="stylesheet"
+                    target="_blank"
+                    href={this.props.github}
+                  >
+                    <ImGithub className="mb-1 mr-2 " /> GitHub
+                  </a>
+                </div>
+              ) : (
+                <div
                   xs={10}
                   md={10}
                   className={`mb-2 text-left ${mainStyle.postText}`}
                 >
-                  <BsGeoAlt className="mb-1 mr-2" />
-                  Location missing
-                </Col>
+                  <ImGithub className="mb-1 mr-2 " />
+                  <i>Add a Github</i>
+                </div>
               )}
-            </Row>
-            <Row
-              style={{ margin: "0px", padding: "0px" }}
-              className={`justify-content-center `}
-            >
-              <Col xs={10} className={`mb-2 text-left ${mainStyle.postText}`}>
-                <BsEnvelopeFill className={`mb-1 mr-2 text-left `} />{" "}
-                {this.props.email}
-              </Col>
-            </Row>
-            <Row
-              style={{ margin: "0px", padding: "0px" }}
-              className={` justify-content-center `}
-            >
-              <Col xs={10} className={`mb-2 text-left ${mainStyle.postText}`}>
-                {this.props.role && this.props.role === "student" ? (
-                  <span>
+            </div>
+            <div>
+              {" "}
+              {this.props.linkedin ? (
+                <div className={`mb-2 text-left ${mainStyle.postText}`}>
+                  <a
+                    className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
+                    rel="stylesheet"
+                    target="_blank"
+                    href={this.props.linkedin}
+                  >
                     {" "}
-                    <FaUserGraduate className="mb-1 mr-2" /> {this.props.role}
-                  </span>
-                ) : (
-                  <span>
-                    {" "}
-                    <ImUserTie className="mb-1 mr-2" /> {this.props.role}
-                  </span>
-                )}
-              </Col>
-            </Row>
+                    <SiLinkedin className="mb-1 mr-2" /> LinkedIn
+                  </a>
+                </div>
+              ) : (
+                <div
+                  xs={10}
+                  md={10}
+                  className={`mb-2 text-left ${mainStyle.postText}`}
+                >
+                  <SiLinkedin className="mb-1 mr-2" />
+                  <i>Add a Linkedin</i>
+                </div>
+              )}
+            </div>
+            <div>
+              {" "}
+              {this.props.portfolio ? (
+                <div className={`mb-2 text-left ${mainStyle.postText}`}>
+                  <a
+                    className={`  text-left ${mainStyle.webLinks} ${mainStyle.postText}`}
+                    rel="stylesheet"
+                    target="_blank"
+                    href={this.props.portfolio}
+                  >
+                    <FaLaptopCode className="mb-1 mr-2" /> Portfolio
+                  </a>
+                </div>
+              ) : (
+                <div
+                  xs={10}
+                  md={10}
+                  className={`mb-2 text-left ${mainStyle.postText}`}
+                >
+                  <FaLaptopCode className="mb-1 mr-2" />
+                  <i>Add a portfolio</i>
+                </div>
+              )}
+            </div>
+          </Col>{" "}
+        </Row>
+        {/* <Row
+          style={{ margin: "0px", padding: "0px", outline: "solid white 2px" }}
+          className={` justify-content-center `}
+        >
+        
+          
           </Col>
 
           <Col
@@ -203,19 +283,7 @@ class UserProfile extends Component {
             className=" pt-3 mr-5 "
             // style={{ outline: "solid green 1px" }}
           >
-            <Row
-              style={{ margin: "0px", padding: "0px" }}
-              className={`mb-2 justify-content-center  mr-4 ${mainStyle.postText}`}
-            >
-              <ImGithub className="mb-1 mr-1 " />
-              <a
-                className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
-                rel="stylesheet"
-                href={this.props.github}
-              >
-                GitHub
-              </a>
-            </Row>
+          
             <Row
               className={`mb-2 justify-content-center  mr-4  ${mainStyle.postText}`}
             >
@@ -242,9 +310,9 @@ class UserProfile extends Component {
               </a>
             </Row>
           </Col>
-        </Row>
+        </Row> */}
         {/* end of personal info */}
-      </div>
+      </>
     );
   }
 }

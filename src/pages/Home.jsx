@@ -23,7 +23,7 @@ class Home extends React.Component {
     users: [],
     singleUser: [],
     feedCategory: [],
-    categorySelected: "homeworks",
+    categorySelected: "posts",
   };
   handleSearchQuery = (searchQuery) => {
     if (searchQuery) {
@@ -261,7 +261,7 @@ class Home extends React.Component {
                     {/* end of homework fetch */}
                     {this.state.categorySelected === "posts" && (
                       <Row className="justify-content-center ">
-                        <Col sm={12} md={9}>
+                        <Col sm={12} md={7}>
                           {this.state.feedCategory.length > 0 &&
                             this.state.feedCategory.map((feed) => {
                               return (
