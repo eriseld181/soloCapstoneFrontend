@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Row, Col, Image, Container } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 import { ImGithub } from "react-icons/im";
 import { SiLinkedin } from "react-icons/si";
 import { FaLaptopCode } from "react-icons/fa";
-import { BiImageAdd } from "react-icons/bi";
+import { RiImageAddFill } from "react-icons/ri";
 import { BsGeoAlt } from "react-icons/bs";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
 import { ImUserTie } from "react-icons/im";
+
 const url = process.env.REACT_APP_URL;
 class UserProfile extends Component {
   render() {
@@ -17,7 +18,8 @@ class UserProfile extends Component {
       const uploadImage = e.target.files[0];
       const image = new FormData();
       image.append("image", uploadImage);
-      const uploadPhoto = await fetch(`${url}/api/users/me/uploadImage`, {
+
+      const uploadPhoto = await fetch(`${url}/api/users/uploadImage`, {
         method: "POST",
         body: image,
         credentials: "include",
@@ -28,7 +30,7 @@ class UserProfile extends Component {
       if (uploadPhoto.ok) {
         this.props.userFetch();
       } else {
-        console.log("upload photo is not working");
+        console.log("Uploading profile image has failed...");
       }
     };
     return (
@@ -45,11 +47,11 @@ class UserProfile extends Component {
             roundedCircle
           />{" "}
           <label
-            className={` ${mainStyle.uploadPhoto} ${mainStyle.show} `}
+            className={` ${mainStyle.uploadPhoto} `}
             htmlFor="file-input"
             aria-required="true"
           >
-            <BiImageAdd />
+            <RiImageAddFill className={` ${mainStyle.imageUploadBG} `} />
           </label>
           <input
             style={{ display: "none" }}
@@ -199,8 +201,8 @@ class UserProfile extends Component {
                 <div className={`mb-2 text-left ${mainStyle.postText}`}>
                   <a
                     className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
-                    rel="stylesheet"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={this.props.github}
                   >
                     <ImGithub className="mb-1 mr-2 " /> GitHub
@@ -223,7 +225,7 @@ class UserProfile extends Component {
                 <div className={`mb-2 text-left ${mainStyle.postText}`}>
                   <a
                     className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
-                    rel="stylesheet"
+                    rel="noopener noreferrer"
                     target="_blank"
                     href={this.props.linkedin}
                   >
@@ -248,7 +250,7 @@ class UserProfile extends Component {
                 <div className={`mb-2 text-left ${mainStyle.postText}`}>
                   <a
                     className={`  text-left ${mainStyle.webLinks} ${mainStyle.postText}`}
-                    rel="stylesheet"
+                    rel="noopener noreferrer"
                     target="_blank"
                     href={this.props.portfolio}
                   >
@@ -268,50 +270,6 @@ class UserProfile extends Component {
             </div>
           </Col>{" "}
         </Row>
-        {/* <Row
-          style={{ margin: "0px", padding: "0px", outline: "solid white 2px" }}
-          className={` justify-content-center `}
-        >
-        
-          
-          </Col>
-
-          <Col
-            sm={12}
-            md={6}
-            lg={4}
-            className=" pt-3 mr-5 "
-            // style={{ outline: "solid green 1px" }}
-          >
-          
-            <Row
-              className={`mb-2 justify-content-center  mr-4  ${mainStyle.postText}`}
-            >
-              {" "}
-              <SiLinkedin className="mb-1 mr-1" />
-              <a
-                className={` text-left  ${mainStyle.webLinks} ${mainStyle.postText}`}
-                rel="stylesheet"
-                href={this.props.linkedin}
-              >
-                {" "}
-                LinkedIn
-              </a>
-            </Row>
-            <Row
-              className={`mb-2 justify-content-center mr-4  ${mainStyle.postText}`}
-            >
-              <a
-                className={`  text-left ${mainStyle.webLinks} ${mainStyle.postText}`}
-                rel="stylesheet"
-                href={this.props.portfolio}
-              >
-                <FaLaptopCode className="mb-1 mr-2" /> Portfolio
-              </a>
-            </Row>
-          </Col>
-        </Row> */}
-        {/* end of personal info */}
       </>
     );
   }

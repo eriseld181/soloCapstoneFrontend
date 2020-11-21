@@ -14,16 +14,21 @@
 }
 
 .uploadPhoto {
-  opacity: 0;
-  font-size: 350%;
+  font-size: 330%;
   position: absolute;
-  margin: 10% 0 1% 10%;
+  margin: 145px 0px 0px 128px;
 }
-.uploadPhoto:hover {
-  opacity: 0.9;
-  font-size: 350%;
-  position: absolute;
-  margin: 10% 0 1% 10%;
+.imageUploadBG {
+  border-radius: 50%;
+  background-color: rgba(15, 31, 38, 0.8);
+  color: #03b8f7;
+  padding: 7px;
+
+  /* font-size: 4px; */
+}
+.imageUploadBG:hover {
+  font-size: 105%;
+  border: 1px solid #03b8f7;
 }
 
 .bg {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Col, Row, Container, Dropdown, Button } from "react-bootstrap";
 import DefaultComponent from "./DefaultComponent";
+import MyLoader from "../loader/MyLoader";
 //import { Link } from "react-router-dom";
 import mainStyle from "../../components/Component.module.css";
 import Pagination from "../Pagination";
@@ -10,7 +11,7 @@ import { BsThreeDots } from "react-icons/bs";
 function Notes() {
   const url = process.env.REACT_APP_URL;
   const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [notesPerPage] = useState(4);
   // Get current notes
@@ -48,18 +49,10 @@ function Notes() {
   }, [""]);
   // Change page
   if (loading) {
-    return (
-      <Row
-        style={{ margin: "0px" }}
-        className="justify-content-center mb-3 mt-3"
-      >
-        Loading...
-      </Row>
-    );
+    return <MyLoader />;
   }
   return (
     <>
-      {" "}
       <Container>
         {" "}
         <Row

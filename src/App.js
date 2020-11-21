@@ -11,7 +11,7 @@ import MainProjects from "./pages/Mainprojects";
 import Homeworks from "./components/profileTools/Homework";
 import Posts from "./components/profileTools/Posts";
 import Notes from "./components/profileTools/Notes";
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 // import style from "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainNavBar from "./components/NavBar/MainNavBar";
