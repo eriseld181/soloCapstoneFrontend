@@ -60,6 +60,7 @@ class Profile extends React.Component {
               portfolio={this.state.user.portfolio}
               city={this.state.user.city}
               country={this.state.user.country}
+              id={this.state.user._id}
             />
             <Tabs
               variant="pills"

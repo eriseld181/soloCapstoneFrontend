@@ -103,8 +103,12 @@ const Footer = () => (
       <Col xs={4} className="text-center mb-2 mt-2 "></Col>
       <Col xs={4} className="text-center mb-2 mt-2 ">
         &copy; {new Date().getFullYear()} Copyright:{" "}
-        <a className={`  ${mainStyle.webLinks}`} href="/">
-          e-tech.com{" "}
+        <a
+          className={`  ${mainStyle.webLinks}`}
+          href="https://eriseld-portfolio.herokuapp.com/"
+          target="_blank"
+        >
+          Eriseld Kosta{" "}
         </a>
       </Col>
       <Col xs={4} className="text-right mb-2 mt-2 pr-5 ">

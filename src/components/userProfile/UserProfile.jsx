@@ -10,7 +10,7 @@ import { BsEnvelopeFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
 import { ImUserTie } from "react-icons/im";
-// import EditProfileModal from "../modals/EditProfileModal";
+import EditProfileModal from "../modals/EditProfileModal";
 
 const url = process.env.REACT_APP_URL;
 class UserProfile extends Component {
@@ -283,10 +283,12 @@ class UserProfile extends Component {
             </div>
           </Col>{" "}
         </Row>
-        {/* <EditProfileModal
+        <EditProfileModal
           show={this.state.show}
-          handleClose={this.state.handleClose}
-        /> */}
+          handleClose={this.handleClose}
+          userId={this.props.id}
+          userFetch={this.props.userFetch}
+        />
       </>
     );
   }
