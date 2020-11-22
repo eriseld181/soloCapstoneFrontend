@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Button } from "react-bootstrap";
 import mainStyle from "../Component.module.css";
 import { ImGithub } from "react-icons/im";
 import { SiLinkedin } from "react-icons/si";
@@ -10,9 +10,16 @@ import { BsEnvelopeFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
 import { ImUserTie } from "react-icons/im";
+// import EditProfileModal from "../modals/EditProfileModal";
 
 const url = process.env.REACT_APP_URL;
 class UserProfile extends Component {
+  state = {
+    show: false,
+  };
+  handleClose = () => this.setState({ show: false });
+  handleShow = () => this.setState({ show: true });
+
   render() {
     const handleUpload = async (e) => {
       const uploadImage = e.target.files[0];
@@ -97,7 +104,13 @@ class UserProfile extends Component {
             About
           </p>{" "}
           <p className={`text-right mt-1 ${mainStyle.title}`}>
-            <FiSettings />
+            <Button
+              className={`${mainStyle.btnSettings}`}
+              onClick={() => this.handleShow()}
+              style={{ width: "100%" }}
+            >
+              <FiSettings />
+            </Button>{" "}
           </p>
         </Row>{" "}
         {this.props.about ? (
@@ -270,6 +283,10 @@ class UserProfile extends Component {
             </div>
           </Col>{" "}
         </Row>
+        {/* <EditProfileModal
+          show={this.state.show}
+          handleClose={this.state.handleClose}
+        /> */}
       </>
     );
   }

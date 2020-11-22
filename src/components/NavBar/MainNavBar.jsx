@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { Nav, Navbar, Image, Form, Button } from "react-bootstrap";
 import styles from "./Navbar.module.css";
-
 import { AiFillLock } from "react-icons/ai";
 import { BiExit } from "react-icons/bi";
 import { connect } from "react-redux";
@@ -15,12 +14,22 @@ const mapDispatchToProps = (dispatch) => ({
 
 function MainNavBar(props) {
   const [user, setUser] = useState([]);
+  const [loader, setLoader] = useState(true);
   const userFetch = async () => {
     const response = await fetch(`${url}/api/users/me/`, {
       credentials: "include",
     });
     const fetchedUsers = await response.json();
-    setUser(fetchedUsers);
+    if (fetchedUsers) {
+      setUser(fetchedUsers);
+      setTimeout(() => {
+        setLoader(false);
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        setLoader(false);
+      }, 3000);
+    }
   };
 
   const logOut = async () => {
@@ -43,12 +52,15 @@ function MainNavBar(props) {
   return (
     <>
       <Navbar
-        variant="light"
+        className="custom-toggler navbar-toggler-icon "
+        // bg="dark"
+        // variant="light"
         style={{
           margin: "0px",
           padding: "0px",
           width: "100%",
           backgroundColor: "#070a1d",
+          color: "white",
         }}
         className={`  ${styles.text}`}
         expand="lg"
@@ -87,6 +99,7 @@ function MainNavBar(props) {
             {props.CheckActive && (
               <Nav>
                 {/* <AiFillHome className={` ${styles.icons}`} /> */}
+
                 <Link className="mr-3 pt-2" to="/home">
                   Home
                 </Link>

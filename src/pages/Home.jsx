@@ -189,7 +189,7 @@ class Home extends React.Component {
                                   style={{ border: "none" }}
                                 >
                                   <Card.Title
-                                    className={`mt-3   text-left ${mainStyle.mediumTitleBlue} `}
+                                    className={`mt-3 text-left ${mainStyle.mediumTitleBlue} `}
                                   >
                                     {feed.myTitle}
                                   </Card.Title>
