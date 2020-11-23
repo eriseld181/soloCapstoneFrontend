@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 function MainNavBar(props) {
   const [user, setUser] = useState([]);
-  const [loader, setLoader] = useState(true);
+  // const [loader, setLoader] = useState(true);
   const userFetch = async () => {
     const response = await fetch(`${url}/api/users/me/`, {
       credentials: "include",
@@ -22,13 +22,6 @@ function MainNavBar(props) {
     const fetchedUsers = await response.json();
     if (fetchedUsers) {
       setUser(fetchedUsers);
-      setTimeout(() => {
-        setLoader(false);
-      }, 3000);
-    } else {
-      setTimeout(() => {
-        setLoader(false);
-      }, 3000);
     }
   };
 
