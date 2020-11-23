@@ -52,17 +52,13 @@ function MainNavBar(props) {
   return (
     <>
       <Navbar
-        className="custom-toggler navbar-toggler-icon "
-        // bg="dark"
-        // variant="light"
         style={{
           margin: "0px",
           padding: "0px",
           width: "100%",
           backgroundColor: "#070a1d",
-          color: "white",
         }}
-        className={`  ${styles.text}`}
+        className={`navbar-dark  ${styles.text}  `}
         expand="lg"
       >
         {props.CheckActive ? (

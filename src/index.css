@@ -14,6 +14,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New ",
     monospace;
 }
+.navbar-dark .navbar-toggler {
+  border: none !important;
+  box-shadow: none !important;
+}
 
 /* for buttons design */
 .nav-pills .nav-link.active,

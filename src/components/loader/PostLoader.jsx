@@ -7,7 +7,7 @@ const PostLoader = (props) => (
     width={800}
     height={660}
     viewBox="0 0 800 660"
-    backgroundColor="black"
+    backgroundColor="#b5c39e"
     foregroundColor="#03b8f7"
     {...props}
   >

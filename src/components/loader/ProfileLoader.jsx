@@ -8,7 +8,7 @@ const ProfileLoader = (props) => (
     width={800}
     height={528}
     viewBox="0 0 800 528"
-    backgroundColor="#white"
+    backgroundColor="grey"
     foregroundColor="#03b8f7"
     {...props}
   >
