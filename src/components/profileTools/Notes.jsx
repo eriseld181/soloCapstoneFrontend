@@ -48,9 +48,9 @@ function Notes() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [""]);
   // Change page
-  if (loading) {
-    return <MyLoader />;
-  }
+  // if (loading) {
+  //   return <MyLoader />;
+  // }
   return (
     <>
       <Container>
