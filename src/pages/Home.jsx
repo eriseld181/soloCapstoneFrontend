@@ -206,7 +206,13 @@ class Home extends React.Component {
                                   <Card.Text
                                     className={` text-left   ${mainStyle.textB}`}
                                   >
-                                    Tutor: {feed.userId.username}
+                                    {feed.userId.role == "student" ? (
+                                      <span>
+                                        Student: {feed.userId.username}
+                                      </span>
+                                    ) : (
+                                      <span>Tutor: {feed.userId.username}</span>
+                                    )}
                                   </Card.Text>
                                   <Card.Text
                                     className={`   ${mainStyle.postText} ${mainStyle.textJustify}`}
