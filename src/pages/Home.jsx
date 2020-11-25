@@ -307,17 +307,34 @@ class Home extends React.Component {
                                     <Card.Body>
                                       <Row>
                                         {" "}
-                                        <Image
-                                          variant="top"
-                                          className={`text-left  `}
-                                          style={{
-                                            height: "50px",
-                                            width: "50px",
-                                            objectfit: "cover",
-                                          }}
-                                          src={feed.userId.profilePhoto}
-                                          roundedCircle
-                                        />{" "}
+                                        {feed.userId.profilePhoto ? (
+                                          <>
+                                            {" "}
+                                            <Image
+                                              variant="top"
+                                              className={`text-left  `}
+                                              style={{
+                                                height: "50px",
+                                                width: "50px",
+                                                objectfit: "cover",
+                                              }}
+                                              src={feed.userId.profilePhoto}
+                                              roundedCircle
+                                            />
+                                          </>
+                                        ) : (
+                                          <Image
+                                            variant="top"
+                                            className={`text-left  `}
+                                            style={{
+                                              height: "50px",
+                                              width: "50px",
+                                              objectfit: "cover",
+                                            }}
+                                            src="https://res.cloudinary.com/social4marketing/image/upload/v1606236191/E-TECH/iebfqrxwvvdj5fdefavb.jpg"
+                                            roundedCircle
+                                          />
+                                        )}
                                         <span
                                           className={`pt-2 pl-2 ${mainStyle.label}`}
                                         >
