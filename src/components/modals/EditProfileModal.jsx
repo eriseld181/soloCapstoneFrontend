@@ -138,6 +138,28 @@ export default function EditModalProject(props) {
             </Form.Group>
             <Form.Group controlId="formBasicName">
               <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change your Country
+              </Form.Label>
+              <Form.Control
+                type="name"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                placeholder="Edit your country"
+              />{" "}
+            </Form.Group>
+            <Form.Group controlId="formBasicName">
+              <Form.Label className={`${mainStyle.labelWhite}`}>
+                Change your City
+              </Form.Label>
+              <Form.Control
+                type="name"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="Edit your github"
+              />{" "}
+            </Form.Group>
+            <Form.Group controlId="formBasicName">
+              <Form.Label className={`${mainStyle.labelWhite}`}>
                 Change your github profile link
               </Form.Label>
               <Form.Control
