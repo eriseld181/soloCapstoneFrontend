@@ -295,7 +295,7 @@ class Home extends React.Component {
 
                       {this.state.categorySelected === "posts" && (
                         <Row className="justify-content-center ">
-                          <Col sm={12} md={7}>
+                          <Col sm={12} md={12}>
                             {this.state.feedCategory.length > 0 &&
                               this.state.feedCategory.map((feed) => {
                                 return (
