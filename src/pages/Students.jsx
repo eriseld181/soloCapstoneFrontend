@@ -108,7 +108,7 @@ export default class Students extends Component {
                       </Td>
                       <Td className={` ${mainStyle.tableBorder}   `}>
                         <Row
-                          className={` ${mainStyle.clearSpaces} justify-content-between `}
+                          className={` ${mainStyle.clearSpaces} justify-content-center `}
                         >
                           <Col
                             className={`  ${mainStyle.postText}   ${mainStyle.clearSpaces} `}
@@ -122,7 +122,6 @@ export default class Students extends Component {
                             className={`  ${mainStyle.postText} ${mainStyle.clearSpaces} `}
                           >
                             {" "}
-                            <MdEmail />
                           </Col>
                         </Row>
                       </Td>

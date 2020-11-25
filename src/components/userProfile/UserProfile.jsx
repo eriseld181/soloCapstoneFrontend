@@ -139,7 +139,8 @@ class UserProfile extends Component {
               md={8}
             >
               <p style={{ textAlign: " justify" }}>
-                There is no desrciption yet.
+                There is on description yet, please update your description by
+                clicking on the settings button.
               </p>{" "}
             </Col>
           </Row>

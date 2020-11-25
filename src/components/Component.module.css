@@ -341,6 +341,32 @@ a.webLinks {
   }
 } */
 @media only screen and (max-width: 600px) {
+  .jumboTitle {
+    font-size: 50px !important;
+    margin-left: 22%;
+    margin-top: 27%;
+  }
+  .jumboText {
+    color: white;
+    font-size: 25px !important;
+    margin-left: 23%;
+    text-align: center;
+  }
+  .jumboButton {
+    color: white;
+    font-size: 25px !important;
+
+    padding: 7px 40px !important;
+    background: rgb(3, 184, 247) !important;
+    background: linear-gradient(
+      60deg,
+      rgba(3, 184, 247, 1) 0%,
+      rgb(0 55 255) 100%
+    ) !important;
+    border-radius: 2px !important;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15) !important;
+  }
+
   .homeworkImage {
     height: 230px;
 
